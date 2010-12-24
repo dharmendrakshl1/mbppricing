@@ -1,0 +1,15 @@
+= How to release =
+
+  # Run `mvn release:prepare -Prelease -DautoVersionSubmodules=true`
+  # Run `mvn release:perform -Prelease`
+  # Log in to [https://oss.sonatype.org Sonatype]. 
+  # Follow the [https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide Sonatype release directions] in bullet 8.  
+  # Upload the artifacts to the download page.
+  # Upload the javadoc to googlecode:
+   # Unzip the `awaitility-X-javadoc.jar` into `tags/X/apidocs`
+   # Run `find -name *.html | xargs svn propset svn:mime-type text/html`
+   # svn ci -m "Uploading javadocs for version X"
+  # Update the front page and the getting started page.
+  # Send a message to the mailing-list announcing the new release.
+
+The release is automatically synced to Maven central (the sync process runs hourly).
