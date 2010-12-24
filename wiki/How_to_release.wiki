@@ -2,7 +2,9 @@
 
   # Run `mvn release:prepare -Prelease -DautoVersionSubmodules=true`
      # Use SCM label rest-assured-X
-     # If build fails because of missing dependencies just do `mvn install -Prelease` followed by `mvn release:prepare -Prelease -Dresume`.
+     # If build fails because of missing dependencies do:
+        # `mvn install -Prelease`
+        #`mvn release:prepare -Prelease -Dresume`.
   # Run `mvn release:perform -Prelease`
   # Log in to [https://oss.sonatype.org Sonatype]. 
   # Follow the [https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide Sonatype release directions] in bullet 8.  
