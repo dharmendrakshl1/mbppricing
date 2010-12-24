@@ -1,6 +1,7 @@
 = How to release =
 
   # Run `mvn release:prepare -Prelease -DautoVersionSubmodules=true`
+     # Use SCM label rest-assured-X
   # Run `mvn release:perform -Prelease`
   # Log in to [https://oss.sonatype.org Sonatype]. 
   # Follow the [https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide Sonatype release directions] in bullet 8.  
