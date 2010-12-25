@@ -56,8 +56,10 @@ or
 {{{     expect().body(hasXPath("/greeting/firstName[text()='John']")).with().parameters("firstName", "John", "lastName", "Doe").post("/greetXML");
 }}}       
 
-== Example 3 - Request == 
+== Specyfing Request == 
+
 Besides specifying request parameters you can also specify headers, cookies, body and content type.
+
 ==== Cookies ==== 
 {{{
 given().cookie("username", "John").then().expect().body(equalTo("username")).when().get("/cookie");
@@ -82,7 +84,7 @@ given().request().body("some body"). .. // Works for POST and PUT requests
 given().request().body(new byte[]{42}). .. // Works for POST
 }}}
 
-== Example 4 - Verifying response ==             
+== Verifying response ==             
 You can also verify status code, status line, cookies, headers, content type and body.
 ====Cookies====
 {{{
@@ -99,53 +101,69 @@ expect().statusLine(containsString("some")). ..
 }}}
              
 
-          * Headers:
+==== Headers ====
 
-             expect().header("headerName", "headerValue"). ..
-             expect().headers("headerName1", "headerValue1", "headerName2", "headerValue2"). ..
-             expect().headers("headerName1", "headerValue1", "headerName2", containsString("Value2")). ..
+{{{
+expect().header("headerName", "headerValue"). ..
+expect().headers("headerName1", "headerValue1", "headerName2", "headerValue2"). ..
+expect().headers("headerName1", "headerValue1", "headerName2", containsString("Value2")). ..
+}}}
              
 
-          * Content-Type:
-
-             expect().contentType(ContentType.JSON). ..
+==== Content-Type ====
+{{{
+expect().contentType(ContentType.JSON). ..
+}}}
              
 
-          * Full body/content matching:
+==== Full body/content matching ====
 
-             expect().body(equalsTo("something")). ..
-             expect().content(equalsTo("something")). .. // Same as above
-             
+{{{
+expect().body(equalsTo("something")). ..
+expect().content(equalsTo("something")). .. // Same as above
+}}}
+            
 
-   6. REST assured also supports some authentication schemes, for example basic authentication:
+== Authentication == 
+REST assured also supports some authentication schemes, for example basic authentication:
 
-       given().auth().basic("username", "password").expect().statusCode(200).when().get("/secured/hello");
+{{{
+given().auth().basic("username", "password").expect().statusCode(200).when().get("/secured/hello");
+}}}
        
 
-      Other supported schemes are OAuth and certificate authentication.
-   7. By default REST assured assumes host localhost and port 8080 when doing a request. If you want a different port you can do:
+Other supported schemes are OAuth and certificate authentication.
 
-       given().port(80). ..
+
+== Default URI and port == 
+
+By default REST assured assumes host localhost and port 8080 when doing a request. If you want a different port you can do:
+
+{{{
+given().port(80). ..
+}}}
+       
+or simply:
+{{{
+.. when().get("http://myhost.org:80/doSomething");
+}}}
        
 
-      or simply:
-
-       .. when().get("http://myhost.org:80/doSomething");
+You can also change the default base URI and port for all subsequent requests:
+{{{
+RestAssured.baseURI = "http://myhost.org";
+RestAssured.port = 80;
+}}}
        
 
-      You can also change the default base URI and port for all subsequent requests:
+This means that a request like e.g. `get("/hello")` goes to: `http://myhost.org:8080/hello`. You can reset to the default baseURI (localhost) and standard port (8080) using:
+{{{
+RestAssured.reset();
+}}}
 
-       RestAssured.baseURI = "http://myhost.org";
-       RestAssured.port = 80;
+== Static imports ==
        
-
-      This means that a request like e.g. get("/hello") goes to: http://myhost.org:8080/hello
-      You can reset to the standard baseURI (localhost) and standard port (8080) using:
-
-       RestAssured.reset();
-       
-
 In order to use REST assured effectively it's recommended to statically import methods from the following classes:
 
-    * com.jayway.restassured.RestAssured.*
-    * org.hamcrest.Matchers.*
+  * com.jayway.restassured.RestAssured.*
+  * org.hamcrest.Matchers.*
