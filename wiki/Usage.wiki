@@ -68,6 +68,7 @@ Besides specifying request parameters you can also specify headers, cookies, bod
 ==== Cookies ==== 
 {{{
 given().cookie("username", "John").then().expect().body(equalTo("username")).when().get("/cookie");
+}}}
              
 ==== Headers ====
 {{{
