@@ -1,1 +1,153 @@
 = Usage =
+
+REST Assured is a Java DSL for simplifying testing of REST based services built on top of HTTP Builder. It supports POST, GET, PUT, DELETE and HEAD requests and to verify the response of these requests. Usage examples:
+
+  # Assume that the GET request (to http://localhost:8080/lotto) returns JSON as:
+    {{{
+       {
+       "lotto":{
+         "lottoId":5,
+         "winning-numbers":[2,45,34,23,7,5,3],
+         "winners":[{
+           "winnerId":23,
+           "numbers":[2,45,34,23,3,5]
+         },{
+           "winnerId":54,
+           "numbers":[52,3,12,11,18,22]
+         }]
+        }
+       }
+    }}}
+       
+
+  REST assured can then help you to easily make the GET request and verify the response. E.g. if you want to verify that lottoId is equal to 5 you can do like this:
+  {{{
+  expect().body("lotto.lottoId", equalTo(5)).when().get("/lotto");
+  }}}       
+ or perhaps you want to check that the winnerId's are 23 and 54:
+  {{{
+  expect().body("lotto.winners.winnerId", hasItems(23, 54)).when().get("/lotto");
+  }}}
+       
+
+  # XML can be verified in a similar way. Image that a POST request to http://localhost:8080/greetXML returns:
+
+       <greeting>
+           <firstName>{params("firstName")}</firstName>
+           <lastName>{params("lastName")}</lastName>
+         </greeting>
+       
+
+      i.e. it sends back a greeting based on the firstName and lastName parameter sent in the request. You can easily perform and verify e.g. the firstName with REST assured:
+
+       with().parameters("firstName", "John", "lastName", "Doe").expect().body("greeting.firstName", equalTo("John")).when().post("/greetXML");
+       
+
+      If you want to verify both firstName and lastName you may do like this:
+
+       with().parameters("firstName", "John", "lastName", "Doe").expect().body("greeting.firstName", equalTo("John")).and().body("greeting.lastName", equalTo("Doe")).when().post("/greetXML");
+       
+
+      or a little shorter:
+
+       with().parameters("firstName", "John", "lastName", "Doe").expect().body("greeting.firstName", equalTo("John"), "greeting.lastName", equalTo("Doe")).when().post("/greetXML");
+       
+
+   3. You can also verify XML responses using x-path. For example:
+
+       expect().body(hasXPath("/greeting/firstName", containsString("Jo"))).given().parameters("firstName", "John", "lastName", "Doe").when().post("/greetXML");
+       
+
+      or
+
+       expect().body(hasXPath("/greeting/firstName[text()='John']")).with().parameters("firstName", "John", "lastName", "Doe").post("/greetXML");
+       
+
+   4. Besides specifying request parameters you can also specify headers, cookies, body and content type.
+          * Cookie:
+
+             given().cookie("username", "John").then().expect().body(equalTo("username")).when().get("/cookie");
+             
+
+          * Headers:
+
+             given().header("MyHeader", "Something").and(). ..
+             given().headers("MyHeader", "Something", "MyOtherHeader", "SomethingElse").and(). ..
+             
+
+          * Content Type:
+
+             given().contentType(ContentType.TEXT). ..
+             
+
+          * Body:
+
+             given().request().body("some body"). .. // Works for POST and PUT requests
+             given().request().body(new byte[]{42}). .. // Works for POST
+             
+
+   5. You can also verify status code, status line, cookies, headers, content type and body.
+          * Cookie:
+
+             expect().cookie("cookieName", "cookieValue"). ..
+             expect().cookies("cookieName1", "cookieValue1", "cookieName2", "cookieValue2"). ..
+             expect().cookies("cookieName1", "cookieValue1", "cookieName2", containsString("Value2")). ..
+             
+
+          * Status:
+
+             expect().statusCode(200). ..
+             expect().statusLine("something"). ..
+             expect().statusLine(containsString("some")). ..
+             
+
+          * Headers:
+
+             expect().header("headerName", "headerValue"). ..
+             expect().headers("headerName1", "headerValue1", "headerName2", "headerValue2"). ..
+             expect().headers("headerName1", "headerValue1", "headerName2", containsString("Value2")). ..
+             
+
+          * Content-Type:
+
+             expect().contentType(ContentType.JSON). ..
+             
+
+          * Full body/content matching:
+
+             expect().body(equalsTo("something")). ..
+             expect().content(equalsTo("something")). .. // Same as above
+             
+
+   6. REST assured also supports some authentication schemes, for example basic authentication:
+
+       given().auth().basic("username", "password").expect().statusCode(200).when().get("/secured/hello");
+       
+
+      Other supported schemes are OAuth and certificate authentication.
+   7. By default REST assured assumes host localhost and port 8080 when doing a request. If you want a different port you can do:
+
+       given().port(80). ..
+       
+
+      or simply:
+
+       .. when().get("http://myhost.org:80/doSomething");
+       
+
+      You can also change the default base URI and port for all subsequent requests:
+
+       RestAssured.baseURI = "http://myhost.org";
+       RestAssured.port = 80;
+       
+
+      This means that a request like e.g. get("/hello") goes to: http://myhost.org:8080/hello
+      You can reset to the standard baseURI (localhost) and standard port (8080) using:
+
+       RestAssured.reset();
+       
+
+In order to use REST assured effectively it's recommended to statically import methods from the following classes:
+
+    * com.jayway.restassured.RestAssured.*
+    * org.hamcrest.Matchers.*
