@@ -61,7 +61,7 @@ expect().body(hasXPath("/greeting/firstName[text()='John']")).with().parameters(
 
 }}}       
 
-== Specyfing Request Data== 
+== Specifying Request Data== 
 
 Besides specifying request parameters you can also specify headers, cookies, body and content type.
 
