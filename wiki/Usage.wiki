@@ -58,23 +58,23 @@ or
 
 == Example 3 - Request == 
 Besides specifying request parameters you can also specify headers, cookies, body and content type.
-=== Cookies === 
+==== Cookies ==== 
 {{{
 given().cookie("username", "John").then().expect().body(equalTo("username")).when().get("/cookie");
              
-=== Headers ===
+==== Headers ====
 {{{
 given().header("MyHeader", "Something").and(). ..
 given().headers("MyHeader", "Something", "MyOtherHeader", "SomethingElse").and(). ..
 }}}
  
-=== Content Type ===
+==== Content Type ====
 {{{
 given().contentType(ContentType.TEXT). ..
 }}}
              
 
-=== Body === 
+==== Body ==== 
 {{{
 given().request().body("some body"). .. // Works for POST and PUT requests
 }}}
@@ -84,14 +84,14 @@ given().request().body(new byte[]{42}). .. // Works for POST
 
 == Example 4 - Verifying response ==             
 You can also verify status code, status line, cookies, headers, content type and body.
-===Cookies===
+====Cookies====
 {{{
 expect().cookie("cookieName", "cookieValue"). ..
 expect().cookies("cookieName1", "cookieValue1", "cookieName2", "cookieValue2"). ..
 expect().cookies("cookieName1", "cookieValue1", "cookieName2", containsString("Value2")). ..
 }}}
              
-=== Status ===
+==== Status ====
 {{{
 expect().statusCode(200). ..
 expect().statusLine("something"). ..
