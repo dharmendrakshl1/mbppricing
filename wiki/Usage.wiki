@@ -1,58 +1,62 @@
 = Usage =
 
-REST Assured is a Java DSL for simplifying testing of REST based services built on top of HTTP Builder. It supports POST, GET, PUT, DELETE and HEAD requests and to verify the response of these requests. Usage examples:
+REST Assured is a Java DSL for simplifying testing of REST based services built on top of HTTP Builder. It supports POST, GET, PUT, DELETE and HEAD requests and to verify the response of these requests.
 
-  * Assume that the GET request (to http://localhost:8080/lotto) returns JSON as:
-    {{{
-       {
-       "lotto":{
-         "lottoId":5,
-         "winning-numbers":[2,45,34,23,7,5,3],
-         "winners":[{
-           "winnerId":23,
-           "numbers":[2,45,34,23,3,5]
-         },{
-           "winnerId":54,
-           "numbers":[52,3,12,11,18,22]
-         }]
-        }
-       }
-    }}}      
-  REST assured can then help you to easily make the GET request and verify the response. E.g. if you want to verify that lottoId is equal to 5 you can do like this:
-  {{{
-  expect().body("lotto.lottoId", equalTo(5)).when().get("/lotto");
-  }}}       
- or perhaps you want to check that the winnerId's are 23 and 54:
-  {{{
-  expect().body("lotto.winners.winnerId", hasItems(23, 54)).when().get("/lotto");
-  }}}       
-  * XML can be verified in a similar way. Image that a POST request to `http://localhost:8080/greetXML` returns:
-  {{{
-   <greeting>
-       <firstName>{params("firstName")}</firstName>
-       <lastName>{params("lastName")}</lastName>
-  </greeting>
-  }}}      
-      i.e. it sends back a greeting based on the firstName and lastName parameter sent in the request. You can easily perform and verify e.g. the firstName with REST assured:
-  {{{
-  with().parameters("firstName", "John", "lastName", "Doe").expect().body("greeting.firstName", equalTo("John")).when().post("/greetXML");
-  }}}       
-      If you want to verify both firstName and lastName you may do like this:
-  {{{
-  with().parameters("firstName", "John", "lastName", "Doe").expect().body("greeting.firstName", equalTo("John")).and().body("greeting.lastName", equalTo("Doe")).when().post("/greetXML");
-  }}}       
-      or a little shorter:
-  {{{
-  with().parameters("firstName", "John", "lastName", "Doe").expect().body("greeting.firstName", equalTo("John"), "greeting.lastName", equalTo("Doe")).when().post("/greetXML");
-  }}}      
-  * You can also verify XML responses using x-path. For example:
-  {{{
-  expect().body(hasXPath("/greeting/firstName", containsString("Jo"))).given().parameters("firstName", "John", "lastName", "Doe").when().post("/greetXML");
-  }}}      
-  or
-  {{{     expect().body(hasXPath("/greeting/firstName[text()='John']")).with().parameters("firstName", "John", "lastName", "Doe").post("/greetXML");
-  }}}       
-  * Besides specifying request parameters you can also specify headers, cookies, body and content type.
+== Example 1 - JSON ==
+Assume that the GET request (to http://localhost:8080/lotto) returns JSON as:
+{{{
+{
+"lotto":{
+ "lottoId":5,
+ "winning-numbers":[2,45,34,23,7,5,3],
+ "winners":[{
+   "winnerId":23,
+   "numbers":[2,45,34,23,3,5]
+ },{
+   "winnerId":54,
+   "numbers":[52,3,12,11,18,22]
+ }]
+}
+}
+}}}      
+REST assured can then help you to easily make the GET request and verify the response. E.g. if you want to verify that lottoId is equal to 5 you can do like this:
+{{{
+expect().body("lotto.lottoId", equalTo(5)).when().get("/lotto");
+}}}       
+or perhaps you want to check that the winnerId's are 23 and 54:
+{{{
+expect().body("lotto.winners.winnerId", hasItems(23, 54)).when().get("/lotto");
+}}}       
+== Example 2 - XML == 
+XML can be verified in a similar way. Image that a POST request to `http://localhost:8080/greetXML` returns:
+{{{
+<greeting>
+<firstName>{params("firstName")}</firstName>
+<lastName>{params("lastName")}</lastName>
+</greeting>
+}}}      
+i.e. it sends back a greeting based on the firstName and lastName parameter sent in the request. You can easily perform and verify e.g. the firstName with REST assured:
+{{{
+with().parameters("firstName", "John", "lastName", "Doe").expect().body("greeting.firstName", equalTo("John")).when().post("/greetXML");
+}}}       
+If you want to verify both firstName and lastName you may do like this:
+{{{
+with().parameters("firstName", "John", "lastName", "Doe").expect().body("greeting.firstName", equalTo("John")).and().body("greeting.lastName", equalTo("Doe")).when().post("/greetXML");
+}}}       
+or a little shorter:
+{{{
+with().parameters("firstName", "John", "lastName", "Doe").expect().body("greeting.firstName", equalTo("John"), "greeting.lastName", equalTo("Doe")).when().post("/greetXML");
+}}}      
+
+You can also verify XML responses using x-path. For example:
+{{{
+expect().body(hasXPath("/greeting/firstName", containsString("Jo"))).given().parameters("firstName", "John", "lastName", "Doe").when().post("/greetXML");
+}}}      
+or
+{{{     expect().body(hasXPath("/greeting/firstName[text()='John']")).with().parameters("firstName", "John", "lastName", "Doe").post("/greetXML");
+}}}       
+
+* Besides specifying request parameters you can also specify headers, cookies, body and content type.
           * Cookie:
 
              given().cookie("username", "John").then().expect().body(equalTo("username")).when().get("/cookie");
