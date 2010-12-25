@@ -52,7 +52,9 @@ You can also verify XML responses using x-path. For example:
 {{{
 expect().body(hasXPath("/greeting/firstName", containsString("Jo"))).given().parameters("firstName", "John", "lastName", "Doe").when().post("/greetXML");
 }}}      
+
 or
+
 {{{     expect().body(hasXPath("/greeting/firstName[text()='John']")).with().parameters("firstName", "John", "lastName", "Doe").post("/greetXML");
 }}}       
 
