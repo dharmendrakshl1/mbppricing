@@ -31,8 +31,8 @@ expect().body("lotto.winners.winnerId", hasItems(23, 54)).when().get("/lotto");
 XML can be verified in a similar way. Image that a POST request to `http://localhost:8080/greetXML` returns:
 {{{
 <greeting>
-<firstName>{params("firstName")}</firstName>
-<lastName>{params("lastName")}</lastName>
+   <firstName>{params("firstName")}</firstName>
+   <lastName>{params("lastName")}</lastName>
 </greeting>
 }}}      
 i.e. it sends back a greeting based on the firstName and lastName parameter sent in the request. You can easily perform and verify e.g. the firstName with REST assured:
@@ -56,42 +56,47 @@ or
 {{{     expect().body(hasXPath("/greeting/firstName[text()='John']")).with().parameters("firstName", "John", "lastName", "Doe").post("/greetXML");
 }}}       
 
-* Besides specifying request parameters you can also specify headers, cookies, body and content type.
-          * Cookie:
-
-             given().cookie("username", "John").then().expect().body(equalTo("username")).when().get("/cookie");
+== Example 3 - Request == 
+Besides specifying request parameters you can also specify headers, cookies, body and content type.
+=== Cookies === 
+{{{
+given().cookie("username", "John").then().expect().body(equalTo("username")).when().get("/cookie");
+             
+=== Headers ===
+{{{
+given().header("MyHeader", "Something").and(). ..
+given().headers("MyHeader", "Something", "MyOtherHeader", "SomethingElse").and(). ..
+}}}
+ 
+=== Content Type ===
+{{{
+given().contentType(ContentType.TEXT). ..
+}}}
              
 
-          * Headers:
+=== Body === 
+{{{
+given().request().body("some body"). .. // Works for POST and PUT requests
+}}}
+{{{
+given().request().body(new byte[]{42}). .. // Works for POST
+}}}
 
-             given().header("MyHeader", "Something").and(). ..
-             given().headers("MyHeader", "Something", "MyOtherHeader", "SomethingElse").and(). ..
+== Example 4 - Verifying response ==             
+You can also verify status code, status line, cookies, headers, content type and body.
+===Cookies===
+{{{
+expect().cookie("cookieName", "cookieValue"). ..
+expect().cookies("cookieName1", "cookieValue1", "cookieName2", "cookieValue2"). ..
+expect().cookies("cookieName1", "cookieValue1", "cookieName2", containsString("Value2")). ..
+}}}
              
-
-          * Content Type:
-
-             given().contentType(ContentType.TEXT). ..
-             
-
-          * Body:
-
-             given().request().body("some body"). .. // Works for POST and PUT requests
-             given().request().body(new byte[]{42}). .. // Works for POST
-             
-
-   5. You can also verify status code, status line, cookies, headers, content type and body.
-          * Cookie:
-
-             expect().cookie("cookieName", "cookieValue"). ..
-             expect().cookies("cookieName1", "cookieValue1", "cookieName2", "cookieValue2"). ..
-             expect().cookies("cookieName1", "cookieValue1", "cookieName2", containsString("Value2")). ..
-             
-
-          * Status:
-
-             expect().statusCode(200). ..
-             expect().statusLine("something"). ..
-             expect().statusLine(containsString("some")). ..
+=== Status ===
+{{{
+expect().statusCode(200). ..
+expect().statusLine("something"). ..
+expect().statusLine(containsString("some")). ..
+}}}
              
 
           * Headers:
