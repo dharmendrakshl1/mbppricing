@@ -61,7 +61,7 @@ expect().body(hasXPath("/greeting/firstName[text()='John']")).with().parameters(
 
 }}}       
 
-== Specyfing Request == 
+== Specyfing Request Data== 
 
 Besides specifying request parameters you can also specify headers, cookies, body and content type.
 
@@ -90,7 +90,7 @@ given().request().body("some body"). .. // Works for POST and PUT requests
 given().request().body(new byte[]{42}). .. // Works for POST
 }}}
 
-== Verifying response ==             
+== Verifying Response Data ==             
 You can also verify status code, status line, cookies, headers, content type and body.
 ====Cookies====
 {{{
