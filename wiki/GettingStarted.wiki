@@ -1,0 +1,18 @@
+= Installation = 
+== Maven users ==
+Add the following dependency to your pom.xml:
+
+{{{
+<dependency>
+      <groupId>com.jayway.restassured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>1.0</version>
+      <scope>test</scope>
+</dependency>
+}}}
+ 
+== Non-maven users ==
+Download [http://awaitility.googlecode.com/files/awaitility-1.3.1.zip REST Assured] and put it in your class-path. You may also need to download the [http://awaitility.googlecode.com/files/awaitility-dependencies.zip third-party dependencies] and put them in your classpath as well. 
+
+= Documentation =
+When you've successfully downloaded and configured REST Assured in your classpath please refer to the [Usage user guide] for examples.
