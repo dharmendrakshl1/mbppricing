@@ -17,9 +17,7 @@ REST Assured is a Java DSL for simplifying testing of REST based services built 
          }]
         }
        }
-    }}}
-       
-
+    }}}      
   REST assured can then help you to easily make the GET request and verify the response. E.g. if you want to verify that lottoId is equal to 5 you can do like this:
   {{{
   expect().body("lotto.lottoId", equalTo(5)).when().get("/lotto");
