@@ -25,9 +25,7 @@ REST Assured is a Java DSL for simplifying testing of REST based services built 
  or perhaps you want to check that the winnerId's are 23 and 54:
   {{{
   expect().body("lotto.winners.winnerId", hasItems(23, 54)).when().get("/lotto");
-  }}}
-       
-
+  }}}       
   # XML can be verified in a similar way. Image that a POST request to http://localhost:8080/greetXML returns:
 
        <greeting>
