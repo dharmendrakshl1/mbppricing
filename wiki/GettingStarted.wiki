@@ -1,5 +1,6 @@
 = Installation = 
 == Maven users ==
+*The release has not yet been released to maven central but will hopefully be available soon*
 Add the following dependency to your pom.xml:
 
 {{{
