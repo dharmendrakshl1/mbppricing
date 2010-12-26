@@ -176,5 +176,5 @@ In order to use REST assured effectively it's recommended to statically import m
 
 ----
 For more information refer to the [javadoc http://rest-assured.googlecode.com/svn/tags/1.0/apidocs/index.html].
-  * [RestAssured http://rest-assured.googlecode.com/svn/tags/1.0/apidocs/com/jayway/restassured/RestAssured.html]
-  * [Specification package http://rest-assured.googlecode.com/svn/tags/1.0/apidocs/com/jayway/restassured/specification/package-summary.html]
+  * [http://rest-assured.googlecode.com/svn/tags/1.0/apidocs/com/jayway/restassured/RestAssured.html RestAssured]
+  * [http://rest-assured.googlecode.com/svn/tags/1.0/apidocs/com/jayway/restassured/specification/package-summary.html Specification package]
