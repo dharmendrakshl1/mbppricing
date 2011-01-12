@@ -175,8 +175,8 @@ In order to use REST assured effectively it's recommended to statically import m
   * `org.hamcrest.Matchers.*`
 
 == More info ==
-For more information refer to the [http://rest-assured.googlecode.com/svn/tags/1.0.1/apidocs/index.html javadoc]:
-  * [http://rest-assured.googlecode.com/svn/tags/1.0.1/apidocs/com/jayway/restassured/RestAssured.html RestAssured]
-  * [http://rest-assured.googlecode.com/svn/tags/1.0.1/apidocs/com/jayway/restassured/specification/package-summary.html Specification package]
+For more information refer to the [http://rest-assured.googlecode.com/svn/tags/1.0.2/apidocs/index.html javadoc]:
+  * [http://rest-assured.googlecode.com/svn/tags/1.0.2/apidocs/com/jayway/restassured/RestAssured.html RestAssured]
+  * [http://rest-assured.googlecode.com/svn/tags/1.0.2/apidocs/com/jayway/restassured/specification/package-summary.html Specification package]
 
 You can also have a look at some code examples [https://github.com/jayway/rest-assured/tree/master/examples/rest-assured-itest-java/src/test/java/com/jayway/restassured/itest/java here].
