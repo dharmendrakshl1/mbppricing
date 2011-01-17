@@ -1,0 +1,7 @@
+com.jayway.restassured
+com.jayway.restassured.assertion
+com.jayway.restassured.authentication
+com.jayway.restassured.exception
+com.jayway.restassured.internal
+com.jayway.restassured.response
+com.jayway.restassured.specification
