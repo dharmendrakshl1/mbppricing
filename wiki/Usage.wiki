@@ -175,17 +175,17 @@ List<Integer> winnderIds = jsonPath.get("winnders.winnderId");
 
 == Custom parsers == 
 REST Assured providers predefined parsers for e.g. HTML, XML and JSON. But you can parse other kinds of content by registering a predefined parser for unsupported mime-types by using:
-  {{{
+{{{
 RestAssured.registerParser(<mime-type>, <parser>);
-  }}} 
-  E.g. to register that mime-type 'application/vnd.uoml+xml' should be parsed using the XML parser do:
-  {{{
+}}} 
+E.g. to register that mime-type 'application/vnd.uoml+xml' should be parsed using the XML parser do:
+{{{
 RestAssured.registerParser("application/vnd.uoml+xml", Parser.XML);
-  }}} 
-  You can also unregister a parser using: 
-  {{{
+}}} 
+You can also unregister a parser using: 
+{{{
 RestAssured.unregisterParser("application/vnd.uoml+xml");
-  }}}
+}}}
 
 == Default values == 
 By default REST assured assumes host localhost and port 8080 when doing a request. If you want a different port you can do:              
