@@ -25,12 +25,12 @@ expect().body("greeting.name.size()", equalsTo(2))..
   See [http://groovy.codehaus.org/Updating+XML+with+XmlSlurper this] link for more info about the syntax.
   * Major improvements to JSON expectations. It now uses Groovy syntax for the expectation string to allow for much better expectations. Note that this fix will break backward compatibility on some expectations:
      # JSON lists are always returned as Java lists which means that you should use the hasItem(..) hamcrest matcher and not hasItemsInArray(..) hamcrest matcher.
-  * Added XmlPath object which allows you to parse an XML response from a request easily. E.g.
+  * Added [http://rest-assured.googlecode.com/svn/tags/1.1/apidocs/com/jayway/restassured/path/xml/XmlPath.html XmlPath] object which allows you to parse an XML response from a request easily. E.g.
   {{{
 String xml = post("/greeting").asString();
 String firstName = with(xml).get("greeting.firstName");
   }}}
-  For more information refer to the javadoc of com.jayway.restassured.path.xml.XmlPath
+  For more information refer to the javadoc of [http://rest-assured.googlecode.com/svn/tags/1.1/apidocs/com/jayway/restassured/path/xml/XmlPath.html XmlPath]
   * Added JsonPath object which allows you to parse an JSON response from a request easily. E.g.
   {{{
 String json = post("/greeting").asString();
