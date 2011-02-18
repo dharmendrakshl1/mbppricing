@@ -27,13 +27,13 @@ expect().body("greeting.name.size()", equalsTo(2))..
      # JSON lists are always returned as Java lists which means that you should use the hasItem(..) hamcrest matcher and not hasItemsInArray(..) hamcrest matcher.
   * Added XmlPath object which allows you to parse an XML response from a request easily. E.g.
   {{{
-String xml = post("/gretting").asString();
+String xml = post("/greeting").asString();
 String firstName = with(xml).get("greeting.firstName");
   }}}
   For more information refer to the javadoc of com.jayway.restassured.path.xml.XmlPath
   * Added JsonPath object which allows you to parse an JSON response from a request easily. E.g.
   {{{
-String json = post("/gretting").asString();
+String json = post("/greeting").asString();
 String firstName = with(json).get("greeting.firstName");
   }}}
   For more information refer to the javadoc of com.jayway.restassured.path.json.JsonPath
