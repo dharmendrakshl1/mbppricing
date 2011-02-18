@@ -119,7 +119,7 @@ given().contentType(ContentType.TEXT). ..
 given().request().body("some body"). .. // Works for POST and PUT requests
 }}}
 {{{
-given().request().body(new byte[]{42}). .. // Works for POST
+given().request().body(new byte[]{42}). .. // Works for POST and PUT
 }}}
 
 == Verifying Response Data ==             
