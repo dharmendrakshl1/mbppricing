@@ -167,11 +167,11 @@ String json = get("/lotto").asString();
 // Now use JsonPath to get data out of the JSON body                                                                          
 int lottoId = with(json).getInt("lotto.lottoId);                                                                              
 List<Integer> winnerIds = with(json).get("lotto.winners.winnerId");                                                           
-                                                                                                                         
-// or a bit more efficiently:                                                                                                 
-JsonPath jsonPath = new JsonPath(json).setRoot("lotto");                                                                      
-int lottoId = jsonPath.getInt("lottoId");                                                                                     
-List<Integer> winnderIds = jsonPath.get("winnders.winnderId");  
+
+// or a bit more efficiently:
+JsonPath jsonPath = new JsonPath(json).setRoot("lotto");
+int lottoId = jsonPath.getInt("lottoId");
+List<Integer> winnderIds = jsonPath.get("winnders.winnderId");
   }}}
 == Default values == 
 By default REST assured assumes host localhost and port 8080 when doing a request. If you want a different port you can do:              
