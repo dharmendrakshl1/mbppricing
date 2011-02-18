@@ -163,10 +163,9 @@ String lastName = xmlPath.get("lastName");
   }}}
   * JSON example:
   {{{
-String json = get("/lotto").asString();                                                                                       
-// Now use JsonPath to get data out of the JSON body                                                                          
-int lottoId = with(json).getInt("lotto.lottoId);                                                                              
-List<Integer> winnerIds = with(json).get("lotto.winners.winnerId");                                                           
+// Now use JsonPath to get data out of the JSON body
+int lottoId = with(json).getInt("lotto.lottoId);
+List<Integer> winnerIds = with(json).get("lotto.winners.winnerId");
 
 // or a bit more efficiently:
 JsonPath jsonPath = new JsonPath(json).setRoot("lotto");
