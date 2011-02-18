@@ -44,7 +44,11 @@ String firstName = with(json).get("greeting.firstName");
   {{{
 RestAssured.basePath = "/resource";
   }}} 
-  E.g. let's say that the base URI is `http://localhost` and base path is `"/resource"` will make create a request to `http://localhost/resource/something` when doing a `get("/something")`. Default value is empty.
+  E.g. let's say that the base URI is http://localhost and base path is "/resource" will make create a request to "http://localhost/resource/something" when doing a 
+  {{{
+get("/something");
+  }}}
+ Default value is empty.
 
 == Minor changes ==
 See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for more details
