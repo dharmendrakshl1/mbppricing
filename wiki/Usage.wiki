@@ -147,7 +147,7 @@ Parameters can also be set directly on the url:
 }}}                                                               
 
 == XML and JSON parsing == 
-You can use the XmlPath or JsonPath to                  
+You can use the [http://rest-assured.googlecode.com/svn/tags/1.1/apidocs/com/jayway/restassured/path/xml/XmlPath.html XmlPath] or JsonPath to                  
 easily parse XML or JSON data from a response.                                                                                           
   * XML example:                                                                                                                  
   {{{
