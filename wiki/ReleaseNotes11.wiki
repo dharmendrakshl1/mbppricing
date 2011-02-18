@@ -52,6 +52,11 @@ RestAssured.basePath = "/resource";
 get("/something");
   }}}
  Default value is empty.
+  * Added support for specifying default authentication scheme. E.g. use 
+  {{{
+RestAssured.authentication = basic("username", "password")
+  }}} 
+  to cause all subsequent request to use basic authentication. You can reset to no authentication using `RestAssured.reset()`;
 
 == Minor changes ==
 See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for more details
