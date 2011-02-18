@@ -1,0 +1,12 @@
+com.jayway.restassured
+com.jayway.restassured.assertion
+com.jayway.restassured.authentication
+com.jayway.restassured.exception
+com.jayway.restassured.internal
+com.jayway.restassured.internal.path.xml
+com.jayway.restassured.parsing
+com.jayway.restassured.path.json
+com.jayway.restassured.path.xml
+com.jayway.restassured.path.xml.element
+com.jayway.restassured.response
+com.jayway.restassured.specification
