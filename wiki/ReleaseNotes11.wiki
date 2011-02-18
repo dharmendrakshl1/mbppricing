@@ -1,0 +1,28 @@
+= Release Notes for Rest Assured 1.1 =
+
+== Highlights ==
+  * Major improvements to XML expecations. It now uses Groovy syntax for the expectation string to allow for much better expectations! Note that this fix will break backward compatibility on some expectations. E.g. given
+    {{{
+ 	<greeting>
+	    <name>
+		<firstName>John</firstName>
+		<lastName>Doe</lastName>
+	    </name>
+	</greeting>
+    }}}
+    you used to do:
+    {{{
+       expect().body("greeting.name", hasItems("John", "Doe"))..
+    }}}
+    Now this will not work, instead you have to do:
+    {{{
+       expect().body("greeting.name.children()", hasItems("John", "Doe"))..
+    }}}
+    But this also means that you can do:
+    {{{
+        expect().body("greeting.name.size()", equalsTo(2))..
+    }}}
+  See [http://groovy.codehaus.org/Updating+XML+with+XmlSlurper this] link for more info about the syntax.
+
+== Minor changes ==
+See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for more details
