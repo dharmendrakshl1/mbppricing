@@ -226,4 +226,7 @@ For more information refer to the [http://rest-assured.googlecode.com/svn/tags/1
   * [http://rest-assured.googlecode.com/svn/tags/1.1/apidocs/com/jayway/restassured/RestAssured.html RestAssured]
   * [http://rest-assured.googlecode.com/svn/tags/1.1/apidocs/com/jayway/restassured/specification/package-summary.html Specification package]
 
-You can also have a look at some code examples [https://github.com/jayway/rest-assured/tree/master/examples/rest-assured-itest-java/src/test/java/com/jayway/restassured/itest/java here].
+You can also have a look at some code examples:
+  * REST Assured [https://github.com/jayway/rest-assured/tree/master/examples/rest-assured-itest-java/src/test/java/com/jayway/restassured/itest/java tests].
+  * [https://github.com/jayway/rest-assured/blob/master/rest-assured/src/test/java/com/jayway/restassured/path/json/JsonPathTest.java JsonPathTest]
+  * [https://github.com/jayway/rest-assured/blob/master/rest-assured/src/test/java/com/jayway/restassured/path/xml/XmlPathTest.java XmlPathTest]
