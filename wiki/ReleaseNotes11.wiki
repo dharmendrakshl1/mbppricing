@@ -57,7 +57,7 @@ get("/something");
 RestAssured.authentication = basic("username", "password")
   }}} 
   to cause all subsequent request to use basic authentication. You can reset to no authentication using `RestAssured.reset()`;
-* Support for registering a predefined parser for unsupported mime-types by using 
+  * Support for registering a predefined parser for unsupported mime-types by using:
   {{{
 RestAssured.registerParser(<mime-type>, <parser>);
   }}} 
