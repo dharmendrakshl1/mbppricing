@@ -39,7 +39,10 @@ String firstName = with(json).get("greeting.firstName");
   For more information refer to the javadoc of com.jayway.restassured.path.json.JsonPath
 
 == Other notable changes ==
-  * 
+  * Support for specifying request/query parameters in the url, e.g. 
+  {{{
+get("/something?param1=first&param2=second");
+  }}}
   * Added support for specifying base path using
   {{{
 RestAssured.basePath = "/resource";
