@@ -1,4 +1,4 @@
-= Release Notes for Rest Assured 1.1 =
+= Release Notes for REST Assured 1.1 =
 
 == Highlights ==
   * Major improvements to XML expecations. It now uses Groovy syntax for the expectation string to allow for much better expectations! Note that this fix will break backward compatibility on some expectations. E.g. given
