@@ -43,7 +43,7 @@ String firstName = with(json).get("greeting.firstName");
   {{{
 get("/something?param1=first&param2=second");
   }}}
-  * Added support for specifying base path using
+  * Support for specifying base path using
   {{{
 RestAssured.basePath = "/resource";
   }}} 
@@ -51,12 +51,24 @@ RestAssured.basePath = "/resource";
   {{{
 get("/something");
   }}}
- Default value is empty.
-  * Added support for specifying default authentication scheme. E.g. use 
+  Default value is empty.
+  * Support for specifying default authentication scheme. E.g. use 
   {{{
 RestAssured.authentication = basic("username", "password")
   }}} 
   to cause all subsequent request to use basic authentication. You can reset to no authentication using `RestAssured.reset()`;
+* Support for registering a predefined parser for unsupported mime-types by using 
+  {{{
+RestAssured.registerParser(<mime-type>, <parser>);
+  }}} 
+  E.g. to register that mime-type 'application/vnd.uoml+xml' should be parsed using the XML parser do:
+  {{{
+RestAssured.registerParser("application/vnd.uoml+xml", Parser.XML);
+  }}} 
+  You can also unregister a parser using: 
+  {{{
+RestAssured.unregisterParser("application/vnd.uoml+xml");
+  }}}
 
 == Minor changes ==
 See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for more details
