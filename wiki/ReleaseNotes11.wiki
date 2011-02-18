@@ -23,6 +23,8 @@ expect().body("greeting.name.children()", hasItems("John", "Doe"))..
 expect().body("greeting.name.size()", equalsTo(2))..
   }}}
   See [http://groovy.codehaus.org/Updating+XML+with+XmlSlurper this] link for more info about the syntax.
+  * Major improvements to JSON expectations. It now uses Groovy syntax for the expectation string to allow for much better expectations. Note that this fix will break backward compatibility on some expectations:
+     # JSON lists are always returned as Java lists which means that you should use the hasItem(..) hamcrest matcher and not hasItemsInArray(..) hamcrest matcher.
 
 == Minor changes ==
 See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for more details
