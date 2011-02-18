@@ -146,11 +146,24 @@ Parameters can also be set directly on the url:
 ..when().get("/name?firstName=John&lastName=Doe");                                                                                       
 }}}                                                               
 
-== XML and JSON parsing == 
-You can use the [http://rest-assured.googlecode.com/svn/tags/1.1/apidocs/com/jayway/restassured/path/xml/XmlPath.html XmlPath] or JsonPath to                  
-easily parse XML or JSON data from a response.                                                                                           
-  * XML example:                                                                                                                  
-  {{{
+== Getting and validating a response == 
+You can also get the body of a request. E.g. let's say you want to return the body of a get request to "/lotto":
+{{{
+String json = get("/lotto").asString();
+}}}
+Now the "json" string contains the full response body. You can then use the JsonPath to get data from the response body:
+{{{
+int lottoId = with(json).getInt("lotto.lottoId);
+List<Integer> winnerIds = with(json).get("lotto.winners.winnerId");
+
+// or a bit more efficiently:
+JsonPath jsonPath = new JsonPath(json).setRoot("lotto");
+int lottoId = jsonPath.getInt("lottoId");
+List<Integer> winnderIds = jsonPath.get("winnders.winnderId");
+}}}
+
+You also have the corresponding functionality for XML using  [http://rest-assured.googlecode.com/svn/tags/1.1/apidocs/com/jayway/restassured/path/xml/XmlPath.html XmlPath]:
+{{{
 String xml = post("/greetXML?firstName=John&lastName=Doe").andReturn().asString();                                            
 // Now use XmlPath to get the first and last name                                                                             
 String firstName = with(xml).get("greeting.firstName");                                                                       
@@ -160,19 +173,7 @@ String lastName = with(xml).get("greeting.firstName");
 XmlPath xmlPath = new XmlPath(xml).setRoot("greeting");                                                                       
 String firstName = xmlPath.get("firstName");                                                                                  
 String lastName = xmlPath.get("lastName");                                                                                    
-  }}}
-  * JSON example:
-  {{{
-// Now use JsonPath to get data out of the JSON body
-int lottoId = with(json).getInt("lotto.lottoId);
-List<Integer> winnerIds = with(json).get("lotto.winners.winnerId");
-
-// or a bit more efficiently:
-JsonPath jsonPath = new JsonPath(json).setRoot("lotto");
-int lottoId = jsonPath.getInt("lottoId");
-List<Integer> winnderIds = jsonPath.get("winnders.winnderId");
-  }}}
-
+}}}
 == Custom parsers == 
 REST Assured providers predefined parsers for e.g. HTML, XML and JSON. But you can parse other kinds of content by registering a predefined parser for unsupported mime-types by using:
 {{{
