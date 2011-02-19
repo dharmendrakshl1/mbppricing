@@ -208,7 +208,7 @@ RestAssured.port = 80;
 RestAssured.basePath = "/resource";                                                                                                      
 RestAssured.authentication = basic("username", "password");                                                                              
 }}}
-This means that a request like e.g. `get("/hello")` goes to: http://myhost.org:8080/resource/hello which basic authentication credentials "username" and "password".<br>                                                                    
+This means that a request like e.g. `get("/hello")` goes to: http://myhost.org:8080/resource/hello with basic authentication credentials "username" and "password".<br>                                                                    
 You can reset to the standard baseURI (localhost), basePath (empty), standard port (8080) and default authentication scheme (none) using:
 {{{
 RestAssured.reset();
