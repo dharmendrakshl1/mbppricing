@@ -106,6 +106,20 @@ String firstName = xmlPath.get("firstName");
 String lastName = xmlPath.get("lastName");                                                                                    
 }}}
 
+You can also get headers and cookies:
+{{{
+Response response = get("/lotto");
+
+// Get all headers
+Map<String, String> allHeaders = response.getHeaders();
+// Get a single header value:
+String headerName = response.getHeader("headerName");
+
+// Get all cookies
+Map<String, String> allHeaders = response.getCookies();
+// Get a single cookie value:
+String cookieValue = response.getCookie("cookieName");
+}}}
 
 == Specifying Request Data== 
 
