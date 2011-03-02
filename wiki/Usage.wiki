@@ -116,7 +116,7 @@ Map<String, String> allHeaders = response.getHeaders();
 String headerName = response.getHeader("headerName");
 
 // Get all cookies
-Map<String, String> allHeaders = response.getCookies();
+Map<String, String> allCookies = response.getCookies();
 // Get a single cookie value:
 String cookieValue = response.getCookie("cookieName");
 }}}
