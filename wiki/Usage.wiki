@@ -59,7 +59,19 @@ or
 {{{
 expect().body(hasXPath("/greeting/firstName[text()='John']")).with().parameters("firstName", "John", "lastName", "Doe").post("/greetXML");
 
-}}}       
+}}}      
+
+XML response bodies can also be verified against an XML Schema (XSD) or DTD.<br>
+*XSD example:*
+{{{
+expect().body(matchesXsd(xsd)).when().get("/carRecords");
+}}}
+*DTD example:*
+{{{
+ expect().body(matchesDtd(dtd)).when().get("/videos");
+}}}
+
+`matchesXsd` and `matchesDtd` are Hamcrest matchers which you can import from `com.jayway.restassured.matcher.RestAssuredMatchers`. 
 
 == Example 3 - Getting and validating a response == 
 You can also get the content of a response. E.g. let's say you want to return the body of a get request to "/lotto":
