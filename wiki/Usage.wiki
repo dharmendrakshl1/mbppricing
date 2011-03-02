@@ -72,7 +72,7 @@ expect().body(matchesXsd(xsd)).when().get("/carRecords");
  expect().body(matchesDtd(dtd)).when().get("/videos");
 }}}
 
-`matchesXsd` and `matchesDtd` are Hamcrest matchers which you can import from `com.jayway.restassured.matcher.RestAssuredMatchers`. 
+The matchesXsd and matchesDtd methods are Hamcrest matchers which you can import from [http://rest-assured.googlecode.com/svn/tags/1.1.1/apidocs/com/jayway/restassured/matcher/RestAssuredMatchers.html com.jayway.restassured.matcher.RestAssuredMatchers]. 
 </p>
 
 == Example 3 - Getting and validating a response == 
