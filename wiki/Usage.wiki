@@ -106,7 +106,7 @@ String firstName = xmlPath.get("firstName");
 String lastName = xmlPath.get("lastName");                                                                                    
 }}}
 
-You can also get headers and cookies:
+You can also get headers, cookies, status line and status code:
 {{{
 Response response = get("/lotto");
 
@@ -120,6 +120,11 @@ Map<String, String> allCookies = response.getCookies();
 // Get a single cookie value:
 String cookieValue = response.getCookie("cookieName");
 }}}
+
+// Get status line
+String statusLine = response.getStatusLine();
+// Get status code
+String statusLine = response.getStatusCode();
 
 == Specifying Request Data== 
 
