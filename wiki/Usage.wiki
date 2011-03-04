@@ -247,6 +247,7 @@ RestAssured.reset();
 In order to use REST assured effectively it's recommended to statically import methods from the following classes:
 
   * `com.jayway.restassured.RestAssured.*`
+  * `com.jayway.restassured.matcher.RestAssuredMatchers.*`
   * `org.hamcrest.Matchers.*`
 
 == More info ==
