@@ -1,3 +1,4 @@
+  * 2011-01-17: REST Assured [http://rest-assured.googlecode.com/files/rest-assured-1.0.3.zip 1.0.3] is released with various bug fixes and ability to return the response body as string or byte array.
   * 2011-01-12: REST Assured [http://rest-assured.googlecode.com/files/rest-assured-1.0.2.zip 1.0.2] is released which allows XML and JSON parsing for many additional content types.
   * 2010-12-27: REST Assured is presented at the Jayway [http://blog.jayway.com/2010/12/27/rest-assured-or-how-to-easily-test-rest-services-in-java/ blog].
   * 2010-12-27: REST Assured [http://rest-assured.googlecode.com/files/rest-assured-1.0.1.zip 1.0.1] is released with better Javadoc and an interface for authentication.
