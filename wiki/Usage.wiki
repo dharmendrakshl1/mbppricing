@@ -124,7 +124,7 @@ String cookieValue = response.getCookie("cookieName");
 // Get status line
 String statusLine = response.getStatusLine();
 // Get status code
-String statusLine = response.getStatusCode();
+int statusCode = response.getStatusCode();
 
 == Specifying Request Data== 
 
