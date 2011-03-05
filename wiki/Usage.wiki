@@ -48,6 +48,8 @@ or a little shorter:
 with().parameters("firstName", "John", "lastName", "Doe").expect().body("greeting.firstName", equalTo("John"), "greeting.lastName", equalTo("Doe")).when().post("/greetXML");
 }}}      
 
+See [http://groovy.codehaus.org/Updating+XML+with+XmlSlurper this] link for more info about the syntax.
+
 You can also verify XML responses using x-path. For example:
 
 {{{
