@@ -92,7 +92,7 @@ Or a bit more efficiently:
 {{{
 JsonPath jsonPath = new JsonPath(json).setRoot("lotto");
 int lottoId = jsonPath.getInt("lottoId");
-List<Integer> winnderIds = jsonPath.get("winnders.winnderId");
+List<Integer> winnerIds = jsonPath.get("winners.winnderId");
 }}}
 
 You also have the corresponding functionality for XML using  [http://rest-assured.googlecode.com/svn/tags/1.1.2/apidocs/com/jayway/restassured/path/xml/XmlPath.html XmlPath]:
