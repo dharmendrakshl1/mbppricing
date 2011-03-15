@@ -41,7 +41,13 @@ with().parameters("firstName", "John", "lastName", "Doe").expect().body("greetin
 }}}       
 If you want to verify both firstName and lastName you may do like this:
 {{{
-with().parameters("firstName", "John", "lastName", "Doe").expect().body("greeting.firstName", equalTo("John")).and().body("greeting.lastName", equalTo("Doe")).when().post("/greetXML");
+with().
+         parameters("firstName", "John", "lastName", "Doe").
+expect().
+         body("greeting.firstName", equalTo("John")).
+         body("greeting.lastName", equalTo("Doe")).
+when().
+         post("/greetXML");
 }}}       
 or a little shorter:
 {{{
