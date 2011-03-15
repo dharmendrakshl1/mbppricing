@@ -37,7 +37,12 @@ XML can be verified in a similar way. Image that a POST request to `http://local
 }}}      
 i.e. it sends back a greeting based on the firstName and lastName parameter sent in the request. You can easily perform and verify e.g. the firstName with REST assured:
 {{{
-with().parameters("firstName", "John", "lastName", "Doe").expect().body("greeting.firstName", equalTo("John")).when().post("/greetXML");
+given().
+         parameters("firstName", "John", "lastName", "Doe").
+expect().
+         body("greeting.firstName", equalTo("John")).
+when().
+         post("/greetXML");
 }}}       
 If you want to verify both firstName and lastName you may do like this:
 {{{
