@@ -20,7 +20,7 @@ expect().body("greeting.name.children()", hasItems("John", "Doe"))..
   }}}
   But this also means that you can do:
   {{{
-expect().body("greeting.name.size()", equalsTo(2))..
+expect().body("greeting.name.size()", equalTo(2))..
   }}}
   See [http://groovy.codehaus.org/Updating+XML+with+XmlSlurper this] link for more info about the syntax.
   * Major improvements to JSON expectations. It now uses Groovy syntax for the expectation string to allow for much better expectations. Note that this fix will break backward compatibility on some expectations:
