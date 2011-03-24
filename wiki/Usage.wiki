@@ -109,11 +109,11 @@ List<Integer> winnerIds = jsonPath.get("winners.winnderId");
 You also have the corresponding functionality for XML using  [http://rest-assured.googlecode.com/svn/tags/1.1.2/apidocs/com/jayway/restassured/path/xml/XmlPath.html XmlPath]:
 {{{
 String xml = post("/greetXML?firstName=John&lastName=Doe").andReturn().asString();
-// Now use XmlPath to get the first and last name                                                                             
+// Now use XmlPath to get the first and last name
 String firstName = with(xml).get("greeting.firstName");
 String lastName = with(xml).get("greeting.firstName");
-                                                                                                                         
-// or a bit more efficiently:                                                                                                 
+
+// or a bit more efficiently:
 XmlPath xmlPath = new XmlPath(xml).setRoot("greeting");
 String firstName = xmlPath.get("firstName");
 String lastName = xmlPath.get("lastName");
