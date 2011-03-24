@@ -222,7 +222,7 @@ Other supported schemes are OAuth and certificate authentication.
 == Parameters == 
 Parameters can also be set directly on the url:                                                                                          
 {{{                                                                                                                                    
-..when().get("/name?firstName=John&lastName=Doe");                                                                                       
+..when().get("/name?firstName=John&lastName=Doe");
 }}}                                                               
 
 == Custom parsers == 
@@ -242,18 +242,18 @@ RestAssured.unregisterParser("application/vnd.uoml+xml");
 == Default values == 
 By default REST assured assumes host localhost and port 8080 when doing a request. If you want a different port you can do:              
 {{{                                                                                                                                    
-given().port(80). ..                                                                                                                     
+given().port(80). ..
 }}}                                                                                                                                   
 or simply:                                                                                                                               
 {{{                                                                                                                                    
-.. when().get("http://myhost.org:80/doSomething");                                                                                       
+.. when().get("http://myhost.org:80/doSomething");
 }}}
 You can also change the default base URI, base path, port and authentication scheme for all subsequent requests:
 {{{
-RestAssured.baseURI = "http://myhost.org";                                                                                               
-RestAssured.port = 80;                                                                                                                   
-RestAssured.basePath = "/resource";                                                                                                      
-RestAssured.authentication = basic("username", "password");                                                                              
+RestAssured.baseURI = "http://myhost.org";
+RestAssured.port = 80;
+RestAssured.basePath = "/resource";
+RestAssured.authentication = basic("username", "password");
 }}}
 This means that a request like e.g. `get("/hello")` goes to: http://myhost.org:8080/resource/hello with basic authentication credentials "username" and "password".<br>                                                                    
 You can reset to the standard baseURI (localhost), basePath (empty), standard port (8080) and default authentication scheme (none) using:
