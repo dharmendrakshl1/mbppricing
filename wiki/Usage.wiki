@@ -300,6 +300,35 @@ when().
 
 Here the request's data is merged with the data in the "requestSpec" so the request will contain two parameters ("parameter1" and "parameter2") and one header ("header1").
 
+== Root path ==
+To avoid body expectation path duplications you can specify a root path. E.g. instead of writing:
+{{{
+expect().
+         body("x.y.firstName", is(..)).
+         body("x.y.lastName", is(..)).
+         body("x.y.age", is(..)).
+         body("x.y.gender", is(..)).
+when().
+         get("/something");
+}}}
+
+you can use a root path and do:
+
+{{{
+expect().
+         rootPath("x.y").
+         body("firstName", is(..)).
+         body("lastName", is(..)).
+         body("age", is(..)).
+         body("gender", is(..)).
+when().
+        get("/something");
+}}}
+You can also set a default root path using: 
+{{{
+RestAssured.rootPath = "x.y";
+}}}
+
 == Static imports ==
        
 In order to use REST assured effectively it's recommended to statically import methods from the following classes:
