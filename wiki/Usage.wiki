@@ -139,24 +139,6 @@ String statusLine = response.getStatusLine();
 int statusCode = response.getStatusCode();
 }}}
 
-== Specification re-use ==
-Instead of having to duplicate response expectations and/or request parameters for different tests you can re-use an entire specification. To do this you define a specification using either the RequestSpecBuilder or ResponseSpecBuilder. E.g. let's say you want to make sure that the expected status code is 200 and that JSON the size of the JSON array "x.y" has size 2 in several tests you can define a ResponseSpecBuilder like this:
-
-{{{
-ResponseSpecBuilder builder = new ResponseSpecBuilder();
-builder.expectStatusCode(200);
-builder.expectBody("x.y.size()", is(2));
-ResponseSpecification responseSpec = builder.build();
-
-// Now you can re-use the "responseSpec" in many different tests:
-expect().
-       spec(responseSpec).
-       body("x.y.z", equalTo("something")).
-when().
-       get("/something");
-}}}
-
-
 
 == Specifying Request Data== 
 
@@ -278,6 +260,27 @@ You can reset to the standard baseURI (localhost), basePath (empty), standard po
 {{{
 RestAssured.reset();
 }}}
+
+== Specification Re-use ==
+Instead of having to duplicate response expectations and/or request parameters for different tests you can re-use an entire specification. To do this you define a specification using either the RequestSpecBuilder or ResponseSpecBuilder. 
+
+E.g. let's say you want to make sure that the expected status code is 200 and that JSON the size of the JSON array "x.y" has size 2 in several tests you can define a ResponseSpecBuilder like this:
+
+{{{
+ResponseSpecBuilder builder = new ResponseSpecBuilder();
+builder.expectStatusCode(200);
+builder.expectBody("x.y.size()", is(2));
+ResponseSpecification responseSpec = builder.build();
+
+// Now you can re-use the "responseSpec" in many different tests:
+expect().
+       spec(responseSpec).
+       body("x.y.z", equalTo("something")).
+when().
+       get("/something");
+}}}
+
+In this example the data defined in responseSpec is merged with the additional body expectation.
 
 == Static imports ==
        
