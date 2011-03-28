@@ -298,7 +298,7 @@ when().
         get("/something");
 }}}
 
-Here the requests data is merged with the data in the "requestSpec" so the request will contain two parameters ("parameter1" and "parameter2") and one header ("header1").
+Here the request's data is merged with the data in the "requestSpec" so the request will contain two parameters ("parameter1" and "parameter2") and one header ("header1").
 
 == Static imports ==
        
