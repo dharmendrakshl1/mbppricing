@@ -280,7 +280,25 @@ when().
        get("/something");
 }}}
 
-In this example the data defined in responseSpec is merged with the additional body expectation.
+In this example the data defined in "responseSpec" is merged with the additional body expectation and all expectations must be fulfilled in order for the test to pass.
+
+You can do the same thing if you need to re-use request data in different tests. E.g.
+{{{
+RequestSpecBuilder builder = new RequestSpecBuilder();
+builder.addParameter("parameter1", "parameterValue");
+builder.addHeader("header1", "headerValue");
+RequestSpecification requestSpec = builder.build();
+  
+given().
+        spec(requestSpec).
+        param("parameter2", "paramValue").
+expect().
+        body("x.y.z", equalTo("something")).
+when().
+        get("/something");
+}}}
+
+Here the requests data is merged with the data in the "requestSpec" so the request will contain two parameters ("parameter1" and "parameter2") and one header ("header1").
 
 == Static imports ==
        
