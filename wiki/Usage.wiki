@@ -301,7 +301,7 @@ when().
 Here the request's data is merged with the data in the "requestSpec" so the request will contain two parameters ("parameter1" and "parameter2") and one header ("header1").
 
 == Root path ==
-To avoid body expectation path duplications you can specify a root path. E.g. instead of writing:
+To avoid duplicated paths in body expectations you can specify a root path. E.g. instead of writing:
 {{{
 expect().
          body("x.y.firstName", is(..)).
@@ -316,7 +316,7 @@ you can use a root path and do:
 
 {{{
 expect().
-         rootPath("x.y").
+         rootPath("x.y"). // You can also use the "root" method
          body("firstName", is(..)).
          body("lastName", is(..)).
          body("age", is(..)).
