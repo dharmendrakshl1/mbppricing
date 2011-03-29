@@ -217,7 +217,7 @@ given().auth().basic("username", "password").expect().statusCode(200).when().get
 }}}
        
 
-Other supported schemes are OAuth and certificate authentication.                                                                                                                                    
+Other supported schemes are OAuth, form, certificate and preemptive basic authentication.                                                                                                                                    
 
 == Parameters == 
 Parameters can also be set directly on the url:                                                                                          
