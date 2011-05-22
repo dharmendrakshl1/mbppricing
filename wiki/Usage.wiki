@@ -304,6 +304,15 @@ when().
 
 Here the request's data is merged with the data in the "requestSpec" so the request will contain two parameters ("parameter1" and "parameter2") and one header ("header1").
 
+== Filters ==
+A filter allows you to inspect and alter a request before it's actually committed and also inspect and alter the response before it's returned to the expectations. You can regard it as an "around advice" in AOP terms. Filters can be used to implement custom authentication schemes, session management, logging etc.
+
+{{{
+given().filter(new MyFilter()). ..
+}}}
+
+
+
 == Root path ==
 To avoid duplicated paths in body expectations you can specify a root path. E.g. instead of writing:
 {{{
