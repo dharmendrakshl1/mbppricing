@@ -315,6 +315,31 @@ There are a couple of filters provided by REST Assured that are ready to use:
   # `com.jayway.restassured.filter.log.ResponseLoggingFilter`: A filter that'll print the response body if the response matches a given status code.
   # `com.jayway.restassured.filter.log.ErrorLoggingFilter`: A filter that'll print the response body if an error occurred (status code is between 400 and 500).
 
+== Logging == 
+Many times it can be useful to print the response body for a request to help you creating your expectations. To do help you do this you can use one of the predefined [#Filters filters] supplied with REST Assured or you can use one of the shortcuts. If you want to print the response body regardless of the status code you can do:
+
+{{{
+given().log(). .. 
+}}}
+
+or
+
+{{{
+expect().log(). ..
+}}
+
+This will print the response body regardless if an error occurred. If you're only interested in printing the response body if an error occur then you can use:
+
+{{{
+given().logOnError(). .. 
+}}}
+
+or
+
+{{{
+expect().logOnError(). .. 
+}}}
+
 == Root path ==
 To avoid duplicated paths in body expectations you can specify a root path. E.g. instead of writing:
 {{{
