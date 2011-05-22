@@ -305,7 +305,7 @@ when().
 Here the request's data is merged with the data in the "requestSpec" so the request will contain two parameters ("parameter1" and "parameter2") and one header ("header1").
 
 == Filters ==
-A filter allows you to inspect and alter a request before it's actually committed and also inspect and alter the response before it's returned to the expectations. You can regard it as an "around advice" in AOP terms. Filters can be used to implement custom authentication schemes, session management, logging etc. A filter implements [http://rest-assured.googlecode.com/svn/tags/1.2/apidocs/com/jayway/restassured/filter/Filter.html | `com.jayway.restassured.filter.log.Filter`]
+A filter allows you to inspect and alter a request before it's actually committed and also inspect and alter the response before it's returned to the expectations. You can regard it as an "around advice" in AOP terms. Filters can be used to implement custom authentication schemes, session management, logging etc. A filter implements [http://rest-assured.googlecode.com/svn/tags/1.2/apidocs/com/jayway/restassured/filter/Filter.html | com.jayway.restassured.filter.log.Filter]
 
 {{{
 given().filter(new MyFilter()). ..
