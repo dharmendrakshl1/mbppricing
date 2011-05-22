@@ -311,7 +311,9 @@ A filter allows you to inspect and alter a request before it's actually committe
 given().filter(new MyFilter()). ..
 }}}
 
-
+There are a couple of filters provided by REST Assured that are ready to use:
+  # `com.jayway.restassured.filter.log.ResponseLoggingFilter`: A filter that'll print the response body if it matches a given status code.
+  # `com.jayway.restassured.filter.log.ErrorLoggingFilter`: A filter that'll print the response body if an error occurred (status code is between 400 and 500).
 
 == Root path ==
 To avoid duplicated paths in body expectations you can specify a root path. E.g. instead of writing:
