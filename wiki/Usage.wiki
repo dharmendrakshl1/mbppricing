@@ -326,7 +326,7 @@ or
 
 {{{
 expect().log(). ..
-}}
+}}}
 
 This will print the response body regardless if an error occurred. If you're only interested in printing the response body if an error occur then you can use:
 
