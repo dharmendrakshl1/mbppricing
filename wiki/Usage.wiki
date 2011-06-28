@@ -243,7 +243,7 @@ expect().
          ..
 }}}
 
-Path parameters make it easier to read the request path as well as enable the request path to easily be re-usable in many tests with different parameters.
+Path parameters makes it easier to read the request path as well as enabling the request path to easily be re-usable in many tests with different parameter values.
 
 == Custom parsers == 
 REST Assured providers predefined parsers for e.g. HTML, XML and JSON. But you can parse other kinds of content by registering a predefined parser for unsupported mime-types by using:
