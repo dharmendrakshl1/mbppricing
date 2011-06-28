@@ -395,6 +395,21 @@ You can also set a default root path using:
 RestAssured.rootPath = "x.y";
 }}}
 
+== SSL ==
+In most situations SSL should just work out of the box thanks to the excellent work of HTTP Builder and HTTP Client. There are how ever some cases where you'll run into trouble. You may for example run into a SSLPeerUnverifiedException if the server is using an invalid certificate. If this happens you should create a Java keystore and use it with REST Assured. It's not too difficult, first follow the guide [http://groovy.codehaus.org/modules/http-builder/doc/ssl.html here] and then use the keystore in Rest Assured like this:
+
+{{{
+given().keystore("/pathToJksInClassPath", <password>). .. 
+}}}
+
+or you can specify it for every request:
+
+{{{
+RestAssured.keystore("/pathToJksInClassPath", <password>);
+}}}
+
+You can also define a keystore in a re-usable [http://code.google.com/p/rest-assured/wiki/Usage#Specification_Re-use specification].
+
 == Static imports ==
        
 In order to use REST assured effectively it's recommended to statically import methods from the following classes:
