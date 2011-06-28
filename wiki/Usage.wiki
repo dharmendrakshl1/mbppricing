@@ -226,7 +226,24 @@ Other supported schemes are OAuth, digest, certificate, form and preemptive basi
 Parameters can also be set directly on the url:                                                                                          
 {{{                                                                                                                                    
 ..when().get("/name?firstName=John&lastName=Doe");
+}}}
+
+=== Path parameters ===
+You can also specify so called path parameters in your request, e.g.
+{{{
+post("/reserve/{hotelId}/{roomNumber}", "My Hotel", 23);
 }}}                                                               
+
+You can also use named path parameters:
+{{{
+given().
+        pathParam("hotelId", "My Hotel").
+        pathParam("roomNumber", 23).
+expect().
+         ..
+}}}
+
+Path parameters make it easier to read the request path as well as enable the request path to easily be re-usable in many tests with different parameters.
 
 == Custom parsers == 
 REST Assured providers predefined parsers for e.g. HTML, XML and JSON. But you can parse other kinds of content by registering a predefined parser for unsupported mime-types by using:
