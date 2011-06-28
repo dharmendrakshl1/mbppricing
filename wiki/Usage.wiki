@@ -410,6 +410,8 @@ RestAssured.keystore("/pathToJksInClassPath", <password>);
 
 You can also define a keystore in a re-usable [http://code.google.com/p/rest-assured/wiki/Usage#Specification_Re-use specification].
 
+You can find a working example [https://github.com/jayway/rest-assured/blob/master/examples/rest-assured-itest-java/src/test/java/com/jayway/restassured/itest/java/SSLTest.java here].
+
 == Static imports ==
        
 In order to use REST assured effectively it's recommended to statically import methods from the following classes:
