@@ -284,9 +284,10 @@ RestAssured.requestContentType(..); // Specify the default request content type
 RestAssured.responseContentType(..); // Specify the default response content type
 RestAssured.requestSpecification = .. // Default request specification
 RestAssured.responseSpecification = .. // Default response specification
+RestAssured.urlEncodingEnabled = .. // Specify if Rest Assured should URL encoding the parameters
 }}}                                                                    
 
-You can reset to the standard baseURI (localhost), basePath (empty), standard port (8080), standard root path ("") and default authentication scheme (none) using:
+You can reset to the standard baseURI (localhost), basePath (empty), standard port (8080), standard root path (""), default authentication scheme (none) and url encoding enabled (true) using:
 {{{
 RestAssured.reset();
 }}}
