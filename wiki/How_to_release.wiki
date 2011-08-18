@@ -1,5 +1,6 @@
 = How to release =
 
+  # Update changelog with the date of the new release
   # Run `mvn release:prepare -Prelease -DautoVersionSubmodules=true`
      # Use SCM label rest-assured-X
      # If build fails because of missing dependencies do:
