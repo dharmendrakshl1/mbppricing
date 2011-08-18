@@ -6,13 +6,13 @@ Add the following dependency to your pom.xml:
 <dependency>
       <groupId>com.jayway.restassured</groupId>
       <artifactId>rest-assured</artifactId>
-      <version>1.2.2</version>
+      <version>1.2.3</version>
       <scope>test</scope>
 </dependency>
 }}}
  
 == Non-maven users ==
-Download [http://rest-assured.googlecode.com/files/rest-assured-1.2.2.zip REST Assured] and put it in your class-path. You may also need to download the [http://rest-assured.googlecode.com/files/rest-assured-dependencies.zip third-party dependencies] and put them in your classpath as well. 
+Download [http://rest-assured.googlecode.com/files/rest-assured-1.2.3.zip REST Assured] and put it in your class-path. You may also need to download the [http://rest-assured.googlecode.com/files/rest-assured-dependencies.zip third-party dependencies] and put them in your classpath as well. 
 
 = Documentation =
 When you've successfully downloaded and configured REST Assured in your classpath please refer to the [Usage user guide] for examples.
