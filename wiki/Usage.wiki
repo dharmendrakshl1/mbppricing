@@ -416,7 +416,7 @@ expect().
 
 The path and arguments follows the standard [http://download.oracle.com/javase/1,5.0/docs/api/java/util/Formatter.html#syntax formatting syntax] of Java.
 
-Note that `withArgs` can be statically imported from the `com.jayway.restassured.RestAssured` class.
+Note that `withArgs` can be statically imported from the [http://rest-assured.googlecode.com/svn/tags/1.2.2/apidocs/com/jayway/restassured/RestAssured.html com.jayway.restassured.RestAssured] class.
 
 == SSL ==
 In most situations SSL should just work out of the box thanks to the excellent work of HTTP Builder and HTTP Client. There are how ever some cases where you'll run into trouble. You may for example run into a SSLPeerUnverifiedException if the server is using an invalid certificate. If this happens you should create a Java keystore file and use it with REST Assured. It's not too difficult, first follow the guide [http://groovy.codehaus.org/modules/http-builder/doc/ssl.html here] and then use the keystore in Rest Assured like this:
