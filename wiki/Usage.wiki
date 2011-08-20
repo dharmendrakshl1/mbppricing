@@ -415,7 +415,7 @@ expect().
          ..
 }}}
 
-The path and arguments follows the standard [http://download.oracle.com/javase/1,5.0/docs/api/java/util/Formatter.html#syntax formatting syntax] of Java.
+The path arguments follows the standard [http://download.oracle.com/javase/1,5.0/docs/api/java/util/Formatter.html#syntax formatting syntax] of Java.
 
 Note that the `withArgs` method can be statically imported from the [http://rest-assured.googlecode.com/svn/tags/1.2.3/apidocs/com/jayway/restassured/RestAssured.html com.jayway.restassured.RestAssured] class.
 
