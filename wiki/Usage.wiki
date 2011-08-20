@@ -404,7 +404,7 @@ int index = 1;
 expect().body("something.%s[%d]", withArgs(someSubPath, index), equalTo("some value")). ..
 }}}
 
-will expect that the body path "something.else[0]" is equal to "some value".
+will expect that the body path "`something.else[0]`" is equal to "some value".
 
 Another usage is if you have complex [http://code.google.com/p/rest-assured/wiki/Usage#Root_path root paths] and don't wish to duplicate the path for small variations:
 {{{
