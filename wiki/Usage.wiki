@@ -409,7 +409,7 @@ will expect that the body path "`something.else[0]`" is equal to "some value".
 Another usage is if you have complex [http://code.google.com/p/rest-assured/wiki/Usage#Root_path root paths] and don't wish to duplicate the path for small variations:
 {{{
 expect().
-         root("filters.filterConfig[%d].filterConfigGroups.find { it.name == 'Gold' }.includes").
+         root("filters.filterConfig[%d].filterConfigGroups.find { it.name == 'GroupName' }.includes").
          body("", withArgs(0), hasItem("first")).
          body("", withArgs(1), hasItem("second")).
          ..
