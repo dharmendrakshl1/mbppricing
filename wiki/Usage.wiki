@@ -245,6 +245,46 @@ expect().
 
 Path parameters makes it easier to read the request path as well as enabling the request path to easily be re-usable in many tests with different parameter values.
 
+== Multi-part form data ==
+When sending larger amount of data to the server it's common to use the multipart form data technique. Rest Assured provides methods called `multiPart` that allows you to specify a file, byte-array, input stream or text to upload. In its simplest form you can upload a file like this:
+
+{{{
+given().
+        multiPart(new File("/path/to/file")).
+when().
+        post("/upload");
+}}}
+
+It will assume a control name called "file". In HTML the control name is the attribute name of the input tag. To clarify let's look at the following HTML form:
+
+{{{
+<form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" size="40">
+        <input type=submit value="Upload!">
+</form>
+}}}
+
+The control name in this case is the name of the input tag with name "file". If you have a different control name then you need to specify it:
+
+{{{
+given().
+        multiPart("controlName", new File("/path/to/file")).
+when().
+        post("/upload");
+}}}
+
+It's also possible to supply multiple "multi-parts" entities in the same request:
+
+{{{
+byte[] someData = ..
+given().
+        multiPart("controlName1", new File("/path/to/file")).
+        multiPart("controlName2", "my_file_name.txt", someData).
+when().
+        post("/upload");
+}}}
+
+
 == Custom parsers == 
 REST Assured providers predefined parsers for e.g. HTML, XML and JSON. But you can parse other kinds of content by registering a predefined parser for unsupported mime-types by using:
 {{{
