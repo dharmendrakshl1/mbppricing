@@ -98,8 +98,8 @@ String json = get("/lotto").asString();
 }}}
 Now the "json" string contains the full response body. You can then use the [http://rest-assured.googlecode.com/svn/tags/1.3/apidocs/com/jayway/restassured/path/json/JsonPath.html JsonPath] to get data from the response body:
 {{{
-int lottoId = with(json).getInt("lotto.lottoId);
-List<Integer> winnerIds = with(json).get("lotto.winners.winnerId");
+int lottoId = from(json).getInt("lotto.lottoId);
+List<Integer> winnerIds = from(json).get("lotto.winners.winnerId");
 }}}
 
 Or a bit more efficiently:
@@ -113,8 +113,8 @@ You also have the corresponding functionality for XML using  [http://rest-assure
 {{{
 String xml = post("/greetXML?firstName=John&lastName=Doe").andReturn().asString();
 // Now use XmlPath to get the first and last name
-String firstName = with(xml).get("greeting.firstName");
-String lastName = with(xml).get("greeting.firstName");
+String firstName = from(xml).get("greeting.firstName");
+String lastName = from(xml).get("greeting.firstName");
 
 // or a bit more efficiently:
 XmlPath xmlPath = new XmlPath(xml).setRoot("greeting");
