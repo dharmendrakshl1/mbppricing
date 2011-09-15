@@ -284,6 +284,7 @@ when().
         post("/upload");
 }}}
 
+For additional info refer to [http://blog.jayway.com/2011/09/15/multipart-form-data-file-uploading-made-simple-with-rest-assured/ this] blog post.
 
 == Custom parsers == 
 REST Assured providers predefined parsers for e.g. HTML, XML and JSON. But you can parse other kinds of content by registering a predefined parser for unsupported mime-types by using:
