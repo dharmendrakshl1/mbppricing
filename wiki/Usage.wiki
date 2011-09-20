@@ -287,9 +287,9 @@ when().
 For additional info refer to [http://blog.jayway.com/2011/09/15/multipart-form-data-file-uploading-made-simple-with-rest-assured/ this] blog post.
 
 == Custom parsers == 
-REST Assured providers predefined parsers for e.g. HTML, XML and JSON. But you can parse other kinds of content by registering a predefined parser for unsupported mime-types by using:
+REST Assured providers predefined parsers for e.g. HTML, XML and JSON. But you can parse other kinds of content by registering a predefined parser for unsupported content-types by using:
 {{{
-RestAssured.registerParser(<mime-type>, <parser>);
+RestAssured.registerParser(<content-type>, <parser>);
 }}} 
 E.g. to register that mime-type 'application/vnd.uoml+xml' should be parsed using the XML parser do:
 {{{
@@ -299,6 +299,13 @@ You can also unregister a parser using:
 {{{
 RestAssured.unregisterParser("application/vnd.uoml+xml");
 }}}
+
+Parser can also be specified per "request":
+{{{
+expect().parser("application/vnd.uoml+xml", Parser.XML).when().get(..);
+}}}
+
+and using 
 
 == Default values == 
 By default REST assured assumes host localhost and port 8080 when doing a request. If you want a different port you can do:              
