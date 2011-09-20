@@ -305,7 +305,7 @@ Parser can also be specified per "request":
 expect().parser("application/vnd.uoml+xml", Parser.XML).when().get(..);
 }}}
 
-and using 
+and using a [http://code.google.com/p/rest-assured/wiki/Usage#Specification_Re-use response specification].
 
 == Default values == 
 By default REST assured assumes host localhost and port 8080 when doing a request. If you want a different port you can do:              
