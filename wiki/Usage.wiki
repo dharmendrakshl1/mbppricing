@@ -300,7 +300,7 @@ You can also unregister a parser using:
 RestAssured.unregisterParser("application/vnd.uoml+xml");
 }}}
 
-Parser can also be specified per "request":
+Parsers can also be specified per "request":
 {{{
 expect().parser("application/vnd.uoml+xml", Parser.XML).when().get(..);
 }}}
