@@ -91,7 +91,7 @@ expect().body(matchesXsd(xsd)).when().get("/carRecords");
 The matchesXsd and matchesDtd methods are Hamcrest matchers which you can import from [http://rest-assured.googlecode.com/svn/tags/1.3.1/apidocs/com/jayway/restassured/matcher/RestAssuredMatchers.html com.jayway.restassured.matcher.RestAssuredMatchers]. 
 </p>
 
-== Getting the Response == 
+== Getting Response Data == 
 You can also get the content of a response. E.g. let's say you want to return the body of a get request to "/lotto":
 {{{
 String json = get("/lotto").asString();
