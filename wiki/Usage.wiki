@@ -318,6 +318,20 @@ expect().parser("application/vnd.uoml+xml", Parser.XML).when().get(..);
 
 and using a [http://code.google.com/p/rest-assured/wiki/Usage#Specification_Re-use response specification].
 
+== Default parser ==
+Sometimes it's useful to specify a default parser, e.g. if the response doesn't contain a content-type at all:
+
+{{{
+RestAssured.defaultParser = Parser.JSON;
+}}}
+
+You can also specify a default parer for a single request:
+{{{
+expect.defaultParser(Parser.JSON).
+}}}
+
+or using a [http://code.google.com/p/rest-assured/wiki/Usage#Specification_Re-use response specification].
+
 == Default values == 
 By default REST assured assumes host localhost and port 8080 when doing a request. If you want a different port you can do:              
 {{{                                                                                                                                    
