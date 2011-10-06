@@ -122,6 +122,11 @@ String firstName = xmlPath.get("firstName");
 String lastName = xmlPath.get("lastName");
 }}}
 
+If you only want to make a request and return a single path you can use a shortcut:
+{{{
+int lottoId = get("/lotto").path("lotto.lottoid");
+}}}
+
 You can also get headers, cookies, status line and status code:
 {{{
 Response response = get("/lotto");
