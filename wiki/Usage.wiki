@@ -127,7 +127,7 @@ If you only want to make a request and return a single path you can use a shortc
 int lottoId = get("/lotto").path("lotto.lottoid");
 }}}
 
-REST Assured will automatically determine whether to use JsonPath or XmlPath based on the content-type of the response. If no content-type is defined then REST Assured will try to look at the "default parser" if defined. You can also manually decide which path instance to use, e.g.
+REST Assured will automatically determine whether to use JsonPath or XmlPath based on the content-type of the response. If no content-type is defined then REST Assured will try to look at the [http://code.google.com/p/rest-assured/wiki/Usage#Default_parser default parser] if defined. You can also manually decide which path instance to use, e.g.
 
 {{{
 String firstName = post("/greetXML?firstName=John&lastName=Doe").andReturn().xmlPath().getString("firstName");
