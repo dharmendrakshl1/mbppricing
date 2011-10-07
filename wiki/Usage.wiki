@@ -97,7 +97,7 @@ The matchesXsd and matchesDtd methods are Hamcrest matchers which you can import
 = Getting Response Data =
 You can also get the content of a response. E.g. let's say you want to return the body of a get request to "/lotto". You can get it a variety of different ways: 
 {{{
-InputStream stream = get("/lotto").asInputStream(); // Don't forget to close this one
+InputStream stream = get("/lotto").asInputStream(); // Don't forget to close this one when you're done
 byte[] byteArray = get("/lotto").asByteArray();
 String json = get("/lotto").asString();
 }}}
