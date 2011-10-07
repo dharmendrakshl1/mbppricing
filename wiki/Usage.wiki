@@ -449,7 +449,7 @@ Message message = get("/message").as(Message.class);
 }}}
 
 ==== Custom Content-Type Deserialization ====
-If the server returns a custom content-type, let's say "application/something", and you still want to use the object mapping in REST Assured there are a couple of different ways to do it. You can either use the explicit approach or register a parser for the custom content-type:
+If the server returns a custom content-type, let's say "application/something", and you still want to use the object mapping in REST Assured there are a couple of different ways to do it. You can either use the [http://code.google.com/p/rest-assured/wiki/Usage#Using_an_Explicit_Deserializer explicit] approach or register a parser for the custom content-type:
 
 {{{
 Message message = expect().parser("application/something", Parser.XML).when().get("/message").as(Message.class);
