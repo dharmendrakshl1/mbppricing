@@ -166,6 +166,53 @@ int statusCode = response.getStatusCode();
 
 Besides specifying request parameters you can also specify headers, cookies, body and content type.
 
+== Parameters ==
+== Request parameters ==
+
+Normally you specify parameters like this:
+
+{{{
+given().
+       param("param1", "value1").
+       param("param2", "value2").
+when().
+       get("/something");
+}}}
+
+REST Assured will automatically try to determine which parameter type (i.e. query or form parameter) based on the HTTP method. In case of GET query parameters will automatically be used and in case of POST form parameters will be used. In some cases it's however important to separate between form and query parameters in a PUT or POST. You can then do like this:
+
+{{{
+given().
+       formParam("formParamName", "value1").
+       queryParam("queryParamName", "value2").
+when().
+       post("/something");
+}}}
+ 
+Parameters can also be set directly on the url:                                                                                          
+{{{                                                                                                                                    
+..when().get("/name?firstName=John&lastName=Doe");
+}}}
+
+For multi-part parameters please refer to the [http://code.google.com/p/rest-assured/wiki/Usage#Multi-part_form_data Multi-part form data] section.
+
+=== Path parameters ===
+You can also specify so called path parameters in your request, e.g.
+{{{
+post("/reserve/{hotelId}/{roomNumber}", "My Hotel", 23);
+}}}                                                               
+
+You can also use named path parameters:
+{{{
+given().
+        pathParam("hotelId", "My Hotel").
+        pathParam("roomNumber", 23).
+expect().
+         ..
+}}}
+
+Path parameters makes it easier to read the request path as well as enabling the request path to easily be re-usable in many tests with different parameter values.
+
 == Cookies ==
 {{{
 given().cookie("username", "John").then().expect().body(equalTo("username")).when().get("/cookie");
@@ -240,29 +287,6 @@ given().auth().basic("username", "password").expect().statusCode(200).when().get
        
 
 Other supported schemes are OAuth, digest, certificate, form and preemptive basic authentication.                                                                                                                                    
-
-= Parameters =
-Parameters can also be set directly on the url:                                                                                          
-{{{                                                                                                                                    
-..when().get("/name?firstName=John&lastName=Doe");
-}}}
-
-== Path parameters ==
-You can also specify so called path parameters in your request, e.g.
-{{{
-post("/reserve/{hotelId}/{roomNumber}", "My Hotel", 23);
-}}}                                                               
-
-You can also use named path parameters:
-{{{
-given().
-        pathParam("hotelId", "My Hotel").
-        pathParam("roomNumber", 23).
-expect().
-         ..
-}}}
-
-Path parameters makes it easier to read the request path as well as enabling the request path to easily be re-usable in many tests with different parameter values.
 
 = Multi-part form data =
 When sending larger amount of data to the server it's common to use the multipart form data technique. Rest Assured provide methods called `multiPart` that allows you to specify a file, byte-array, input stream or text to upload. In its simplest form you can upload a file like this:
