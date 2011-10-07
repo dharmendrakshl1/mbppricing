@@ -357,7 +357,7 @@ RestAssured.basePath = "/resource";
 RestAssured.authentication = basic("username", "password");
 RestAssured.rootPath = "x.y.z";
 }}}
-This means that a request like e.g. `get("/hello")` goes to: http://myhost.org:8080/resource/hello with basic authentication credentials "username" and "password". See [http://code.google.com/p/rest-assured/wiki/Usage#Root_path rootPath] for more info about setting the root paths. Other default values you can specify are:
+This means that a request like e.g. `get("/hello")` goes to: http://myhost.org:80/resource/hello with basic authentication credentials "username" and "password". See [http://code.google.com/p/rest-assured/wiki/Usage#Root_path rootPath] for more info about setting the root paths. Other default values you can specify are:
 
 {{{
 RestAssured.filters(..); // List of default filters
