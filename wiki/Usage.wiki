@@ -341,7 +341,7 @@ when().
 For additional info refer to [http://blog.jayway.com/2011/09/15/multipart-form-data-file-uploading-made-simple-with-rest-assured/ this] blog post.
 
 = Object Mapping = 
-REST Assured supports mapping Java objects to and from JSON and XML. For JSON you need to have either Jackson, Gson in the classpath and for XML you need JAXB. 
+REST Assured supports mapping Java objects to and from JSON and XML. For JSON you need to have either Jackson or Gson in the classpath and for XML you need JAXB. 
 
 == Serialization ==
 Let's say we have the following Java object:
