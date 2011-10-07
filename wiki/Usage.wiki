@@ -395,6 +395,9 @@ RestAssured.requestSpecification = .. // Default request specification
 RestAssured.responseSpecification = .. // Default response specification
 RestAssured.urlEncodingEnabled = .. // Specify if Rest Assured should URL encoding the parameters
 RestAssured.defaultParser = .. // Specify a default parser for response bodies if no registered parser can handle data of the response content-type
+RestAssured.registerParser(..) // Specify a parser for the given content-type
+RestAssured.unregisterParser(..) // Unregister a parser for the given content-type
+
 }}}                                                                    
 
 You can reset to the standard baseURI (localhost), basePath (empty), standard port (8080), standard root path (""), default authentication scheme (none) and url encoding enabled (true) using:
