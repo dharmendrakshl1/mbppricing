@@ -14,7 +14,7 @@
    # Unzip the `rest-assured-X-javadoc.jar` into `tags/X/apidocs`
    # Run `find -name *.html | xargs svn propset svn:mime-type text/html`
    # svn ci -m "Uploading javadocs for version X"
-  # Update the front page and the getting started page.
-  # Send a message to the mailing-list announcing the new release.
+  # Update the front page, usage page and the getting started page.
+  # Send a message to the mailing-list and twitter announcing the new release.
 
 The release is automatically synced to Maven central (the sync process runs hourly).
