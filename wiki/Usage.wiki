@@ -225,6 +225,7 @@ given().headers("MyHeader", "Something", "MyOtherHeader", "SomethingElse").and()
 == Content Type ==
 {{{
 given().contentType(ContentType.TEXT). ..
+given().contentType("application/json"). ..
 }}}
              
 
