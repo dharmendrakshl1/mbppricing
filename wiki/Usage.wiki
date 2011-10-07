@@ -391,7 +391,7 @@ when().
 The following will be serialized to JSON using Jackson (if present) or Gson (if present) with UTF-16 encoding.
 
 === Using an Explicit Serializer ===
-If you have multiple serializer in the classpath at the same time or don't which or care about setting the content-type you can specify a serializer explicity. E.g.
+If you have multiple object mappers in the classpath at the same time or don't care about setting the content-type you can specify a serializer explicity. E.g.
 
 {{{
 Message message = new Message();
@@ -447,6 +447,25 @@ and a content-type of "application/xml" you wouldn't have to change the code at 
 {{{
 Message message = get("/message").as(Message.class);
 }}}
+
+==== Custom Content-Type Deserialization ====
+If the server returns a custom content-type, let's say "application/something", and you still want to use the object mapping in REST Assured there are a couple of different ways to do it. You can either use the explicit approach or register a parser for the custom content-type:
+
+{{{
+Message message = expect().parser("application/something", Parser.XML).when().get("/message").as(Message.class);
+}}}
+
+or 
+
+{{{
+Message message = expect().defaultParser(Parser.XML).when().get("/message").as(Message.class);
+}}}
+
+You can also register a default or custom parser [http://code.google.com/p/rest-assured/wiki/Usage#Default_values statically] or using [http://code.google.com/p/rest-assured/wiki/Usage#Specification_Re-use specifications].
+
+=== Using an Explicit Deserializer ===
+If you have multiple object mappers in the classpath at the same time  or care about the response content-type you can specify a deserializer explicity. E.g.
+
 
 = Custom parsers =
 REST Assured providers predefined parsers for e.g. HTML, XML and JSON. But you can parse other kinds of content by registering a predefined parser for unsupported content-types by using:
