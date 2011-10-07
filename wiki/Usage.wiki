@@ -167,8 +167,6 @@ int statusCode = response.getStatusCode();
 Besides specifying request parameters you can also specify headers, cookies, body and content type.
 
 == Parameters ==
-== Request parameters ==
-
 Normally you specify parameters like this:
 
 {{{
