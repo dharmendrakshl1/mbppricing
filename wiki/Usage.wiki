@@ -392,7 +392,7 @@ when().
       post("/message");
 }}}
 
-The following will be serialized to JSON using Jackson (if present) or Gson (if present) with UTF-16 encoding.
+The message object will be serialized to JSON using Jackson (if present) or Gson (if present) with UTF-16 encoding.
 
 === Using an Explicit Serializer ===
 If you have multiple object mappers in the classpath at the same time or don't care about setting the content-type you can specify a serializer explicity. E.g.
