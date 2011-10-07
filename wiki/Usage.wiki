@@ -229,7 +229,7 @@ given().contentType("application/json"). ..
 }}}
              
 
-== Body == 
+== Request Body == 
 {{{
 given().body("some body"). .. // Works for POST and PUT requests
 given().request().body("some body"). .. // More explicit (optional)
@@ -241,7 +241,7 @@ given().request().body(new byte[]{42}). .. // More explicit (optional)
 
 = Verifying Response Data =
 You can also verify status code, status line, cookies, headers, content type and body.
-== Body ==
+== Response Body ==
 See Usage examples, e.g. [http://code.google.com/p/rest-assured/wiki/Usage?ts=1317978378&updated=Usage#Example_1_-_JSON JSON] or [http://code.google.com/p/rest-assured/wiki/Usage#Example_2_-_XML XML].
   
 ==Cookies==
