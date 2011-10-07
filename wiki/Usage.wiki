@@ -340,7 +340,7 @@ For additional info refer to [http://blog.jayway.com/2011/09/15/multipart-form-d
 REST Assured supports mapping Java objects to and from JSON and XML. For JSON you need to have either Jackson, Gson in the classpath and for XML you need JAXB. 
 
 == Serialization ==
-For example let's say you have the following Java object:
+Let's say we have the following Java object:
 
 {{{
 public class Message {
