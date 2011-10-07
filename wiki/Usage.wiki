@@ -464,8 +464,11 @@ Message message = expect().defaultParser(Parser.XML).when().get("/message").as(M
 You can also register a default or custom parser [http://code.google.com/p/rest-assured/wiki/Usage#Default_values statically] or using [http://code.google.com/p/rest-assured/wiki/Usage#Specification_Re-use specifications].
 
 === Using an Explicit Deserializer ===
-If you have multiple object mappers in the classpath at the same time  or care about the response content-type you can specify a deserializer explicity. E.g.
+If you have multiple object mappers in the classpath at the same time  or don't care about the response content-type you can specify a deserializer explicitly. E.g.
 
+{{{
+Message message = get("/message").as(Message.class, ObjectMapper.GSON);
+}}}
 
 = Custom parsers =
 REST Assured providers predefined parsers for e.g. HTML, XML and JSON. But you can parse other kinds of content by registering a predefined parser for unsupported content-types by using:
