@@ -390,6 +390,20 @@ when().
 
 The following will be serialized to JSON using Jackson (if present) or Gson (if present) with UTF-16 encoding.
 
+=== Using an Explicit Serializer ===
+If you have multiple serializer in the classpath at the same time or don't which or care about setting the content-type you can specify a serializer explicity. E.g.
+
+{{{
+Message message = new Message();
+message.setMessage("My messagee");
+given().
+       body(message, ObjectMapper.JAXB).
+when().
+      post("/message");
+}}}
+
+In this example the Message object will be serialized to XML using JAXB.
+
 == Deserialization == 
 
 = Custom parsers =
