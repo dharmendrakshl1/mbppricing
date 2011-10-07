@@ -242,10 +242,14 @@ given().body(new byte[]{42}). .. // Works for POST and PUT
 given().request().body(new byte[]{42}). .. // More explicit (optional)
 }}}
 
+You can also serialize a Java object to JSON or XML. Click [http://code.google.com/p/rest-assured/wiki/Usage#Serialization here] for details.
+
 = Verifying Response Data =
 You can also verify status code, status line, cookies, headers, content type and body.
 == Response Body ==
 See Usage examples, e.g. [http://code.google.com/p/rest-assured/wiki/Usage?ts=1317978378&updated=Usage#Example_1_-_JSON JSON] or [http://code.google.com/p/rest-assured/wiki/Usage#Example_2_-_XML XML].
+
+You can also map a response body to a Java Object, click [http://code.google.com/p/rest-assured/wiki/Usage#Deserialization here] for details.
   
 ==Cookies==
 {{{
