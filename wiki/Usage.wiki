@@ -93,7 +93,9 @@ expect().body(matchesXsd(xsd)).when().get("/carRecords");
 The matchesXsd and matchesDtd methods are Hamcrest matchers which you can import from [http://rest-assured.googlecode.com/svn/tags/1.3.1/apidocs/com/jayway/restassured/matcher/RestAssuredMatchers.html com.jayway.restassured.matcher.RestAssuredMatchers]. 
 </p>
 
-== Getting Response Data == 
+= Getting Response Data =
+
+== JSON ==
 You can also get the content of a response. E.g. let's say you want to return the body of a get request to "/lotto":
 {{{
 String json = get("/lotto").asString();
@@ -111,6 +113,7 @@ int lottoId = jsonPath.getInt("lottoId");
 List<Integer> winnerIds = jsonPath.get("winners.winnderId");
 }}}
 
+== XML == 
 You also have the corresponding functionality for XML using  [http://rest-assured.googlecode.com/svn/tags/1.3.1/apidocs/com/jayway/restassured/path/xml/XmlPath.html XmlPath]:
 {{{
 String xml = post("/greetXML?firstName=John&lastName=Doe").andReturn().asString();
@@ -124,6 +127,7 @@ String firstName = xmlPath.get("firstName");
 String lastName = xmlPath.get("lastName");
 }}}
 
+== Single path ==
 If you only want to make a request and return a single path you can use a shortcut:
 {{{
 int lottoId = get("/lotto").path("lotto.lottoid");
@@ -134,6 +138,8 @@ REST Assured will automatically determine whether to use JsonPath or XmlPath bas
 {{{
 String firstName = post("/greetXML?firstName=John&lastName=Doe").andReturn().xmlPath().getString("firstName");
 }}}
+
+== Headers, cookies, status etc ==
 
 You can also get headers, cookies, status line and status code:
 {{{
@@ -155,29 +161,28 @@ String statusLine = response.getStatusLine();
 int statusCode = response.getStatusCode();
 }}}
 
-
-== Specifying Request Data== 
+= Specifying Request Data=
 
 Besides specifying request parameters you can also specify headers, cookies, body and content type.
 
-==== Cookies ==== 
+== Cookies ==
 {{{
 given().cookie("username", "John").then().expect().body(equalTo("username")).when().get("/cookie");
 }}}
              
-==== Headers ====
+== Headers ==
 {{{
 given().header("MyHeader", "Something").and(). ..
 given().headers("MyHeader", "Something", "MyOtherHeader", "SomethingElse").and(). ..
 }}}
  
-==== Content Type ====
+== Content Type ==
 {{{
 given().contentType(ContentType.TEXT). ..
 }}}
              
 
-==== Body ==== 
+== Body == 
 {{{
 given().request().body("some body"). .. // Works for POST and PUT requests
 }}}
@@ -185,16 +190,16 @@ given().request().body("some body"). .. // Works for POST and PUT requests
 given().request().body(new byte[]{42}). .. // Works for POST and PUT
 }}}
 
-== Verifying Response Data ==             
+= Verifying Response Data =
 You can also verify status code, status line, cookies, headers, content type and body.
-====Cookies====
+==Cookies==
 {{{
 expect().cookie("cookieName", "cookieValue"). ..
 expect().cookies("cookieName1", "cookieValue1", "cookieName2", "cookieValue2"). ..
 expect().cookies("cookieName1", "cookieValue1", "cookieName2", containsString("Value2")). ..
 }}}
              
-==== Status ====
+== Status ==
 {{{
 expect().statusCode(200). ..
 expect().statusLine("something"). ..
@@ -202,7 +207,7 @@ expect().statusLine(containsString("some")). ..
 }}}
              
 
-==== Headers ====
+== Headers ==
 
 {{{
 expect().header("headerName", "headerValue"). ..
@@ -211,13 +216,13 @@ expect().headers("headerName1", "headerValue1", "headerName2", containsString("V
 }}}
              
 
-==== Content-Type ====
+== Content-Type ==
 {{{
 expect().contentType(ContentType.JSON). ..
 }}}
              
 
-==== Full body/content matching ====
+== Full body/content matching ==
 
 {{{
 expect().body(equalsTo("something")). ..
@@ -225,7 +230,7 @@ expect().content(equalsTo("something")). .. // Same as above
 }}}
             
 
-== Authentication == 
+= Authentication =
 REST assured also supports some authentication schemes, for example basic authentication:
 
 {{{
@@ -235,13 +240,13 @@ given().auth().basic("username", "password").expect().statusCode(200).when().get
 
 Other supported schemes are OAuth, digest, certificate, form and preemptive basic authentication.                                                                                                                                    
 
-== Parameters == 
+= Parameters =
 Parameters can also be set directly on the url:                                                                                          
 {{{                                                                                                                                    
 ..when().get("/name?firstName=John&lastName=Doe");
 }}}
 
-=== Path parameters ===
+== Path parameters ==
 You can also specify so called path parameters in your request, e.g.
 {{{
 post("/reserve/{hotelId}/{roomNumber}", "My Hotel", 23);
@@ -258,7 +263,7 @@ expect().
 
 Path parameters makes it easier to read the request path as well as enabling the request path to easily be re-usable in many tests with different parameter values.
 
-== Multi-part form data ==
+= Multi-part form data =
 When sending larger amount of data to the server it's common to use the multipart form data technique. Rest Assured provide methods called `multiPart` that allows you to specify a file, byte-array, input stream or text to upload. In its simplest form you can upload a file like this:
 
 {{{
@@ -299,7 +304,7 @@ when().
 
 For additional info refer to [http://blog.jayway.com/2011/09/15/multipart-form-data-file-uploading-made-simple-with-rest-assured/ this] blog post.
 
-== Custom parsers == 
+= Custom parsers =
 REST Assured providers predefined parsers for e.g. HTML, XML and JSON. But you can parse other kinds of content by registering a predefined parser for unsupported content-types by using:
 {{{
 RestAssured.registerParser(<content-type>, <parser>);
@@ -320,7 +325,7 @@ expect().parser("application/vnd.uoml+xml", Parser.XML).when().get(..);
 
 and using a [http://code.google.com/p/rest-assured/wiki/Usage#Specification_Re-use response specification].
 
-== Default parser ==
+= Default parser =
 Sometimes it's useful to specify a default parser, e.g. if the response doesn't contain a content-type at all:
 
 {{{
@@ -334,7 +339,7 @@ expect.defaultParser(Parser.JSON).
 
 or using a [http://code.google.com/p/rest-assured/wiki/Usage#Specification_Re-use response specification].
 
-== Default values == 
+= Default values =
 By default REST assured assumes host localhost and port 8080 when doing a request. If you want a different port you can do:              
 {{{                                                                                                                                    
 given().port(80). ..
@@ -367,7 +372,7 @@ You can reset to the standard baseURI (localhost), basePath (empty), standard po
 RestAssured.reset();
 }}}
 
-== Specification Re-use ==
+= Specification Re-use =
 Instead of having to duplicate response expectations and/or request parameters for different tests you can re-use an entire specification. To do this you define a specification using either the [http://rest-assured.googlecode.com/svn/tags/1.3.1/apidocs/com/jayway/restassured/builder/RequestSpecBuilder.html RequestSpecBuilder] or [http://rest-assured.googlecode.com/svn/tags/1.3.1/apidocs/com/jayway/restassured/builder/ResponseSpecBuilder.html ResponseSpecBuilder]. 
 
 E.g. let's say you want to make sure that the expected status code is 200 and that JSON the size of the JSON array "x.y" has size 2 in several tests you can define a ResponseSpecBuilder like this:
@@ -406,7 +411,7 @@ when().
 
 Here the request's data is merged with the data in the "requestSpec" so the request will contain two parameters ("parameter1" and "parameter2") and one header ("header1").
 
-== Filters ==
+= Filters =
 A filter allows you to inspect and alter a request before it's actually committed and also inspect and alter the response before it's returned to the expectations. You can regard it as an "around advice" in AOP terms. Filters can be used to implement custom authentication schemes, session management, logging etc. To create a filter you need to implement the [http://rest-assured.googlecode.com/svn/tags/1.3.1/apidocs/com/jayway/restassured/filter/Filter.html com.jayway.restassured.filter.log.Filter] interface. To use a filter you can do:
 
 {{{
@@ -417,7 +422,7 @@ There are a couple of filters provided by REST Assured that are ready to use:
   # `com.jayway.restassured.filter.log.ResponseLoggingFilter`: A filter that'll print the response body if the response matches a given status code.
   # `com.jayway.restassured.filter.log.ErrorLoggingFilter`: A filter that'll print the response body if an error occurred (status code is between 400 and 500).
 
-== Logging == 
+= Logging =
 Many times it can be useful to print the response body for a request to help you creating your expectations. To do help you do this you can use one of the predefined [#Filters filters] supplied with REST Assured or you can use one of the shortcuts. If you want to print the response body regardless of the status code you can do:
 
 {{{
@@ -442,7 +447,7 @@ or
 expect().logOnError(). .. 
 }}}
 
-== Root path ==
+= Root path =
 To avoid duplicated paths in body expectations you can specify a root path. E.g. instead of writing:
 {{{
 expect().
@@ -471,7 +476,7 @@ You can also set a default root path using:
 RestAssured.rootPath = "x.y";
 }}}
 
-== Path arguments ==
+= Path arguments =
 Path arguments are useful in situations where you have e.g. pre-defined variables that constitutes the path. For example
 {{{
 String someSubPath = "else";
@@ -494,7 +499,7 @@ The path arguments follows the standard [http://download.oracle.com/javase/1,5.0
 
 Note that the `withArgs` method can be statically imported from the [http://rest-assured.googlecode.com/svn/tags/1.3.1/apidocs/com/jayway/restassured/RestAssured.html com.jayway.restassured.RestAssured] class.
 
-== SSL ==
+= SSL =
 In most situations SSL should just work out of the box thanks to the excellent work of HTTP Builder and HTTP Client. There are how ever some cases where you'll run into trouble. You may for example run into a SSLPeerUnverifiedException if the server is using an invalid certificate. If this happens you should create a Java keystore file and use it with REST Assured. It's not too difficult, first follow the guide [http://groovy.codehaus.org/modules/http-builder/doc/ssl.html here] and then use the keystore in Rest Assured like this:
 
 {{{
@@ -511,7 +516,7 @@ You can also define a keystore in a re-usable [http://code.google.com/p/rest-ass
 
 You can find a working example [https://github.com/jayway/rest-assured/blob/master/examples/rest-assured-itest-java/src/test/java/com/jayway/restassured/itest/java/SSLTest.java here].
 
-== URL Encoding ==
+= URL Encoding =
 Usually you don't have to think about URL encoding since Rest Assured provides this automatically out of the box. In some cases though it may be useful to turn URL Encoding off. One reason may be that you already the have some parameters encoded before you supply them to Rest Assured. To prevent double URL encoding you need to tell Rest Assured to disable it's URL encoding. E.g.
 
 {{{
@@ -530,7 +535,7 @@ String response = get("/rest/api/2.0.alpha1/search?jql={q}", query);
 ..
 }}}
 
-== Static imports ==
+= Static imports =
        
 In order to use REST assured effectively it's recommended to statically import methods from the following classes:
 
@@ -538,7 +543,7 @@ In order to use REST assured effectively it's recommended to statically import m
   * `com.jayway.restassured.matcher.RestAssuredMatchers.*`
   * `org.hamcrest.Matchers.*`
 
-== More info ==
+= More info =
 For more information refer to the [http://rest-assured.googlecode.com/svn/tags/1.3.1/apidocs/index.html javadoc]:
   * [http://rest-assured.googlecode.com/svn/tags/1.3.1/apidocs/com/jayway/restassured/RestAssured.html RestAssured]
   * [http://rest-assured.googlecode.com/svn/tags/1.3.1/apidocs/com/jayway/restassured/specification/package-summary.html Specification package]
