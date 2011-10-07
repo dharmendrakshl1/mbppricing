@@ -231,10 +231,12 @@ given().contentType("application/json"). ..
 
 == Body == 
 {{{
-given().request().body("some body"). .. // Works for POST and PUT requests
+given().body("some body"). .. // Works for POST and PUT requests
+given().request().body("some body"). .. // More explicit (optional)
 }}}
 {{{
-given().request().body(new byte[]{42}). .. // Works for POST and PUT
+given().body(new byte[]{42}). .. // Works for POST and PUT
+given().request().body(new byte[]{42}). .. // More explicit (optional)
 }}}
 
 = Verifying Response Data =
