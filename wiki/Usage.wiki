@@ -376,6 +376,20 @@ In this example REST Assured will serialize the object to JSON since the request
   # Json using Gson
   # XML using JAXB
 
+REST Assured also respects the charset of the content-type. E.g.
+
+{{{
+Message message = new Message();
+message.setMessage("My messagee");
+given().
+       contentType("application/json; charset=UTF-16").
+       body(message).
+when().
+      post("/message");
+}}}
+
+The following will be serialized to JSON using Jackson (if present) or Gson (if present) with UTF-16 encoding.
+
 == Deserialization == 
 
 = Custom parsers =
