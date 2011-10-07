@@ -2,6 +2,7 @@
 
 REST Assured is a Java DSL for simplifying testing of REST based services built on top of HTTP Builder. It supports POST, GET, PUT, DELETE and HEAD requests and to verify the response of these requests.
 
+*Table of Contents*
 <wiki:toc max_depth="2" />
 
 == Example 1 - JSON ==
