@@ -94,6 +94,9 @@ expect().body(matchesXsd(xsd)).when().get("/carRecords");
 The matchesXsd and matchesDtd methods are Hamcrest matchers which you can import from [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/matcher/RestAssuredMatchers.html com.jayway.restassured.matcher.RestAssuredMatchers]. 
 </p>
 
+== Example 3 - Complex parsing and validation ==
+This is where REST Assured really starts to shine! Refer to the blog post at the [http://blog.jayway.com/2011/10/09/simple-parsing-of-complex-json-and-xml-documents-in-java/ Jayway team blog] for examples and more info. Highly recommended reading!
+
 = Getting Response Data =
 You can also get the content of a response. E.g. let's say you want to return the body of a get request to "/lotto". You can get it a variety of different ways: 
 {{{
