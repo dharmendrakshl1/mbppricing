@@ -441,6 +441,18 @@ when().
       post("/message");
 }}}
 
+You can also serialize the `Message` instance a form parameter:
+{{{
+Message message = new Message();
+message.setMessage("My messagee");
+given().
+       contentType("application/json; charset=UTF-16").
+       formParam("param1", message).
+when().
+      post("/message");
+}}}
+
+
 The message object will be serialized to JSON using Jackson (if present) or Gson (if present) with UTF-16 encoding.
 
 === Using an Explicit Serializer ===
