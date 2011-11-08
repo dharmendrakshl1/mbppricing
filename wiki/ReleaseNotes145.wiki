@@ -11,7 +11,7 @@
     * Support for getting detailed cookies using the [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookies() Response.getDetailedCookies()] method. You can also get a single detailed cookie using the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookie(java.lang.String) Response.getDetailedCookie(java.lang.String)] method.
     * Creation of detailed cookies:
     {{{
-    Cookie someCookie = new Cookie.Builder("some_cookie"", "some_value").setSecured(true).build();
+    Cookie someCookie = new Cookie.Builder("some_cookie", "some_value").setSecured(true).build();
     given().cookie(someCookie).and().expect().body(equalTo("x")).when().get("/cookie");
     }}}
 
