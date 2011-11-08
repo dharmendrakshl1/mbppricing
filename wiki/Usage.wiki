@@ -267,6 +267,12 @@ given().cookies(cookies).then().expect().body(equalTo("username, token")).when()
 given().header("MyHeader", "Something").and(). ..
 given().headers("MyHeader", "Something", "MyOtherHeader", "SomethingElse").and(). ..
 }}}
+
+You can also specify a multi-value headers like this:
+{{{
+given().header("headerName", "value1", "value2"). ..
+}}} 
+This will create _two_ headers, `headerName=value1` and `headerName=value2`.
  
 == Content Type ==
 {{{
