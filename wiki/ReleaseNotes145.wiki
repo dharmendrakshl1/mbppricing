@@ -14,7 +14,7 @@
     * Creation of detailed cookies:
     {{{
     Cookie someCookie = new Cookie.Builder("some_cookie"", "some_value").setSecured(true).build();
-     given().cookie(someCookie).and().expect().body(equalTo("x")).when().get("/cookie");
+    given().cookie(someCookie).and().expect().body(equalTo("x")).when().get("/cookie");
     }}}
 
 == Non-backward compatible changes ==
