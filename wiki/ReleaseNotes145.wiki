@@ -7,7 +7,7 @@
     given().cookie("cookieName", "value1", "value2"). ..
     }}} 
     This will create _two_ cookies, `cookieName=value1` and `cookieName=value2`.
-    * Fixed a serious issue with cookie parsing that caused cookie attributes to be parsed as a new cookie (issue 130).
+    * Fixed a serious issue with the cookie parsing that caused cookie attributes to be parsed as a new cookie (issue 130).
     * Support for getting [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Cookie.html detailed cookies] using the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookies() Response.getDetailedCookies()] method. You can also get a single detailed cookie using the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookie(java.lang.String) Response.getDetailedCookie(java.lang.String)] method. Detailed cookies contains e.g. comment, path and expiry date.
     * Creation of detailed cookies:
     {{{
