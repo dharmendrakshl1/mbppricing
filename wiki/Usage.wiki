@@ -156,11 +156,11 @@ You can also get headers, cookies, status line and status code:
 Response response = get("/lotto");
 
 // Get all headers
-Map<String, String> allHeaders = response.getHeaders();
+Headers allHeaders = response.getHeaders();
 // Get a single header value:
 String headerName = response.getHeader("headerName");
 
-// Get all cookies
+// Get all cookies as simple name-value pairs
 Map<String, String> allCookies = response.getCookies();
 // Get a single cookie value:
 String cookieValue = response.getCookie("cookieName");
@@ -170,6 +170,16 @@ String statusLine = response.getStatusLine();
 // Get status code
 int statusCode = response.getStatusCode();
 }}}
+
+== Multi-value headers and cookies == 
+A header and a cookie can contain several values for the same name. 
+
+=== Multi-value headers ===
+To get all values for a header you need to first get the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Headers.html Headers] object from the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Response.html Response] object. From the `Headers` instance you can get all values using the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Headers.html##getMultiValue() Headers.getMul(<header name>)] (TODO) method which returns a `List` with all values.
+
+=== Multi-value cookies ===
+
+== Detailed cookies ==
 
 = Specifying Request Data=
 
