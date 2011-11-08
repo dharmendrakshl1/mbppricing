@@ -256,8 +256,8 @@ given().cookie(someCookie).and().expect().body(equalTo("x")).when().get("/cookie
 
 or several detailed cookies at the same time:
 {{{
-Cookie cookie1 =  Cookie.Builder("username", "John").setComment("comment 1").build();
-Cookie cookie2 =  Cookie.Builder("token", 1234).setComment("comment 2").build();
+Cookie cookie1 = Cookie.Builder("username", "John").setComment("comment 1").build();
+Cookie cookie2 = Cookie.Builder("token", 1234).setComment("comment 2").build();
 Cookies cookies = new Cookies(cookie1, cookie2);
 given().cookies(cookies).then().expect().body(equalTo("username, token")).when().get("/cookie");
 }}}
