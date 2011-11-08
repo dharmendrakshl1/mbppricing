@@ -8,7 +8,7 @@
     }}} 
     This will create _two_ cookies, `cookieName=value1` and `cookieName=value2`.
     * Fixed a serious issue with cookie parsing that caused cookie attributes to be parsed as a new cookie (issue 130).
-    * Support for getting detailed cookies.
+    * Support for getting detailed cookies from the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/index.html Response##getDetailedCookies() Response.getDetails(..)] object. You can also get a single detailed cookie using [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookie(java.lang.String) this] method.
     * Creation of detailed cookies:
     {{{
     Cookie someCookie = new Cookie.Builder("some_cookie"", "some_value").setSecured(true).build();
