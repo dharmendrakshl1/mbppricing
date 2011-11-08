@@ -14,6 +14,12 @@
     Cookie someCookie = new Cookie.Builder("some_cookie", "some_value").setSecured(true).build();
     given().cookie(someCookie).and().expect().body(equalTo("x")).when().get("/cookie");
     }}}
+  * Better support for headers:
+    * You can now create multi-value headers using e.g. 
+    {{{
+    given().header("headerName", "value1", "value2"). ..
+    }}} 
+    This will create _two_ headers, `headerName=value1` and `headerName=value2`.
 
 == Non-backward compatible changes ==
 
