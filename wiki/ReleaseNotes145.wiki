@@ -1,4 +1,4 @@
-#Release notes for version 1.4.5
+# Release notes for version 1.4.5
 
 = Release Notes for REST Assured 1.4.5 =
 
