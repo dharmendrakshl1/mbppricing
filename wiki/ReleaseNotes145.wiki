@@ -27,12 +27,16 @@
 == Other notable changes ==
   * Added support for serializing objects to a parameter if the content-type is set:
   {{{
-given().
+  given().
           contentType("application/json").
           queryParam("category", "Games").
           formParam("object", new GameObject(..)). // GameObject will be serialized to JSON
   when().
           post("/somewhere");
+}}}
+  * Added support for mapping a path to a Java object in JsonPath, e.g: 
+{{{
+Book book = from(JSON).getObject("store.book[2]", Book.class);
 }}}
 == Minor changes ==
 See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for more details
