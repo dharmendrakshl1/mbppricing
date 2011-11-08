@@ -8,7 +8,7 @@
     }}} 
     This will create _two_ cookies, `cookieName=value1` and `cookieName=value2`.
     * Fixed a serious issue with cookie parsing that caused cookie attributes to be parsed as a new cookie (issue 130).
-    * Support for getting [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/response/Cookie.html detailed cookies] using the [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookies() Response.getDetailedCookies()] method. You can also get a single detailed cookie using the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookie(java.lang.String) Response.getDetailedCookie(java.lang.String)] method. Detailed cookies contains e.g. comment, path and expiry date.
+    * Support for getting [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Cookie.html detailed cookies] using the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookies() Response.getDetailedCookies()] method. You can also get a single detailed cookie using the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookie(java.lang.String) Response.getDetailedCookie(java.lang.String)] method. Detailed cookies contains e.g. comment, path and expiry date.
     * Creation of detailed cookies:
     {{{
     Cookie someCookie = new Cookie.Builder("some_cookie", "some_value").setSecured(true).build();
@@ -22,6 +22,7 @@
     This will create _two_ headers, `headerName=value1` and `headerName=value2`.
 
 == Non-backward compatible changes ==
+  * To allow for multi-value headers the old [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/response/Response.html#getHeaders() Response.getHeaders()] and [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/response/Response.html#headers() Response.headers()] no longer returns `Map<String,String>`. Now these methods returns a [[http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Headers.html Headers] instance instead.
 
 
 == Other notable changes ==
