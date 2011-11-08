@@ -5,9 +5,9 @@
 == Highlights ==
   * Better support for cookies.
     * You can now create multi-value headers using e.g. 
-      {{{
-      given().header("headerName", "value1", "value2"). ..
-      }}} 
+    {{{
+    given().header("headerName", "value1", "value2"). ..
+    }}} 
     This will create _two_ headers, `headerName=value1` and `headerName=value2`.
 
 == Non-backward compatible changes ==
