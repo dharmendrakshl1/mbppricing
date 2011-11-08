@@ -22,40 +22,17 @@
     This will create _two_ headers, `headerName=value1` and `headerName=value2`.
 
 == Non-backward compatible changes ==
-  * To allow for multi-value headers the old [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/response/Response.html#getHeaders() Response.getHeaders()] and [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/response/Response.html#headers() Response.headers()] no longer returns `Map<String,String>`. Now these methods returns a [[http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Headers.html Headers] instance instead.
-
+  * To allow for multi-value headers the old [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/response/Response.html#getHeaders() Response.getHeaders()] and [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/response/Response.html#headers() Response.headers()] no longer returns `Map<String,String>`. Now these methods returns a [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Headers.html Headers] instance instead.
 
 == Other notable changes ==
-  * Support for specifying request/query parameters in the url, e.g. 
+  * Added support for serializing objects to a parameter if the content-type is set:
   {{{
-get("/something?param1=first&param2=second");
-  }}}
-  * Support for specifying base path using
-  {{{
-RestAssured.basePath = "/resource";
-  }}} 
-  E.g. let's say that the base URI is http://localhost and base path is "/resource" will make create a request to "http://localhost/resource/something" when doing a 
-  {{{
-get("/something");
-  }}}
-  Default value is empty.
-  * Support for specifying default authentication scheme. E.g. use 
-  {{{
-RestAssured.authentication = basic("username", "password")
-  }}} 
-  to cause all subsequent request to use basic authentication. You can reset to no authentication using `RestAssured.reset()`;
-  * Support for registering a predefined parser for unsupported mime-types by using:
-  {{{
-RestAssured.registerParser(<mime-type>, <parser>);
-  }}} 
-  E.g. to register that mime-type 'application/vnd.uoml+xml' should be parsed using the XML parser do:
-  {{{
-RestAssured.registerParser("application/vnd.uoml+xml", Parser.XML);
-  }}} 
-  You can also unregister a parser using: 
-  {{{
-RestAssured.unregisterParser("application/vnd.uoml+xml");
-  }}}
-
+given().
+          contentType("application/json").
+          queryParam("category", "Games").
+          formParam("object", new GameObject(..)). // GameObject will be serialized to JSON
+  when().
+          post("/somewhere");
+}}}
 == Minor changes ==
 See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for more details
