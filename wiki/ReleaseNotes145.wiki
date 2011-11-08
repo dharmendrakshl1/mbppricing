@@ -34,7 +34,7 @@
   when().
           post("/somewhere");
 }}}
-  * Added support for mapping a path to a Java object in JsonPath, e.g: 
+  * Added support for mapping a path to a Java object in [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/path/json/JsonPath.html JsonPath], e.g: 
 {{{
 Book book = from(JSON).getObject("store.book[2]", Book.class);
 }}}
