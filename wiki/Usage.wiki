@@ -91,7 +91,7 @@ expect().body(matchesXsd(xsd)).when().get("/carRecords");
  expect().body(matchesDtd(dtd)).when().get("/videos");
 }}}
 
-The matchesXsd and matchesDtd methods are Hamcrest matchers which you can import from [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/matcher/RestAssuredMatchers.html com.jayway.restassured.matcher.RestAssuredMatchers]. 
+The matchesXsd and matchesDtd methods are Hamcrest matchers which you can import from [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/matcher/RestAssuredMatchers.html com.jayway.restassured.matcher.RestAssuredMatchers]. 
 </p>
 
 == Example 3 - Complex parsing and validation ==
@@ -109,7 +109,7 @@ String json = get("/lotto").asString();
 }}}
 
 == JSON ==
-Once we have the response body we can then use the [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/path/json/JsonPath.html JsonPath] to get data from the response body:
+Once we have the response body we can then use the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/path/json/JsonPath.html JsonPath] to get data from the response body:
 
 {{{
 int lottoId = from(json).getInt("lotto.lottoId");
@@ -124,7 +124,7 @@ List<Integer> winnerIds = jsonPath.get("winners.winnderId");
 }}}
 
 == XML == 
-You also have the corresponding functionality for XML using  [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/path/xml/XmlPath.html XmlPath]:
+You also have the corresponding functionality for XML using  [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/path/xml/XmlPath.html XmlPath]:
 {{{
 String xml = post("/greetXML?firstName=John&lastName=Doe").andReturn().asString();
 // Now use XmlPath to get the first and last name
@@ -175,15 +175,15 @@ int statusCode = response.getStatusCode();
 A header and a cookie can contain several values for the same name. 
 
 === Multi-value headers ===
-To get all values for a header you need to first get the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Headers.html Headers] object from the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Response.html Response] object. From the `Headers` instance you can get all values using the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Headers.html##getMultiValue() Headers.getMul(<header name>)] (TODO) method which returns a `List` with all header values.
+To get all values for a header you need to first get the [http://rest-assured.googlecode.com/svn/tags/1.4.5.5/apidocs/com/jayway/restassured/response/Headers.html Headers] object from the [http://rest-assured.googlecode.com/svn/tags/1.4.5.5/apidocs/com/jayway/restassured/response/Response.html Response] object. From the `Headers` instance you can get all values using the [http://rest-assured.googlecode.com/svn/tags/1.4.5.5/apidocs/com/jayway/restassured/response/Headers.html##getMultiValue() Headers.getMul(<header name>)] (TODO) method which returns a `List` with all header values.
 
 === Multi-value cookies ===
-To get all values for a cookie you need to first get the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Cookies.html Cookies] object from the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Response.html Response] object. From the `Cookies` instance you can get all values using the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Cookies.html##getMultiValue() Cookies.getMul(<header name>)] (TODO) method which returns a `List` with all cookie values.
+To get all values for a cookie you need to first get the [http://rest-assured.googlecode.com/svn/tags/1.4.5.5/apidocs/com/jayway/restassured/response/Cookies.html Cookies] object from the [http://rest-assured.googlecode.com/svn/tags/1.4.5.5/apidocs/com/jayway/restassured/response/Response.html Response] object. From the `Cookies` instance you can get all values using the [http://rest-assured.googlecode.com/svn/tags/1.4.5.5/apidocs/com/jayway/restassured/response/Cookies.html##getMultiValue() Cookies.getMul(<header name>)] (TODO) method which returns a `List` with all cookie values.
 
 == Detailed Cookies ==
-If you need to get e.g. the comment, path or expiry date etc from a cookie you need get a [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Cookie.html detailed cookie] from REST Assured. To do this you can use the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookie(java.lang.String) Response.getDetailedCookie(java.lang.String)] method. The detailed cookie then contains all attributes from the cookie. 
+If you need to get e.g. the comment, path or expiry date etc from a cookie you need get a [http://rest-assured.googlecode.com/svn/tags/1.4.5.5/apidocs/com/jayway/restassured/response/Cookie.html detailed cookie] from REST Assured. To do this you can use the [http://rest-assured.googlecode.com/svn/tags/1.4.5.5/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookie(java.lang.String) Response.getDetailedCookie(java.lang.String)] method. The detailed cookie then contains all attributes from the cookie. 
 
-You can also get all detailed response [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Cookies.html cookies] using the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookies() Response.getDetailedCookies()] method.
+You can also get all detailed response [http://rest-assured.googlecode.com/svn/tags/1.4.5.5/apidocs/com/jayway/restassured/response/Cookies.html cookies] using the [http://rest-assured.googlecode.com/svn/tags/1.4.5.5/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookies() Response.getDetailedCookies()] method.
 
 = Specifying Request Data=
 
@@ -608,7 +608,7 @@ RestAssured.reset();
 }}}
 
 = Specification Re-use =
-Instead of having to duplicate response expectations and/or request parameters for different tests you can re-use an entire specification. To do this you define a specification using either the [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/builder/RequestSpecBuilder.html RequestSpecBuilder] or [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/builder/ResponseSpecBuilder.html ResponseSpecBuilder]. 
+Instead of having to duplicate response expectations and/or request parameters for different tests you can re-use an entire specification. To do this you define a specification using either the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/builder/RequestSpecBuilder.html RequestSpecBuilder] or [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/builder/ResponseSpecBuilder.html ResponseSpecBuilder]. 
 
 E.g. let's say you want to make sure that the expected status code is 200 and that JSON the size of the JSON array "x.y" has size 2 in several tests you can define a ResponseSpecBuilder like this:
 
@@ -647,7 +647,7 @@ when().
 Here the request's data is merged with the data in the "requestSpec" so the request will contain two parameters ("parameter1" and "parameter2") and one header ("header1").
 
 = Filters =
-A filter allows you to inspect and alter a request before it's actually committed and also inspect and alter the response before it's returned to the expectations. You can regard it as an "around advice" in AOP terms. Filters can be used to implement custom authentication schemes, session management, logging etc. To create a filter you need to implement the [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/filter/Filter.html com.jayway.restassured.filter.log.Filter] interface. To use a filter you can do:
+A filter allows you to inspect and alter a request before it's actually committed and also inspect and alter the response before it's returned to the expectations. You can regard it as an "around advice" in AOP terms. Filters can be used to implement custom authentication schemes, session management, logging etc. To create a filter you need to implement the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/filter/Filter.html com.jayway.restassured.filter.log.Filter] interface. To use a filter you can do:
 
 {{{
 given().filter(new MyFilter()). ..
@@ -732,7 +732,7 @@ expect().
 
 The path arguments follows the standard [http://download.oracle.com/javase/1,5.0/docs/api/java/util/Formatter.html#syntax formatting syntax] of Java.
 
-Note that the `withArgs` method can be statically imported from the [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/RestAssured.html com.jayway.restassured.RestAssured] class.
+Note that the `withArgs` method can be statically imported from the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/RestAssured.html com.jayway.restassured.RestAssured] class.
 
 = SSL =
 In most situations SSL should just work out of the box thanks to the excellent work of HTTP Builder and HTTP Client. There are how ever some cases where you'll run into trouble. You may for example run into a SSLPeerUnverifiedException if the server is using an invalid certificate. If this happens you should create a Java keystore file and use it with REST Assured. It's not too difficult, first follow the guide [http://groovy.codehaus.org/modules/http-builder/doc/ssl.html here] and then use the keystore in Rest Assured like this:
@@ -779,9 +779,9 @@ In order to use REST assured effectively it's recommended to statically import m
   * `org.hamcrest.Matchers.*`
 
 = More info =
-For more information refer to the [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/index.html javadoc]:
-  * [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/RestAssured.html RestAssured]
-  * [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/specification/package-summary.html Specification package]
+For more information refer to the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/index.html javadoc]:
+  * [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/RestAssured.html RestAssured]
+  * [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/specification/package-summary.html Specification package]
 
 You can also have a look at some code examples:
   * REST Assured [https://github.com/jayway/rest-assured/tree/master/examples/rest-assured-itest-java/src/test/java/com/jayway/restassured/itest/java tests]
