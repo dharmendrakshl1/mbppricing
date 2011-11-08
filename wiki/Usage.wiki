@@ -183,7 +183,7 @@ To get all values for a cookie you need to first get the [http://rest-assured.go
 == Detailed Cookies ==
 If you need to get e.g. the comment, path or expiry date etc from a cookie you need get a [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Cookie.html detailed cookie] from REST Assured. To do this you can use the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookie(java.lang.String) Response.getDetailedCookie(java.lang.String)] method. The detailed cookie then contains all attributes from the cookie. 
 
-You can also get all detailed response [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Cookies.html detailed cookies] using the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookies() Response.getDetailedCookies()] method.
+You can also get all detailed response [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Cookies.html cookies] using the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookies() Response.getDetailedCookies()] method.
 
 = Specifying Request Data=
 
@@ -237,8 +237,21 @@ when().
 Path parameters makes it easier to read the request path as well as enabling the request path to easily be re-usable in many tests with different parameter values.
 
 == Cookies ==
+In it's simplest for you simple supply cookies like this:
 {{{
 given().cookie("username", "John").then().expect().body(equalTo("username")).when().get("/cookie");
+}}}
+
+You can also specify a multi-value cookie like this:
+{{{
+    given().cookie("cookieName", "value1", "value2"). ..
+}}} 
+This will create _two_ cookies, `cookieName=value1` and `cookieName=value2`.
+
+You can also specify a detailed cookie using:
+{{{
+Cookie someCookie = new Cookie.Builder("some_cookie", "some_value").setSecured(true).setComment("some comment").build();
+given().cookie(someCookie).and().expect().body(equalTo("x")).when().get("/cookie");
 }}}
              
 == Headers ==
