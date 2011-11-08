@@ -216,6 +216,8 @@ given().
         pathParam("roomNumber", 23).
 expect().
          ..
+when(). 
+        post("/reserve/{hotelId}/{roomNumber}");
 }}}
 
 Path parameters makes it easier to read the request path as well as enabling the request path to easily be re-usable in many tests with different parameter values.
