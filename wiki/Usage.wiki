@@ -175,9 +175,10 @@ int statusCode = response.getStatusCode();
 A header and a cookie can contain several values for the same name. 
 
 === Multi-value headers ===
-To get all values for a header you need to first get the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Headers.html Headers] object from the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Response.html Response] object. From the `Headers` instance you can get all values using the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Headers.html##getMultiValue() Headers.getMul(<header name>)] (TODO) method which returns a `List` with all values.
+To get all values for a header you need to first get the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Headers.html Headers] object from the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Response.html Response] object. From the `Headers` instance you can get all values using the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Headers.html##getMultiValue() Headers.getMul(<header name>)] (TODO) method which returns a `List` with all header values.
 
 === Multi-value cookies ===
+To get all values for a cookie you need to first get the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Cookies.html Cookies] object from the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Response.html Response] object. From the `Cookies` instance you can get all values using the [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Cookies.html##getMultiValue() Cookies.getMul(<header name>)] (TODO) method which returns a `List` with all cookie values.
 
 == Detailed cookies ==
 
