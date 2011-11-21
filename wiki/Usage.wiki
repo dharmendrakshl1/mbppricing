@@ -98,7 +98,7 @@ The matchesXsd and matchesDtd methods are Hamcrest matchers which you can import
 This is where REST Assured really starts to shine! Refer to the blog post at the [http://blog.jayway.com/2011/10/09/simple-parsing-of-complex-json-and-xml-documents-in-java/ Jayway team blog] for examples and more info. Highly recommended reading!
 
 == Additional Examples ==
-Micha Kops has written a really good blog with several examples (including code examples that you can checkout). You can read it [http://www.hascode.com/2011/10/testing-restful-web-services-made-easy-using-the-rest-assured-framework/#Examples here].
+Micha Kops has written a really good blog with several examples (including code examples that you can checkout). You can read it [http://www.hascode.com/2011/10/testing-restful-web-services-made-easy-using-the-rest-assured-framework/ here].
 
 = Getting Response Data =
 You can also get the content of a response. E.g. let's say you want to return the body of a get request to "/lotto". You can get it a variety of different ways: 
