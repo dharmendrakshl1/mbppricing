@@ -6,7 +6,7 @@
     {{{
 Response myResponse = new ResponseBuilder().clone(originalResponse).setBody("Something").build();
     }}}
-  * Added possibility for more some more advanced configuration by providing a RestAssuredConfig instance. Right now you can configure the parameters of HTTP Client, Redirect and Log settings. Examples:
+  * Added possibility for more some more advanced configuration by providing a [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/config/RestAssuredConfig.html RestAssuredConfig] instance. Right now you can configure the parameters of [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/config/HttpClientConfig.html HTTP Client], [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/config/RedirectConfig.html Redirect] and [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/config/LogConfig.html Log] settings. Examples:
     For a specific request:
     {{{
 given().config(newConfig().redirect(redirectConfig().followRedirects(false))). ..
