@@ -19,7 +19,7 @@ RequestSpecification spec = new RequestSpecBuilder().setConfig(newConfig().redir
     {{{
  RestAssured.config = config().redirect(redirectConfig().followRedirects(true).and().maxRedirects(0));
     }}}
-    `config()` and `newConfig()` can be statically imported from `com.jayway.restassured.config.RestAssuredConfig.
+    `config()` and `newConfig()` can be statically imported from `com.jayway.restassured.config.RestAssuredConfig`.
 
 == Non-backward compatible changes ==
   * To allow for multi-value headers the old [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/response/Response.html#getHeaders() Response.getHeaders()] and [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/response/Response.html#headers() Response.headers()] no longer returns `Map<String,String>`. Now these methods returns a [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Headers.html Headers] instance instead.
