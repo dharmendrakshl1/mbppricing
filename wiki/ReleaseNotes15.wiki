@@ -56,7 +56,10 @@ expect().log().ifError(). ..
 
 == Other notable changes ==
   * Allows configuring redirect settings using the DSL, e.g.
-	given().redirects().max(12).and().redirects().follow(true).when(). .. (issue 24)
+  {{{
+given().redirects().max(12).and().redirects().follow(true).when(). .. 
+  }}}
+(issue 24)
 
 == Minor changes ==
 See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for more details
