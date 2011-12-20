@@ -661,6 +661,17 @@ There are a couple of filters provided by REST Assured that are ready to use:
 = Logging =
 In many cases it can be useful to print the response and/or request details in order to help you create the correct expectations and send the correct requests. To do help you do this you can use one of the predefined [#Filters filters] supplied with REST Assured or you can use one of the shortcuts. 
 
+== Request Logging ==
+Since version 1.5 REST Assured supports logging the _[http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/specification/RequestSpecification.html request specification]_ before it's sent to the server using the [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/filter/log/RequestLoggingFilter.html RequestLoggingFilter]. Note that the HTTP Builder and HTTP Client may add additional headers then what's printed in the log. It will _only_ log things specified in the request specification. I.e. you can NOT regard the details logged by the [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/filter/log/RequestLoggingFilter.html RequestLoggingFilter] to be what's actually sent to the server. Also subsequent filters may alter the request _after_ the logging has took place. If you need to log what's _actually_ sent on the wire refer to the [http://hc.apache.org/httpcomponents-client-ga/logging.html HTTP Client logging docs] or use an external tool such [http://www.wireshark.org/ Wireshark]. Examples:
+
+{{{
+given().log().all(). .. // Log all request specification details including parameters, headers and body
+given().log().params(). .. // Log only the parameters of the request
+given().log().body(). .. // Log only the request body
+given().log().headers(). .. // Log only the request headers
+given().log().cookies(). .. // Log only the request cookies
+}}}
+
 == Response Logging ==
 If you want to print the response body regardless of the status code you can do:
 
@@ -692,9 +703,6 @@ You can also configure to log the response only if the status code matches some 
 expect().log().ifStatusCodeIsEqualTo(302). .. // Only log if the status code is equal to 302
 expect().log().ifStatusCodeMatches(matcher). .. // Only log if the status code matches the supplied Hamcrest matcher
 }}}
-
-== Request Logging ==
-Since version 1.5 REST Assured supports logging the _[http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/specification/RequestSpecification.html request specification]_ before it's sent to the server using the [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/filter/log/RequestLoggingFilter.html RequestLoggingFilter]. Note that the HTTP Builder and HTTP Client may add additional headers then what's printed in the log. It will _only_ log things specified in the request specification. I.e. you can NOT regard the details logged by the [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/filter/log/RequestLoggingFilter.html RequestLoggingFilter] to be what's actually sent to the server. Also subsequent filters may alter the request _after_ the logging has took place. If you need to log what's _actually_ sent on the wire refer to the [http://hc.apache.org/httpcomponents-client-ga/logging.html HTTP Client logging docs] or use an external tool such [http://www.wireshark.org/ Wireshark].
 
 = Root path =
 To avoid duplicated paths in body expectations you can specify a root path. E.g. instead of writing:
