@@ -693,6 +693,7 @@ expect().log().ifStatusCodeMatches(matcher). .. // Only log if the status code m
 }}}
 
 == Request Logging ==
+Since version 1.5 REST Assured supports logging the _[http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/specification/RequestSpecification.html request specification]_.
 
 = Root path =
 To avoid duplicated paths in body expectations you can specify a root path. E.g. instead of writing:
