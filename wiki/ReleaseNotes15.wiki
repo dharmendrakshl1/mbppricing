@@ -23,7 +23,35 @@ RequestSpecification spec = new RequestSpecBuilder().setConfig(newConfig().redir
   * Logging has been improved, see [http://code.google.com/p/rest-assured/wiki/ReleaseNotes15#Non-backward_compatible_changes below].
 
 == Non-backward compatible changes ==
-  * To allow for multi-value headers the old [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/response/Response.html#getHeaders() Response.getHeaders()] and [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/response/Response.html#headers() Response.headers()] no longer returns `Map<String,String>`. Now these methods returns a [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Headers.html Headers] instance instead.
+  * Logging has undergone a major change. You can now not only log the response body but also headers, cookies and status line. You can also log the request details as defined in the [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/specification/RequestSpecification.html request specification]. Thus the following:
+  {{{
+given().log(). .. // Log the response body in versions prior to 1.5
+  }}}
+  and
+  {{{
+expect().log(). .. // Also logs the response body in versions prior to 1.5
+  }}}
+  will now look like this:
+  {{{
+given().log().body(). .. // Log the _request_ body in versions >= 1.5
+  }}}
+  and
+  {{{
+expect().log().body() .. // Log the response body in versions >= 1.5
+  }}}
+  You can also log e.g. only headers in the request and the response:
+  {{{
+given().log().headers(). .. // Log only the request headers
+  }}}
+  and
+  {{{
+expect().log().headers(). .. // Log only the response headers
+  }}}
+  Previously there was a method called `logOnError` in both the [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/specification/RequestSpecification.html request] and [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/specification/ResponseSpecification.html response specification]. This has now been replaced by the following method in the response specification:
+  {{{
+expect().log().ifError(). ..
+  }}}
+  (issue 81).
 
 == Other notable changes ==
   * Added support for serializing objects to a parameter if the content-type is set:
