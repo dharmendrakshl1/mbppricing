@@ -801,6 +801,7 @@ String response = get("/rest/api/2.0.alpha1/search?jql={q}", query);
 
 = Detailed configuration =
 Detailed configuration is provided by the [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/config/RestAssuredConfig.html RestAssuredConfig] instance with which you can configure the parameters of [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/config/HttpClientConfig.html HTTP Client] as well as [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/config/RedirectConfig.html Redirect] and [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/config/LogConfig.html Log] settings. Examples:
+
 For a specific request:
 {{{
 given().config(newConfig().redirect(redirectConfig().followRedirects(false))). ..
