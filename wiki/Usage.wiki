@@ -815,6 +815,12 @@ RestAssured.config = config().redirect(redirectConfig().followRedirects(true).an
 }}}
 `config()` and `newConfig()` can be statically imported from `com.jayway.restassured.config.RestAssuredConfig`.
 
+== Redirects ==
+Redirects configuration can also be specified using the DSL. E.g.
+{{{
+given().redirects().max(12).and().redirects().follow(true).when(). .. 
+}}}
+
 = Static imports =
        
 In order to use REST assured effectively it's recommended to statically import methods from the following classes:
