@@ -693,7 +693,7 @@ expect().log().ifStatusCodeMatches(matcher). .. // Only log if the status code m
 }}}
 
 == Request Logging ==
-Since version 1.5 REST Assured supports logging the _[http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/specification/RequestSpecification.html request specification]_.
+Since version 1.5 REST Assured supports logging the _[http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/specification/RequestSpecification.html request specification]_ before it's sent to the server using the [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/filter/log/RequestLoggingFilter.html RequestLoggingFilter]. Note that the HTTP Builder and HTTP Client may add additional headers then what's printed in the log. It will _only_ log things specified in the request specification. I.e. you can NOT regard the details logged by the [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/filter/log/RequestLoggingFilter.html RequestLoggingFilter] to be what's actually sent to the server. Also subsequent filters may alter the request _after_ the logging has took place. If you need to log what's _actually_ sent on the wire refer to the [http://hc.apache.org/httpcomponents-client-ga/logging.html HTTP Client logging docs] or use an external tool such [http://www.wireshark.org/ Wireshark].
 
 = Root path =
 To avoid duplicated paths in body expectations you can specify a root path. E.g. instead of writing:
