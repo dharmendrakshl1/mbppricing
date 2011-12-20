@@ -55,11 +55,10 @@ expect().log().ifError(). ..
   * `getRequestParams()` and `getQueryParams()` now returns `Map<String, ?>` instead of `Map<String, String>` in [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/specification/FilterableRequestSpecification.html FilterableRequestSpecification].
 
 == Other notable changes ==
-  * Allows configuring redirect settings using the DSL, e.g.
+  * Allows configuring redirect settings using the DSL (issue 24), e.g.
   {{{
 given().redirects().max(12).and().redirects().follow(true).when(). .. 
   }}}
-(issue 24)
 
 == Minor changes ==
 See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for more details
