@@ -47,7 +47,7 @@ given().log().headers(). .. // Log only the request headers
   {{{
 expect().log().headers(). .. // Log only the response headers
   }}}
-  Previously there was a method called `logOnError` in both the [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/specification/RequestSpecification.html request] and [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/specification/ResponseSpecification.html response specification]. This has now been replaced by the following method in the response specification:
+  Previously there was a method called `logOnError` in both the [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/specification/RequestSpecification.html request-] and [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/specification/ResponseSpecification.html response specification]. This has now been replaced by the following method in the response specification:
   {{{
 expect().log().ifError(). ..
   }}}
