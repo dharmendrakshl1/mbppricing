@@ -52,20 +52,11 @@ expect().log().headers(). .. // Log only the response headers
 expect().log().ifError(). ..
   }}}
   (issue 81).
+  * `getRequestParams()` and `getQueryParams()` now returns `Map<String, ?>` instead of `Map<String, String>` in [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/specification/FilterableRequestSpecification.html FilterableRequestSpecification].
 
 == Other notable changes ==
-  * Added support for serializing objects to a parameter if the content-type is set:
-  {{{
-  given().
-          contentType("application/json").
-          queryParam("category", "Games").
-          formParam("object", new GameObject(..)). // GameObject will be serialized to JSON
-  when().
-          post("/somewhere");
-}}}
-  * Added support for mapping a path to a Java object in [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/path/json/JsonPath.html JsonPath], e.g: 
-{{{
-Book book = from(JSON).getObject("store.book[2]", Book.class);
-}}}
+  * Allows configuring redirect settings using the DSL, e.g.
+	given().redirects().max(12).and().redirects().follow(true).when(). .. (issue 24)
+
 == Minor changes ==
 See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for more details
