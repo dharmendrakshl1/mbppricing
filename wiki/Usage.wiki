@@ -658,29 +658,41 @@ There are a couple of filters provided by REST Assured that are ready to use:
   # `com.jayway.restassured.filter.log.ErrorLoggingFilter`: A filter that'll print the response body if an error occurred (status code is between 400 and 500).
 
 = Logging =
-Many times it can be useful to print the response body for a request to help you creating your expectations. To do help you do this you can use one of the predefined [#Filters filters] supplied with REST Assured or you can use one of the shortcuts. If you want to print the response body regardless of the status code you can do:
+In many cases it can be useful to print the response and/or request details in order to help you create the correct expectations and send the correct requests. To do help you do this you can use one of the predefined [#Filters filters] supplied with REST Assured or you can use one of the shortcuts. 
+
+== Response Logging ==
+If you want to print the response body regardless of the status code you can do:
 
 {{{
-given().log(). .. 
-}}}
-
-or
-
-{{{
-expect().log(). ..
+expect().log().body() ..
 }}}
 
 This will print the response body regardless if an error occurred. If you're only interested in printing the response body if an error occur then you can use:
 
 {{{
-given().logOnError(). .. 
+expect().log().ifError(). .. 
 }}}
 
-or
+You can also log all details in the response including status line, headers and cookies:
 
 {{{
-expect().logOnError(). .. 
+expect().log().all(). .. 
 }}}
+
+as well as only status line, headers or cookies:
+{{{
+expect().log().statusLine(). .. // Only log the status line
+expect().log().headers(). .. // Only log the response headers
+expect().log().cookies(). .. // Only log the response cookies
+}}}
+
+You can also configure to log the response only if the status code matches some value:
+{{{
+expect().log().ifStatusCodeIsEqualTo(302). .. // Only log if the status code is equal to 302
+expect().log().ifStatusCodeMatches(matcher). .. // Only log if the status code matches the supplied Hamcrest matcher
+}}}
+
+== Request Logging ==
 
 = Root path =
 To avoid duplicated paths in body expectations you can specify a root path. E.g. instead of writing:
