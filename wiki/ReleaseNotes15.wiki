@@ -3,7 +3,8 @@
 == Highlights ==
   * Fixed an issue with PUT method duplicating form parameters as query parameters (issue 137)    
   * Created a [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/builder/ResponseBuilder.html ResponseBuilder] to make it easier to create new Response implementations. This is useful if you're working with filters and want to change the response you get from the sever somehow. E.g. 
-    {{{Response myResponse = new ResponseBuilder().clone(originalResponse).setBody("Something").build();}}}
+    {{{
+Response myResponse = new ResponseBuilder().clone(originalResponse).setBody("Something").build();}    }}}
   * Added possibility for more some more advanced configuration by providing a RestAssuredConfig instance. Right now you can configure the parameters of HTTP Client, Redirect and Log settings. Examples:
     For a specific request:
     {{{
