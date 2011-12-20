@@ -658,6 +658,13 @@ There are a couple of filters provided by REST Assured that are ready to use:
   # `com.jayway.restassured.filter.log.ResponseLoggingFilter`: A filter that'll print the response details if the response matches a given status code.
   # `com.jayway.restassured.filter.log.ErrorLoggingFilter`: A filter that'll print the response body if an error occurred (status code is between 400 and 500).
 
+== Response Builder ==
+
+If you need to change the [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/response/Response.html Response] from a filter you can use the [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/com/jayway/restassured/builder/ResponseBuilder.html ResponseBuilder] to create a new Response based on the original response. For example if you want to change the body of the original request to something else you can do:
+{{{
+Response newResponse = new ResponseBuilder().clone(originalResponse).setBody("Something").build();
+}}}
+
 = Logging =
 In many cases it can be useful to print the response and/or request details in order to help you create the correct expectations and send the correct requests. To do help you do this you can use one of the predefined [#Filters filters] supplied with REST Assured or you can use one of the shortcuts. 
 
