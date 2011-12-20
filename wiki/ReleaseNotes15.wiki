@@ -1,0 +1,40 @@
+= Release Notes for REST Assured 1.5 =
+
+== Highlights ==
+  * Fixed an issue with PUT method duplicating form parameters as query parameters (issue 137)    
+  * Created a [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/builder/ResponseBuilder.html ResponseBuilder] to make it easier to create new Response implementations. This is useful if you're working with filters and want to change the response you get from the sever somehow. E.g. 
+    {{{Response myResponse = new ResponseBuilder().clone(originalResponse).setBody("Something").build();}}}
+  * Added possibility for more some more advanced configuration by providing a RestAssuredConfig instance. Right now you can configure the parameters of HTTP Client, Redirect and Log settings. Examples:
+    For a specific request:
+    {{{
+given().config(newConfig().redirect(redirectConfig().followRedirects(false))). ..
+    }}}
+    or using a RequestSpecBuilder:
+    {{{
+RequestSpecification spec = new RequestSpecBuilder().setConfig(newConfig().redirect(redirectConfig().followRedirects(false))).build();
+    }}}
+    or for all requests:
+    {{{
+ RestAssured.config = config().redirect(redirectConfig().followRedirects(true).and().maxRedirects(0));
+    }}}
+    `config()` and `newConfig()` can be statically imported from `com.jayway.restassured.config.RestAssuredConfig.
+
+== Non-backward compatible changes ==
+  * To allow for multi-value headers the old [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/response/Response.html#getHeaders() Response.getHeaders()] and [http://rest-assured.googlecode.com/svn/tags/1.4/apidocs/com/jayway/restassured/response/Response.html#headers() Response.headers()] no longer returns `Map<String,String>`. Now these methods returns a [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/response/Headers.html Headers] instance instead.
+
+== Other notable changes ==
+  * Added support for serializing objects to a parameter if the content-type is set:
+  {{{
+  given().
+          contentType("application/json").
+          queryParam("category", "Games").
+          formParam("object", new GameObject(..)). // GameObject will be serialized to JSON
+  when().
+          post("/somewhere");
+}}}
+  * Added support for mapping a path to a Java object in [http://rest-assured.googlecode.com/svn/tags/1.4.5/apidocs/com/jayway/restassured/path/json/JsonPath.html JsonPath], e.g: 
+{{{
+Book book = from(JSON).getObject("store.book[2]", Book.class);
+}}}
+== Minor changes ==
+See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for more details
