@@ -486,7 +486,7 @@ public class Message {
 }
 }}}
 
-and we want to response body to be deserialized into a Message object. 
+and we want the response body to be deserialized into a Message object. 
 
 === Content-Type based Deserialization ===
 Let's assume then that the server returns a JSON body like this:
