@@ -14,5 +14,14 @@ Add the following dependency to your pom.xml:
 == Non-maven users ==
 Download [http://rest-assured.googlecode.com/files/rest-assured-1.5.zip REST Assured] and put it in your class-path. You may also need to download the [http://rest-assured.googlecode.com/files/rest-assured-dependencies.zip third-party dependencies] and put them in your classpath as well. 
 
+= Static imports =
+       
+In order to use REST assured effectively it's recommended to statically import methods from the following classes:
+
+  * `com.jayway.restassured.RestAssured.*`
+  * `com.jayway.restassured.matcher.RestAssuredMatchers.*`
+  * `org.hamcrest.Matchers.*`
+
+
 = Documentation =
 When you've successfully downloaded and configured REST Assured in your classpath please refer to the [Usage user guide] for examples.
