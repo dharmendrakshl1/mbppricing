@@ -5,6 +5,14 @@ REST Assured is a Java DSL for simplifying testing of REST based services built 
 *Table of Contents*
 <wiki:toc max_depth="2" />
 
+== Static imports ==
+       
+In order to use REST assured effectively it's recommended to statically import methods from the following classes:
+
+  * `com.jayway.restassured.RestAssured.*`
+  * `com.jayway.restassured.matcher.RestAssuredMatchers.*`
+  * `org.hamcrest.Matchers.*`
+
 == Example 1 - JSON ==
 Assume that the GET request (to http://localhost:8080/lotto) returns JSON as:
 {{{
@@ -821,14 +829,6 @@ Redirect configuration can also be specified using the DSL. E.g.
 {{{
 given().redirects().max(12).and().redirects().follow(true).when(). .. 
 }}}
-
-= Static imports =
-       
-In order to use REST assured effectively it's recommended to statically import methods from the following classes:
-
-  * `com.jayway.restassured.RestAssured.*`
-  * `com.jayway.restassured.matcher.RestAssuredMatchers.*`
-  * `org.hamcrest.Matchers.*`
 
 = More info =
 For more information refer to the [http://rest-assured.googlecode.com/svn/tags/1.5/apidocs/index.html javadoc]:
