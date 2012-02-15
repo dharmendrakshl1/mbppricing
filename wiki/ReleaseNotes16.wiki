@@ -14,7 +14,6 @@ given().contentType("application/xml; charset=US-ASCII").and().body("my body"). 
 RestAssured.config = newConfig().encoderConfig(encoderConfig().defaultContentCharset("US-ASCII"));
     }}}
 
-
 == Non-backward compatible changes ==
   * Fixed a serious issue with content-type validation, it was actually ignored in the previous versions (issue 146).
   * Default encoding content encoding charset has been changed from UTF-8 to ISO-8859-1 to comply with the RFC 2616. To change this use the EncoderConfig, e.g.
@@ -26,7 +25,7 @@ RestAssured.config = newConfig().encoderConfig(encoderConfig().defaultContentCha
     {{{
 RestAssured.config = newConfig().decoderConfig(decoderConfig().defaultContentCharset("UTF-8"));
     }}}
-
+ * `groovyx.net.http.ContentType` has been renamed to `com.jayway.restassured.http.ContentType`.
 
 == Other notable changes ==
   * REST Assured now automatically detects content-types ending with +xml, +json and +html (for example application/something+json) and parses the content with the corresponding parser. This means that you don't need to register custom parsers for these kind of content-types (issue 142).
