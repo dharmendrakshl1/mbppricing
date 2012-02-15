@@ -5,6 +5,15 @@
   * Groovy dependency is updated to version 1.8.4.
   * HTML validation has been greatly improved.
   * Added support for pretty-printing the request and response body when logging if content-type is XML, JSON or HTML. This is now default.
+  * REST Assured now takes the charset into consideration for both the request and the response. E.g. 
+    {{{
+given().contentType("application/xml; charset=US-ASCII").and().body("my body"). .. 
+    }}}
+  will encode the body as US-ASCII. You can also specify the charset for each request:
+    {{{
+RestAssured.conifg = newConfig().encoderConfig(encoderConfig().defaultContentCharset("US-ASCII"));
+    }}}
+  (issue 132)
 
 
 == Non-backward compatible changes ==
