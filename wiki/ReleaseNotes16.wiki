@@ -12,6 +12,8 @@
 
 == Other notable changes ==
   * REST Assured now automatically detects content-types ending with +xml, +json and +html (for example application/something+json) and parses the content with the corresponding parser. This means that you don't need to register custom parsers for these kind of content-types (issue 142).
+  * The HTTP Delete method now supports a method body 
+  * PUT request now work for multi part form data uploading
   * XmlPath supports prettifying and pretty-printing XML and HTML, for example:
     {{{
 String prettyXml = with(someXml).prettify(); // Return a prettified XML string. 
