@@ -17,8 +17,9 @@ RestAssured.conifg = newConfig().encoderConfig(encoderConfig().defaultContentCha
 == Non-backward compatible changes ==
   * Fixed a serious issue with content-type validation, it was actually ignored in the previous versions (issue 146).
   * Default encoding content encoding charset has been changed from UTF-8 to ISO-8859-1 to comply with the RFC 2616. To change this use the EncoderConfig, e.g.
-  {{{
+    {{{
 RestAssured.config = newConfig().encoderConfig(encoderConfig().defaultContentCharset("UTF-8"));
+    }}}
   You can also specify the default query parameter charset.
   * Default decoding content charset has been changed from platform default to ISO-8859-1 to comply with the RFC 2616. To change this use the DecoderConfig, e.g.
     {{{
