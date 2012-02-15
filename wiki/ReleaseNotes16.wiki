@@ -9,12 +9,10 @@
     {{{
 given().contentType("application/xml; charset=US-ASCII").and().body("my body"). .. 
     }}}
-  will encode the body as US-ASCII. You can also specify the charset for each request:
+    will encode the body as US-ASCII. You can also specify the charset for each request:
     {{{
 RestAssured.conifg = newConfig().encoderConfig(encoderConfig().defaultContentCharset("US-ASCII"));
     }}}
-  (issue 132)
-
 
 == Non-backward compatible changes ==
   * Fixed a serious issue with content-type validation, it was actually ignored in the previous versions (issue 146).
