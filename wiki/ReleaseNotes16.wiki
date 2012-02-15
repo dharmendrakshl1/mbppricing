@@ -1,13 +1,13 @@
 = Release Notes for REST Assured 1.6 =
 
 == Highlights ==
-* Forked HTTPBuilder. This means that a lot of workarounds that had to be made in the past can be removed in the future. It enables more control over the code base which allows for many improvements and fixes.
-* Groovy dependency is updated to version 1.8.4.
-* HTML validation has been greatly improved.
-* Added support for pretty-printing the request and response body when logging if content-type is XML, JSON or HTML. This is now default.
+  * Forked HTTPBuilder. This means that a lot of workarounds that had to be made in the past can be removed in the future. It enables more control over the code base which allows for many improvements and fixes.
+  * Groovy dependency is updated to version 1.8.4.
+  * HTML validation has been greatly improved.
+  * Added support for pretty-printing the request and response body when logging if content-type is XML, JSON or HTML. This is now default.
 
 == Non-backward compatible changes ==
-* Fixed a serious issue with content-type validation, it was actually ignored in the previous versions (issue 146).
+  * Fixed a serious issue with content-type validation, it was actually ignored in the previous versions (issue 146).
 
 
 == Other notable changes ==
@@ -16,8 +16,9 @@
 String prettyXml = with(someXml).prettify(); // Return a prettified XML string. 
     }}}
   or print the XML to System.out and then return it:
-  {{{
+    {{{
 String prettyXml = with(someXml).prettyPrint(); // Prints and returns a prettified XML string. 
+    }}}
   "with" is statically imported from `com.jayway.restassured.path.xml.XmlPath` (issue 147).
   * JsonPath supports prettifying and pretty-printing JSON documents, for example:
   {{{
