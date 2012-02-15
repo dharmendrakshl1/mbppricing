@@ -225,6 +225,23 @@ Parameters can also be set directly on the url:
 
 For multi-part parameters please refer to the [http://code.google.com/p/rest-assured/wiki/Usage#Multi-part_form_data Multi-part form data] section.
 
+=== Multi-value parameters ===
+Multi-value parameters are parameters with more then one value per parameter name (i.e. a list of values per name). You can specify these either by using var-args:
+
+{{{
+given().param("myList", "value1", "value2"). .. 
+}}}
+
+or using a list:
+
+{{{
+List<String> values = new ArrayList<String>();
+values.add("value1");
+values.add("value2");
+
+given().param("myList", values). .. 
+}}}
+
 === Path parameters ===
 You can also specify so called path parameters in your request, e.g.
 {{{
