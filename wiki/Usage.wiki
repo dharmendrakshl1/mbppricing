@@ -379,6 +379,19 @@ given().auth().basic("username", "password").expect().statusCode(200).when().get
 
 Other supported schemes are OAuth, digest, certificate, form and preemptive basic authentication.                                                                                                                                    
 
+== OAuth ==
+
+In order to use the OAuth authentication you need to add the [http://code.google.com/p/oauth-signpost/ Signpost] framework to the classpath. In Maven you can simply add the following dependency:
+{{{
+<dependency>
+            <groupId>oauth.signpost</groupId>
+            <artifactId>signpost-commonshttp4</artifactId>
+            <version>1.2.1.1</version>
+</dependency>
+}}}
+
+If you're not using Maven [http://code.google.com/p/oauth-signpost/downloads/list download] the jars ([http://oauth-signpost.googlecode.com/files/signpost-core-1.2.1.1.jar signpost-core-1.2.1.1.jar], [http://oauth-signpost.googlecode.com/files/signpost-commonshttp4-1.2.1.1.jar signpost-commonshttp4-1.2.1.1.jar]) manually and put them in your classpath. 
+
 = Multi-part form data =
 When sending larger amount of data to the server it's common to use the multipart form data technique. Rest Assured provide methods called `multiPart` that allows you to specify a file, byte-array, input stream or text to upload. In its simplest form you can upload a file like this:
 
