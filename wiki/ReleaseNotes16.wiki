@@ -26,7 +26,7 @@ RestAssured.config = newConfig().encoderConfig(encoderConfig().defaultContentCha
 RestAssured.config = newConfig().decoderConfig(decoderConfig().defaultContentCharset("UTF-8"));
     }}}
   * `groovyx.net.http.ContentType` has been renamed to `com.jayway.restassured.http.ContentType`.
-  * Third party dependencies have been updated. If you're not using Maven you need replace the old ones with the [http://rest-assured.googlecode.com/files/rest-assured-dependencies.zip new] ones in the classpath.
+  * Third party dependencies have been updated. If you're not using Maven you need replace the [http://rest-assured.googlecode.com/files/rest-assured-legacy-dependencies.zip old] ones with the [http://rest-assured.googlecode.com/files/rest-assured-dependencies.zip new] ones in the classpath.
 
 == Other notable changes ==
   * REST Assured now automatically detects content-types ending with +xml, +json and +html (for example application/something+json) and parses the content with the corresponding parser. This means that you don't need to register custom parsers for these kind of content-types (issue 142).
