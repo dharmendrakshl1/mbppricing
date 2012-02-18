@@ -861,13 +861,13 @@ RestAssured.config = config().redirect(redirectConfig().followRedirects(true).an
 `config()` and `newConfig()` can be statically imported from `com.jayway.restassured.config.RestAssuredConfig`.
 
 == Encoder Config == 
-With the [http://rest-assured.googlecode.com/svn/tags/1.6/apidocs/com/jayway/restassured/config/EncoderConfig.html EncoderConfig] you can specify the default content and query parameter encoding charset for all requests. If no content charset is specified then ISO-8859-1 is used and if no query parameter charset is specified then UTF-8 is used. Usage example:
+With the [http://rest-assured.googlecode.com/svn/tags/1.6/apidocs/com/jayway/restassured/config/EncoderConfig.html EncoderConfig] you can specify the default encoding content charset (if it's not specified in the content-type header) and query parameter charset for all requests. If no content charset is specified then ISO-8859-1 is used and if no query parameter charset is specified then UTF-8 is used. Usage example:
 {{{
 RestAssured.config = newConfig().encoderConfig(encoderConfig().defaultContentCharset("US-ASCII"));
 }}}
 
 == Decoder Config ==
-With the [http://rest-assured.googlecode.com/svn/tags/1.6/apidocs/com/jayway/restassured/config/DecoderConfig.html DecoderConfig] you can set the default response content charset for all responses. This is useful if you expect a different content charset than ISO-8859-1 (which is the default charset) and the response doesn't set the charset in the content-type header. Usage example:
+With the [http://rest-assured.googlecode.com/svn/tags/1.6/apidocs/com/jayway/restassured/config/DecoderConfig.html DecoderConfig] you can set the default response content charset for all responses. This is useful if you expect a different content charset than ISO-8859-1 (which is the default charset) and the response doesn't define the charset in the content-type header. Usage example:
 {{{
 RestAssured.config = newConfig().decoderConfig(decoderConfig().defaultContentCharset("UTF-8"));
 }}}
