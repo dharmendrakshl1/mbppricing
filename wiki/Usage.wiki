@@ -866,7 +866,11 @@ With the [http://rest-assured.googlecode.com/svn/tags/1.6/apidocs/com/jayway/res
 RestAssured.config = newConfig().encoderConfig(encoderConfig().defaultContentCharset("US-ASCII"));
 }}}
 
-== Decoder Config
+== Decoder Config ==
+With the [http://rest-assured.googlecode.com/svn/tags/1.6/apidocs/com/jayway/restassured/config/DecoderConfig.html DecoderConfig] you can set the default response content charset for all responses. This is useful if you expect a different content charset than ISO-8859-1 (which is the default charset) and the response doesn't set the charset in the content-type header. Usage example:
+{{{
+RestAssured.config = newConfig().decoderConfig(decoderConfig().defaultContentCharset("UTF-8"));
+}}}
 
 == Redirect DSL ==
 Redirect configuration can also be specified using the DSL. E.g.
