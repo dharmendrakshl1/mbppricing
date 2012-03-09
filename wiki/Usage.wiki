@@ -314,11 +314,11 @@ given().contentType("application/json"). ..
 
 == Request Body == 
 {{{
-given().body("some body"). .. // Works for POST and PUT requests
+given().body("some body"). .. // Works for POST, PUT and DELETE requests
 given().request().body("some body"). .. // More explicit (optional)
 }}}
 {{{
-given().body(new byte[]{42}). .. // Works for POST and PUT
+given().body(new byte[]{42}). .. // Works for POST, PUT and DELETE
 given().request().body(new byte[]{42}). .. // More explicit (optional)
 }}}
 
