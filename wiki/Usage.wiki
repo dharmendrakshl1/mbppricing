@@ -268,7 +268,7 @@ when().
 Path parameters makes it easier to read the request path as well as enabling the request path to easily be re-usable in many tests with different parameter values.
 
 == Cookies ==
-In it's simplest for you simple supply cookies like this:
+In its simplest for you simple supply cookies like this:
 {{{
 given().cookie("username", "John").then().expect().body(equalTo("username")).when().get("/cookie");
 }}}
