@@ -607,7 +607,7 @@ Sometimes it's useful to specify a default parser, e.g. if the response doesn't 
 RestAssured.defaultParser = Parser.JSON;
 }}}
 
-You can also specify a default parer for a single request:
+You can also specify a default parser for a single request:
 {{{
 expect.defaultParser(Parser.JSON).
 }}}
