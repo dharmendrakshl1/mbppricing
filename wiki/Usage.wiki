@@ -485,7 +485,7 @@ when().
       post("/message");
 }}}
 
-You can also serialize the `Message` instance a form parameter:
+You can also serialize the `Message` instance as a form parameter:
 {{{
 Message message = new Message();
 message.setMessage("My messagee");
