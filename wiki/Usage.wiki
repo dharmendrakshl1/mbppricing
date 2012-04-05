@@ -810,33 +810,32 @@ Note that the `withArgs` method can be statically imported from the [http://rest
 = Session support =
 REST Assured provides a simplified way for managing sessions. You can define a session id value in the DSL:
 {{{
-    given().sessionId("1234"). .. 
+given().sessionId("1234"). .. 
 }}}
 
 This is actually just a short-cut for:
 {{{
-    given().cookie("JSESSIONID", "1234"). .. 
+given().cookie("JSESSIONID", "1234"). .. 
 }}}
 
 You can also specify a default `sessionId` that'll be supplied with all subsequent requests:
 {{{
-
-    RestAssured.sessionId = "1234";
+RestAssured.sessionId = "1234";
 }}}
 
 By default the session id name is `JSESSIONID` but you can change it using the [#Session_Config SessionConfig]:
 {{{
-    RestAssured.config = newConfig().sessionConfig(new SessionConfig().sessionIdName("phpsessionid"));
+RestAssured.config = newConfig().sessionConfig(new SessionConfig().sessionIdName("phpsessionid"));
 }}}
 
 You can also specify a sessionId using the `RequestSpecBuilder` and reuse it in many tests:
 {{{
-   RequestSpecBuilder spec = new RequestSpecBuilder().setSessionId("value1").build();
+RequestSpecBuilder spec = new RequestSpecBuilder().setSessionId("value1").build();
    
-   // Make first request with session id equal to value1
-   given().spec(spec). .. 
-   // Make second request with session id equal to value1
-   given().spec(spec). .. 
+// Make the first request with session id equal to value1
+given().spec(spec). .. 
+// Make the second request with session id equal to value1
+given().spec(spec). .. 
 }}}
 
 It's also possible to get the session id from the response object:
