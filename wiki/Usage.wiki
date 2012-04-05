@@ -824,7 +824,7 @@ You can also specify a default `sessionId` that'll be supplied with all subseque
     RestAssured.sessionId = "1234";
 }}}
 
-By default the session id name is `JSESSIONID` but you can change it using the `SessionConfig`:
+By default the session id name is `JSESSIONID` but you can change it using the [SessionConfig #Session_Config]:
 {{{
     RestAssured.config = newConfig().sessionConfig(new SessionConfig().sessionIdName("phpsessionid"));
 }}}
@@ -905,7 +905,7 @@ RestAssured.config = newConfig().decoderConfig(decoderConfig().defaultContentCha
 }}}
 
 == Session Config ==
-With the session config you can configure the default session id name that's used by REST Assured. The default session id name is `JSESSIONID` and you only need to change it if the name in your application is different and you want to make use of REST Assured's [session management API #Session_management]. Usage:
+With the session config you can configure the default session id name that's used by REST Assured. The default session id name is `JSESSIONID` and you only need to change it if the name in your application is different and you want to make use of REST Assured's [#Session_management session management API]. Usage:
 
 {{{
 RestAssured.config = newConfig().sessionConfig(new SessionConfig().sessionIdName("phpsessionid"));
