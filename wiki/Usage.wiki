@@ -807,6 +807,38 @@ The path arguments follows the standard [http://download.oracle.com/javase/1,5.0
 
 Note that the `withArgs` method can be statically imported from the [http://rest-assured.googlecode.com/svn/tags/1.6/apidocs/com/jayway/restassured/RestAssured.html com.jayway.restassured.RestAssured] class.
 
+= Session management =
+REST Assured provides a simplified way for managing sessions. You can define a session id value in the DSL:
+{{{
+    given().sessionId("1234"). .. 
+}}}
+
+This is actually just a short-cut for:
+{{{
+    given().cookie("JSESSIONID", "1234"). .. 
+}}}
+
+You can also specify a default `sessionId` that'll be supplied with all subsequent requests:
+{{{
+
+    RestAssured.sessionId = "1234";
+}}}
+
+By default the session id name is `JSESSIONID` but you can change it using the `SessionConfig`:
+{{{
+    RestAssured.config = newConfig().sessionConfig(new SessionConfig().sessionIdName("phpsessionid"));
+}}}
+
+You can also specify a sessionId using the `RequestSpecBuilder` and reuse it in many tests:
+{{{
+   RequestSpecBuilder spec = new RequestSpecBuilder().setSessionId("value1").build();
+   
+   // Make first request with session id equal to value1
+   given().spec(spec). .. 
+   // Make second request with session id equal to value1
+   given().spec(spec). .. 
+}}}
+
 = SSL =
 In most situations SSL should just work out of the box thanks to the excellent work of HTTP Builder and HTTP Client. There are how ever some cases where you'll run into trouble. You may for example run into a SSLPeerUnverifiedException if the server is using an invalid certificate. If this happens you should create a Java keystore file and use it with REST Assured. It's not too difficult, first follow the guide [http://groovy.codehaus.org/modules/http-builder/doc/ssl.html here] and then use the keystore in Rest Assured like this:
 
