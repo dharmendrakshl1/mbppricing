@@ -427,6 +427,7 @@ byte[] someData = ..
 given().
         multiPart("controlName1", new File("/path/to/file")).
         multiPart("controlName2", "my_file_name.txt", someData).
+        multiPart("controlName3", someJavaObject, "application/json").
 when().
         post("/upload");
 }}}
