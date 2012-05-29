@@ -364,8 +364,8 @@ expect().contentType(ContentType.JSON). ..
 == Full body/content matching ==
 
 {{{
-expect().body(equalsTo("something")). ..
-expect().content(equalsTo("something")). .. // Same as above
+expect().body(equalTo("something")). ..
+expect().content(equalTo("something")). .. // Same as above
 }}}
             
 
