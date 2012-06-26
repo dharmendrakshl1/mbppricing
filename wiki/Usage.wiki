@@ -705,7 +705,7 @@ There are a couple of filters provided by REST Assured that are ready to use:
 
 == Response Builder ==
 
-If you need to change the [http://rest-assured.googlecode.com/svn/tags/1.6.2/apidocs/com/jayway/restassured/response/Response.html Response] from a filter you can use the [http://rest-assured.googlecode.com/svn/tags/1.6.2/apidocs/com/jayway/restassured/builder/ResponseBuilder.html ResponseBuilder] to create a new Response based on the original response. For example if you want to change the body of the original request to something else you can do:
+If you need to change the [http://rest-assured.googlecode.com/svn/tags/1.6.2/apidocs/com/jayway/restassured/response/Response.html Response] from a filter you can use the [http://rest-assured.googlecode.com/svn/tags/1.6.2/apidocs/com/jayway/restassured/builder/ResponseBuilder.html ResponseBuilder] to create a new Response based on the original response. For example if you want to change the body of the original response to something else you can do:
 {{{
 Response newResponse = new ResponseBuilder().clone(originalResponse).setBody("Something").build();
 }}}
