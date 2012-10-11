@@ -7,7 +7,7 @@
   * Support for Faster Jackson (Jackson 2.0)
 
 == Non-backward compatible changes ==
-  * Third party dependencies have been updated. If you're not using Maven you need replace the [http://rest-assured.googlecode.com/files/rest-assured-1.5-to-1.6.2-dependencies.zip old] ones with the [http://rest-assured.googlecode.com/files/rest-assured-dependencies.zip new] ones in the classpath.
+  * Third party dependencies have been updated (new versions of http client needed to support the PATCH verb). If you're not using Maven you need replace the [http://rest-assured.googlecode.com/files/rest-assured-1.5-to-1.6.2-dependencies.zip old] ones with the [http://rest-assured.googlecode.com/files/rest-assured-dependencies.zip new] ones in the classpath.
   * The previous release broke downloading of large files (http chunking) to allow for stress testing with REST Assured. This has now been fixed but if you want to do stress testing you need to configure REST Assured to drop connections after each response using the new [http://code.google.com/p/rest-assured/wiki/Usage#Connection_Config connection config].
 
 == Deprecations ==
