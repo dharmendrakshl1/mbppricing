@@ -581,7 +581,7 @@ Message message = get("/message").as(Message.class, ObjectMapperType.GSON);
 }}}
 
 == Configuration ==
-You can configure the pre-defined object mappers by using a `com.jayway.restassured.config.ObjectMapperConfig` and pass it to detailed configuration. For example to change GSON to use lower case with underscores as field naming policy you can do like this:
+You can configure the pre-defined object mappers by using a [http://rest-assured.googlecode.com/svn/tags/1.7/apidocs/com/jayway/restassured/config/ObjectMapperConfig.html ObjectMapperConfig] and pass it to detailed configuration. For example to change GSON to use lower case with underscores as field naming policy you can do like this:
 
 {{{
 RestAssured.config = RestAssuredConfig.config().objectMapperConfig(objectMapperConfig().gsonObjectMapperFactory(
