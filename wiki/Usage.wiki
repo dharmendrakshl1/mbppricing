@@ -507,7 +507,7 @@ If you have multiple object mappers in the classpath at the same time or don't c
 Message message = new Message();
 message.setMessage("My messagee");
 given().
-       body(message, ObjectMapper.JAXB).
+       body(message, ObjectMapperType.JAXB).
 when().
       post("/message");
 }}}
@@ -577,8 +577,38 @@ You can also register a default or custom parser [http://code.google.com/p/rest-
 If you have multiple object mappers in the classpath at the same time  or don't care about the response content-type you can specify a deserializer explicitly. E.g.
 
 {{{
-Message message = get("/message").as(Message.class, ObjectMapper.GSON);
+Message message = get("/message").as(Message.class, ObjectMapperType.GSON);
 }}}
+
+== Configuration ==
+You can configure the pre-defined object mappers by using a `com.jayway.restassured.config.ObjectMapperConfig` and pass it to detailed configuration. For example to change GSON to use lower case with underscores as field naming policy you can do like this:
+
+{{{
+RestAssured.config = RestAssuredConfig.config().objectMapperConfig(objectMapperConfig().gsonObjectMapperFactory(
+                new GsonObjectMapperFactory() {
+                    public Gson create(Class cls, String charset) {
+                        return new GsonBuilder().setFieldNamingPolicy(LOWER_CASE_WITH_UNDERSCORES).create();
+                    }
+                }
+        ));
+}}}
+
+There are pre-defined object mapper factories for GSON, JAXB, Jackson and Faster Jackson.
+
+== Custom ==
+By default REST Assured will scan the classpath to find various object mappers. If you want to integrate an object mapper that is not supported by default or if you've rolled your own you can implement the 
+[http://rest-assured.googlecode.com/svn/tags/1.7/apidocs/com/jayway/restassured/mapper/ObjectMapper.html com.jayway.restassured.mapper.ObjectMapper] interface. You tell REST Assured to use your object mapper either by passing it as a second parameter to the body:
+
+{{{
+given().body(myJavaObject, myObjectMapper).when().post("..")
+}}}
+
+or you can defined it statically once and for all:
+{{{
+RestAssured.config = RestAssuredConfig.config().objectMapperConfig(new ObjectMapperConfig(myObjectMapper));
+}}}
+
+For an example see [https://github.com/jayway/rest-assured/blob/master/examples/rest-assured-itest-java/src/test/java/com/jayway/restassured/itest/java/CustomObjectMappingITest.java here].
 
 = Custom parsers =
 REST Assured providers predefined parsers for e.g. HTML, XML and JSON. But you can parse other kinds of content by registering a predefined parser for unsupported content-types by using:
