@@ -1,3 +1,4 @@
+  * 2012-06-26: REST Assured was presented at the [http://jazoon.com/ Jazoon conference] in Zürich, Switzerland.
   * 2012-05-29: REST Assured [http://rest-assured.googlecode.com/files/rest-assured-1.6.2.zip 1.6.2] is released with bugs fixes and support object serialization in multi-part file uploads. See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for details.  
   * 2012-04-16: REST Assured was presented at the [http://www.scandevconf.se/ Scandinavian Developer Conference].
   * 2012-04-05: REST Assured [http://rest-assured.googlecode.com/files/rest-assured-1.6.1.zip 1.6.1] is released with bugs fixes and better support for specifying [http://code.google.com/p/rest-assured/wiki/Usage#Session_support session id's]. See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for details.  
