@@ -1,6 +1,7 @@
 = How to release =
 
   # Update changelog with the date of the new release
+  # Switch to maven 2 in order to get Javadoc to be formatted correctly
   # Run `mvn release:prepare -Prelease -DautoVersionSubmodules=true`
      # Use SCM label rest-assured-X
      # If build fails because of missing dependencies do:
