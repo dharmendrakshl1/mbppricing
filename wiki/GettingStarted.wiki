@@ -15,7 +15,7 @@ Add the following dependency to your pom.xml:
 
 Note: You should place rest-assured before JUnit in your pom.xml dependency declaration in order to make sure that the correct version of Hamcrest is used. 
 
-=== Json Path ===
+=== JsonPath ===
 {{{
 <dependency>
       <groupId>com.jayway.restassured</groupId>
@@ -25,7 +25,7 @@ Note: You should place rest-assured before JUnit in your pom.xml dependency decl
 </dependency>
 }}}
 
-=== Xml Path ===
+=== XmlPath ===
 {{{
 <dependency>
       <groupId>com.jayway.restassured</groupId>
