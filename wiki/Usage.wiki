@@ -108,6 +108,28 @@ This is where REST Assured really starts to shine! Refer to the blog post at the
 == Additional Examples ==
 Micha Kops has written a really good blog with several examples (including code examples that you can checkout). You can read it [http://www.hascode.com/2011/10/testing-restful-web-services-made-easy-using-the-rest-assured-framework/ here].
 
+== Note on floats and doubles == 
+Floating point numbers must be compared with a Java "float" primitive. For example, if we consider the following JSON object:
+
+{{{
+{
+
+    "price":12.12 
+
+}
+}}}
+the following test will fail, because we compare with a "double" instead of a "float":
+
+{{{
+expect().body("price", equalTo(12.12)).when().get("/price");
+}}}
+
+Instead, compare with a float with:
+
+{{{
+expect().body("price", equalTo(12.12f)).when().get("/price");
+}}}
+
 = Getting Response Data =
 You can also get the content of a response. E.g. let's say you want to return the body of a get request to "/lotto". You can get it a variety of different ways: 
 {{{
