@@ -1,7 +1,7 @@
 = How to release =
 
   # Update changelog with the date of the new release
-  # Run `mvn release:prepare -Prelease,dist javadoc:aggregate -DautoVersionSubmodules=true`
+  # Run `mvn release:prepare -Prelease,dist -DautoVersionSubmodules=true`
      # Use SCM label rest-assured-X
      # If build fails because of missing dependencies do:
         # `mvn install -Prelease`
@@ -11,6 +11,8 @@
   # Follow the [https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide Sonatype release directions] in bullet 8.  
   # Upload the artifacts to the download page (upload all x-dist.zip).
   # Upload the javadoc to googlecode:
+   # Checkout tag X
+   # Run `mvn  clean javadoc:aggregate`
    # Copy everything from REST Assured `target/site/apidocs` into `tags/X/apidocs`
    # Run `find . -name '*.html' | xargs svn propset svn:mime-type text/html`
    # Run `find . -name '*.css' | xargs svn propset svn:mime-type text/css`
