@@ -1009,7 +1009,7 @@ Lets you configure connection settings for REST Assured. For example if you want
 RestAssured.config = newConfig().connectionConfig(connectionConfig().closeIdleConnectionsAfterEachResponse());
 }}}
 
-== JsonPathConfig ==
+== JsonPath Config ==
 
 [http://rest-assured.googlecode.com/svn/tags/1.8.0/apidocs/com/jayway/restassured/path/json/config/JsonPathConfig.html JsonPathConfig] allows you to configure the JsonPath settings either when used by REST Assured or by [http://rest-assured.googlecode.com/svn/tags/1.8.0/apidocs/com/jayway/restassured/path/json/JsonPath.html JsonPath]. It let's you configure how JSON numbers should be treated.
 {{{
