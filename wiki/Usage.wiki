@@ -62,7 +62,7 @@ but if you like you can configure REST Assured to use a JsonPathConfig that retu
 
 {{{
 given().
-       config(newConfig().jsonPathConfig(jsonPathConfig().numberReturnType(BIG_DECIMAL))).
+        config(newConfig().jsonPathConfig(jsonPathConfig().numberReturnType(BIG_DECIMAL))).
 expect().
         body("price", is(new BigDecimal(12.12)).
 when().
