@@ -24,7 +24,7 @@
   * [http://rest-assured.googlecode.com/svn/tags/1.8.0/apidocs/com/jayway/restassured/mapper/ObjectMapperDeserializationContext.html ObjectMapperDeserializationContext]#getResponse() has been renamed to "getDataToDeserialize()". It no longer returns an instance of `ResponseBodyData`, it now returns an instance of [http://rest-assured.googlecode.com/svn/tags/1.8.0/apidocs/com/jayway/restassured/mapper/DataToDeserialize.html DataToDeserialize].
 
 == Other notable changes ==
-  * Added getPath method to Node and NodeChildren elements in XmlPath which allows you get a subpath using the GPath notation.
+  * Added getPath method to [http://rest-assured.googlecode.com/svn/tags/1.8.0/apidocs/com/jayway/restassured/path/xml/element/Node.html Node] and [http://rest-assured.googlecode.com/svn/tags/1.8.0/apidocs/com/jayway/restassured/path/xml/element/NodeChildren.html NodeChildren] elements in XmlPath which allows you get a subpath using the GPath notation.
   * Improved speed of JsonPath when parsing multiple values
   * Upgraded to Groovy 2.1.2
 
