@@ -17,6 +17,7 @@
   # Upload the javadoc to googlecode:
    # Run `mvn  clean javadoc:aggregate`
    # Copy everything from REST Assured `target/site/apidocs` into `tags/X/apidocs` (in svn)
+   # Run `svn add X"
    # Run `find . -name '*.html' | xargs svn propset svn:mime-type text/html`
    # Run `find . -name '*.css' | xargs svn propset svn:mime-type text/css`
    # svn ci -m "Uploading javadocs for version X"
