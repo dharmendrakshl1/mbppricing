@@ -17,11 +17,11 @@
     See [http://rest-assured.googlecode.com/svn/tags/1.8.0/apidocs/com/jayway/restassured/path/json/config/JsonPathConfig.html JsonPathConfig] and [http://rest-assured.googlecode.com/svn/tags/1.8.0/apidocs/com/jayway/restassured/path/xml/config/XmlPathConfig.html XmlPathConfig] for more details.
 
 == Non-backward compatible changes ==
-  * Third party dependencies have been updated (new versions of http client needed to support the PATCH verb). If you're not using Maven you need replace the [http://rest-assured.googlecode.com/files/rest-assured-1.5-to-1.6.2-dependencies.zip old] ones with the [http://rest-assured.googlecode.com/files/rest-assured-dependencies.zip new] ones in the classpath.
-  * The previous release broke downloading of large files (http chunking) to allow for stress testing with REST Assured. This has now been fixed but if you want to do stress testing you need to configure REST Assured to drop connections after each response using the new [http://code.google.com/p/rest-assured/wiki/Usage#Connection_Config connection config].
-
-== Deprecations ==
-  * The enums in `com.jayway.restassured.mapper.ObjectMapper` (e.g. `ObjectMapper.GSON`) has been moved to `com.jayway.restassured.mapper.ObjectMapperType`.
+  * Third party dependencies have been updated, download the corresponding distribution zip file from the [http://code.google.com/p/rest-assured/downloads/list download page].
+  * `com.jayway.restassured.exception.ParsePathException` was renamed to `com.jayway.restassured.exception.PathException`
+  * JsonPath now throws `JsonPathException` instead of Groovy's `JsonException` when parsing invalid JSON documents
+  * XmlPath now throws `XmlPathException` instead of `PathException` when parsing invalid malformed XML documents
+  * ObjectMapperDeserializationContext#getResponse() has been renamed to "getDataToDeserialize()". It no longer returns an instance of `ResponseBodyData`, it now returns an instance of `DataToDeserialize`.
 
 == Other notable changes ==
   * Fixed so that it's possible to download large (chunked) files again. This was broken in the last release, 1.6.2. (issue 194).
