@@ -19,8 +19,8 @@
 == Non-backward compatible changes ==
   * Third party dependencies have been updated, download the corresponding distribution zip file from the [http://code.google.com/p/rest-assured/downloads/list download page].
   * `com.jayway.restassured.exception.ParsePathException` was renamed to `com.jayway.restassured.exception.PathException`
-  * JsonPath now throws `JsonPathException` instead of Groovy's `JsonException` when parsing invalid JSON documents
-  * XmlPath now throws `XmlPathException` instead of `PathException` when parsing invalid malformed XML documents
+  * JsonPath now throws [http://rest-assured.googlecode.com/svn/tags/1.8.0/apidocs/com/jayway/restassured/path/json/exception/JsonPathException.html JsonPathException] instead of Groovy's `JsonException` when parsing invalid JSON documents
+  * XmlPath now throws [http://rest-assured.googlecode.com/svn/tags/1.8.0/apidocs/com/jayway/restassured/path/xml/exception/XmlPathException.html XmlPathException] instead of `PathException` when parsing invalid malformed XML documents
   * [http://rest-assured.googlecode.com/svn/tags/1.8.0/apidocs/com/jayway/restassured/mapper/ObjectMapperDeserializationContext.html ObjectMapperDeserializationContext]#getResponse() has been renamed to "getDataToDeserialize()". It no longer returns an instance of `ResponseBodyData`, it now returns an instance of [http://rest-assured.googlecode.com/svn/tags/1.8.0/apidocs/com/jayway/restassured/mapper/DataToDeserialize.html DataToDeserialize].
 
 == Other notable changes ==
