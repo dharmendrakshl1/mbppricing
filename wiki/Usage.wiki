@@ -166,7 +166,7 @@ byte[] byteArray = get("/lotto").asByteArray();
 String json = get("/lotto").asString();
 }}}
 
-== JSON ==
+== JSON (JsonPath) ==
 Once we have the response body we can then use the [http://rest-assured.googlecode.com/svn/tags/1.8.0/apidocs/com/jayway/restassured/path/json/JsonPath.html JsonPath] to get data from the response body:
 
 {{{
@@ -181,7 +181,19 @@ int lottoId = jsonPath.getInt("lottoId");
 List<Integer> winnerIds = jsonPath.get("winners.winnderId");
 }}}
 
-== XML == 
+=== JsonPath Configuration === 
+You can configure object de-serializers etc for JsonPath by configuring it, for example:
+{{{
+JsonPath jsonPath = new JsonPath(SOME_JSON).using(new JsonPathConfig("UTF-8"));
+}}}
+
+It's also possible to configure JsonPath statically so that all instances of JsonPath will shared the same configuration:
+
+{{{
+JsonPath.config = new JsonPathConfig("UTF-8");
+}}}
+
+== XML (XmlPath) == 
 You also have the corresponding functionality for XML using  [http://rest-assured.googlecode.com/svn/tags/1.8.0/apidocs/com/jayway/restassured/path/xml/XmlPath.html XmlPath]:
 {{{
 String xml = post("/greetXML?firstName=John&lastName=Doe").andReturn().asString();
@@ -193,6 +205,18 @@ String lastName = from(xml).get("greeting.firstName");
 XmlPath xmlPath = new XmlPath(xml).setRoot("greeting");
 String firstName = xmlPath.get("firstName");
 String lastName = xmlPath.get("lastName");
+}}}
+
+=== XmlPath Configuration === 
+You can configure object de-serializers and charset for XmlPath by configuring it, for example:
+{{{
+XmlPath xmlPath = new XmlPath(SOME_XML).using(new XmlPathConfig("UTF-8"));
+}}}
+
+It's also possible to configure XmlPath statically so that all instances of XmlPath will shared the same configuration:
+
+{{{
+XmlPath.config = new XmlPathConfig("UTF-8");
 }}}
 
 == Single path ==
