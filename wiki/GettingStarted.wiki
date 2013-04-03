@@ -13,7 +13,9 @@ Add the following dependency to your pom.xml:
 </dependency>
 }}}
 
-Note: You should place rest-assured before JUnit in your pom.xml dependency declaration in order to make sure that the correct version of Hamcrest is used. 
+Notes 
+  # You should place rest-assured before JUnit in your pom.xml dependency declaration in order to make sure that the correct version of Hamcrest is used. 
+  # REST Assured includes JsonPath and XmlPath as transitive dependencies
 
 === JsonPath ===
 {{{
