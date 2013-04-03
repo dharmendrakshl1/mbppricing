@@ -23,7 +23,6 @@ Notes
       <groupId>com.jayway.restassured</groupId>
       <artifactId>json-path</artifactId>
       <version>1.8.0</version>
-      <scope>test</scope>
 </dependency>
 }}}
 
@@ -33,7 +32,6 @@ Notes
       <groupId>com.jayway.restassured</groupId>
       <artifactId>xml-path</artifactId>
       <version>1.8.0</version>
-      <scope>test</scope>
 </dependency>
 }}}
 
