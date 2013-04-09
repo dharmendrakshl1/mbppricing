@@ -1,4 +1,6 @@
-  * 2012-11-14: REST Assured was presented at the [http://www.devoxx.com/display/DV12/Do+you+REST+Assured Devoxx] conference in Antwerp. 
+  * 2012-12-13: REST Assured will be presented at the [https://2013.con-fess.com/sessions/-/details/60/Do-you-REST-Assured Confess 2013] conference in Vienna in the beginning of April 2013. 
+  * 2012-11-14: REST Assured was presented at the 
+[http://www.devoxx.com/display/DV12/Do+you+REST+Assured Devoxx] conference in Antwerp. 
   * 2012-11-11: REST Assured [http://rest-assured.googlecode.com/files/rest-assured-1.7.1.zip 1.7.1] is released with bugs fixes found in the 1.7 release. See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for details.
   * 2012-10-11: REST Assured [http://rest-assured.googlecode.com/files/rest-assured-1.7.zip 1.7] is released with many updates including [http://code.google.com/p/rest-assured/wiki/Usage#Configuration object mapper configuration], [http://code.google.com/p/rest-assured/wiki/Usage#Custom custom object mappers], [http://code.google.com/p/rest-assured/wiki/Usage#Connection_Config connection configuration], support for the PATCH and OPTIONS verb and [http://github.com/jayway/rest-assured/raw/master/changelog.txt more]! You must also [http://rest-assured.googlecode.com/files/rest-assured-dependencies.zip download] the updated dependencies if you're not using Maven. See [ReleaseNotes17 release notes] for more info.
   * 2012-09-20: REST Assured will be presented at the [http://www.devoxx.com/display/DV12/Do+you+REST+Assured Devoxx] conference in Antwerp. 
