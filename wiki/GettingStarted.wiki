@@ -3,6 +3,7 @@
 Add the following dependency to your pom.xml:
 
 === REST Assured === 
+Includes JsonPath and XmlPath
 
 {{{
 <dependency>
@@ -18,6 +19,7 @@ Notes
   # REST Assured includes JsonPath and XmlPath as transitive dependencies
 
 === JsonPath ===
+Stand-alone JsonPath. Makes it easy to parse JSON documents.
 {{{
 <dependency>
       <groupId>com.jayway.restassured</groupId>
@@ -27,6 +29,7 @@ Notes
 }}}
 
 === XmlPath ===
+Stand-alone XmlPath. Makes it easy to parse XML documents.
 {{{
 <dependency>
       <groupId>com.jayway.restassured</groupId>
