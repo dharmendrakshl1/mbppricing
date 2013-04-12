@@ -1,5 +1,3 @@
-#REST Assured FAQ
-
 = FAQ =
 
   # Q: I'm running into exceptions like the one belong after having upgraded to REST Assured 1.8+
