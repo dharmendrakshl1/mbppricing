@@ -193,6 +193,8 @@ It's also possible to configure JsonPath statically so that all instances of Jso
 JsonPath.config = new JsonPathConfig("UTF-8");
 }}}
 
+You can read more about JsonPath at [http://www.jayway.com/2013/04/12/whats-new-in-rest-assured-1-8/ this blog].
+
 == XML (using `XmlPath`) == 
 You also have the corresponding functionality for XML using  [http://rest-assured.googlecode.com/svn/tags/1.8.0/apidocs/com/jayway/restassured/path/xml/XmlPath.html XmlPath]:
 {{{
@@ -218,6 +220,8 @@ It's also possible to configure XmlPath statically so that all instances of XmlP
 {{{
 XmlPath.config = new XmlPathConfig("UTF-8");
 }}}
+
+You can read more about XmlPath at [http://www.jayway.com/2013/04/12/whats-new-in-rest-assured-1-8/ this blog].
 
 == Single path ==
 If you only want to make a request and return a single path you can use a shortcut:
