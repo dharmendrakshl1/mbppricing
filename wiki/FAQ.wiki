@@ -1,0 +1,40 @@
+#REST Assured FAQ
+
+= FAQ =
+
+  # Q: I'm running into exceptions like the one belong after having upgraded to REST Assured 1.8+
+    {{{
+java.lang.IncompatibleClassChangeError: Found interface org.objectweb.asm.MethodVisitor, but class was expected
+	at org.codehaus.groovy.runtime.callsite.CallSiteGenerator.genConstructor(CallSiteGenerator.java:141)
+	at org.codehaus.groovy.runtime.callsite.CallSiteGenerator.genPojoMetaMethodSite(CallSiteGenerator.java:181)
+	at org.codehaus.groovy.runtime.callsite.CallSiteGenerator.compilePojoMethod(CallSiteGenerator.java:227)
+	at org.codehaus.groovy.reflection.CachedMethod.createPojoMetaMethodSite(CachedMethod.java:257)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.createCachedMethodSite(PojoMetaMethodSite.java:159)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.createPojoMetaMethodSite(PojoMetaMethodSite.java:148)
+	at groovy.lang.MetaClassImpl.createPojoCallSite(MetaClassImpl.java:3082)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.createPojoSite(CallSiteArray.java:129)
+...
+    }}}
+  A: This is because you have conflicting versions of [http://asm.ow2.org/ asm] in your classpath. Groovy depends on version 4 and something else in your classpath require asm 3. The solution is to exclude `groovy` form REST Assured and depend on `groovy-all` instead. If you're using Maven you can do like this:
+    {{{
+<dependency>
+    <groupId>com.jayway.restassured</groupId>
+    <artifactId>rest-assured</artifactId>
+    <version>${rest-assured.version}</version>
+    <exclusions>
+        <!-- Exclude Groovy because of classpath issue -->
+        <exclusion>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+        </exclusion>
+    </exclusions>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.codehaus.groovy</groupId>
+    <artifactId>groovy-all</artifactId>
+    <!-- Needs to be the same version that REST Assured depends on -->
+    <version>2.1.2</version>
+    <scope>test</scope>
+</dependency>
+    }}}
