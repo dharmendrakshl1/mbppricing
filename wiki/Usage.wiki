@@ -70,7 +70,7 @@ when().
 }}}
 
 == Example 2 - XML == 
-XML can be verified in a similar way. Image that a POST request to `http://localhost:8080/greetXML` returns:
+XML can be verified in a similar way. Imagine that a POST request to `http://localhost:8080/greetXML` returns:
 {{{
 <greeting>
    <firstName>{params("firstName")}</firstName>
