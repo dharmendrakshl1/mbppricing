@@ -38,7 +38,7 @@ java.lang.IncompatibleClassChangeError: Found interface org.objectweb.asm.Method
     }}}
 
 2. Q: How can I determine when a response path doesn't exist?
-    A: Imagine that we have a resource on "/json" that returns the following JSON response:
+    A: Imagine that we have a resource called "/json" that returns the following JSON response:
     {{{
 {
     "done": true,
