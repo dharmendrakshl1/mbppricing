@@ -1,6 +1,6 @@
 = FAQ =
 
-  # Q: I'm running into exceptions like the one below after having upgraded to REST Assured 1.8+
+  1. Q: I'm running into exceptions like the one below after having upgraded to REST Assured 1.8+
     {{{
 java.lang.IncompatibleClassChangeError: Found interface org.objectweb.asm.MethodVisitor, but class was expected
 	at org.codehaus.groovy.runtime.callsite.CallSiteGenerator.genConstructor(CallSiteGenerator.java:141)
@@ -36,3 +36,26 @@ java.lang.IncompatibleClassChangeError: Found interface org.objectweb.asm.Method
     <scope>test</scope>
 </dependency>
     }}}
+
+2. Q: How can I determine when a response path doesn't exist?
+    A: Imagine that we have a resource on "/json" that returns the following JSON response:
+    {{{
+{
+    "done": true,
+    "records": [
+        {
+            "Name": "Bob",
+            "Phone": null,
+            "CreatedDate": "2013-07-02T14:25:06Z",
+            "Id": "0ca00000piscd1bj"
+        }
+    ],
+    "size": 1
+}
+     }}}
+    To verify that `records` contains the attribute `Phone` (even though it's null) we can do like this:
+    {{{expect().body("records.any { it.containsKey('Phone') }", is(true)).when().get("/json");}}}
+    Likewise we can check that `records` doesn't contain an attribute called `x`:
+    {{{expect().body("records.any { it.containsKey('x') }", is(false)).when().get("/json");}}}
+
+   
