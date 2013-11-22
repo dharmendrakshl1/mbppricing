@@ -58,11 +58,11 @@ By default  you validate that price is equal to 12.12 as a float like this:
 expect().body("price", is(12.12f)).when().get("/price");
 }}}
 
-but if you like you can configure REST Assured to use a JsonPathConfig that returns all Json numbers as BigDecimal:
+but if you like you can configure REST Assured to use a JsonConfig that returns all Json numbers as BigDecimal:
 
 {{{
 given().
-        config(newConfig().jsonPathConfig(jsonPathConfig().numberReturnType(BIG_DECIMAL))).
+        config(newConfig().jsonConfig(jsonConfig().numberReturnType(BIG_DECIMAL))).
 expect().
         body("price", is(new BigDecimal(12.12)).
 when().
