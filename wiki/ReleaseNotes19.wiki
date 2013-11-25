@@ -13,7 +13,7 @@ String pageTitle = get("/index.html").htmlPath().getString("html.head.title");
   * It's now possible to use the Hamcrest XPath matcher with namespaces if XmlConfig in REST Assured is configured to be namespace aware, e.g.
     {{{
  given().
-           config(newConfig().xmlConfig(xmlConfig().with().namespaceAware(true))).
+          config(newConfig().xmlConfig(xmlConfig().with().namespaceAware(true))).
  expect().
           body(hasXPath("/db:package-database", namespaceContext)).
  when().
@@ -21,21 +21,21 @@ String pageTitle = get("/index.html").htmlPath().getString("html.head.title");
     }}}
   * Added namespace support for body expectations if the namespace is declared correctly, for example given the following XML:
     {{{
-      <foo xmlns:ns="http://localhost/">
-         <bar>sudo </bar>
-         <ns:bar>make me a sandwich!</ns:bar>
-      </foo>
+ <foo xmlns:ns="http://localhost/">
+    <bar>sudo </bar>
+    <ns:bar>make me a sandwich!</ns:bar>
+ </foo>
     }}}
     you can verify it like this:
     {{{
 given().
-              config(newConfig().xmlConfig(xmlConfig().declareNamespace("ns", "http://localhost/"))).
+          config(newConfig().xmlConfig(xmlConfig().declareNamespace("ns", "http://localhost/"))).
 expect().
-              body("bar.text()", equalTo("sudo make me a sandwich!")).
-              body(":bar.text()", equalTo("sudo ")).
-              body("ns:bar.text()", equalTo("make me a sandwich!")).
+          body("bar.text()", equalTo("sudo make me a sandwich!")).
+          body(":bar.text()", equalTo("sudo ")).
+          body("ns:bar.text()", equalTo("make me a sandwich!")).
 when().
-              get("/namespace-example");
+          get("/namespace-example");
     }}}
 == Non-backward compatible changes ==
   * RestAssuredConfig no longer accepts a JsonPathConfig, it now uses a JsonConfig object instead.
