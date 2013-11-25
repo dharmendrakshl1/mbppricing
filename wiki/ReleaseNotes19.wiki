@@ -21,4 +21,5 @@ String pageTitle = get("/index.html").htmlPath().getString("html.head.title");
 == Minor changes ==
   * Fixed issues that made an incorrect port being used under certain conditions
   * Fixed an issue where multi-valued query parameters defined in the URL now works. For example `get("/x?y=1&y=2")`
+  * Improved request logging so that query parameters are included in the complete path.
 See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for more details
