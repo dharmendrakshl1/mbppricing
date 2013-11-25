@@ -2,6 +2,10 @@
 
 == Highlights ==
   * It's now possible to configure the HTTP Client instance to be used by REST Assured when making requests. Use the HttpClientConfig and specify a http client factory if you want to do this. This makes it possible for some advanced configuration not exposed by the REST Assured API.
+  * The http client instance can now be reused between REST Assured requests. By default REST Assured creates a new instance for each "given" statement. To configure reuse do the following:
+    {{{
+RestAssured.config = newConfig().httpClient(httpClientConfig().reuseHttpClientInstance());
+    }}}
   * It's now possible to configure content decoders. Before GZIP and DEFLATE were always activated and there was no way to disable them. For example to remove GZIP but retain DEFLATE you can do the following:
    {{{
 given().config(newConfig().decoderConfig(decoderConfig().contentDecoders(DEFLATE))). ..
