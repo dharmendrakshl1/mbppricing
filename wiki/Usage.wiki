@@ -952,6 +952,26 @@ It's also possible to get the session id from the response object:
 String sessionId = get("/something").sessionId();
 }}}
 
+== Automatic session support ==
+As of version 1.9.0 you can use a [http://rest-assured.googlecode.com/svn/tags/1.9.0/apidocs/com/jayway/restassured/filter.session.SessionFilter.html session filter] to automatically capture and apply the session, for example:
+{{{
+SessionFilter sessionFilter = new SessionFilter();
+
+given().
+          auth().form("John", "Doe").
+          filter(sessionFilter).
+expect().
+          statusCode(200).
+when().
+          get("/formAuth");
+
+given().
+          filter(sessionFilter). // Reuse the same session filter instance to automatically apply the session id from the previous response
+expect().
+          statusCode(200).
+when().
+          get("/formAuth");
+}}}
 = SSL =
 In most situations SSL should just work out of the box thanks to the excellent work of HTTP Builder and HTTP Client. There are how ever some cases where you'll run into trouble. You may for example run into a SSLPeerUnverifiedException if the server is using an invalid certificate. If this happens you should create a Java keystore file and use it with REST Assured. It's not too difficult, first follow the guide [http://groovy.codehaus.org/modules/http-builder/doc/ssl.html here] and then use the keystore in Rest Assured like this:
 
