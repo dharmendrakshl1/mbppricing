@@ -44,7 +44,7 @@ when().
   }}}
   * Added support for sessions by applying the `com.jayway.restassured.filter.session.SessionFilter`, for example:
     {{{
- SessionFilter sessionFilter = new SessionFilter();
+SessionFilter sessionFilter = new SessionFilter();
 
 given().
           auth().form("John", "Doe").
