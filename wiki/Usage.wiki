@@ -103,6 +103,8 @@ with().parameters("firstName", "John", "lastName", "Doe").expect().body("greetin
 
 See [http://groovy.codehaus.org/Updating+XML+with+XmlSlurper this] link for more info about the syntax.
 
+== XPath ==
+
 You can also verify XML responses using x-path. For example:
 
 {{{
@@ -115,6 +117,8 @@ or
 expect().body(hasXPath("/greeting/firstName[text()='John']")).with().parameters("firstName", "John", "lastName", "Doe").post("/greetXML");
 
 }}}      
+
+== Schema and DTD validation ==
 
 XML response bodies can also be verified against an XML Schema (XSD) or DTD.
 <p>
