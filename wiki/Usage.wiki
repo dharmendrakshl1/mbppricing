@@ -1051,7 +1051,8 @@ RestAssured.config = newConfig().httpClient(httpClientConfig().reuseHttpClientIn
 
 You can also supply a custom HTTP Client instance by using the `httpClientFactory` method, for example:
 {{{
-RestAssured.config = newConfig().httpClient(httpClientConfig().httpClientFactory(new           HttpClientConfig.HttpClientFactory() {
+RestAssured.config = newConfig().httpClient(httpClientConfig().httpClientFactory(
+         new HttpClientConfig.HttpClientFactory() {
 
             @Override
             public AbstractHttpClient createHttpClient() {
