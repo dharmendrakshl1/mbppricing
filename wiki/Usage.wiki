@@ -235,7 +235,7 @@ REST Assured will automatically determine whether to use JsonPath or XmlPath bas
 String firstName = post("/greetXML?firstName=John&lastName=Doe").andReturn().xmlPath().getString("firstName");
 }}}
 
-Options are `xmlPath`, `jsonPath`and `htmlPath`.
+Options are `xmlPath`, `jsonPath` and `htmlPath`.
 
 == Headers, cookies, status etc ==
 
