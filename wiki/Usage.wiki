@@ -1038,10 +1038,26 @@ RestAssured.config = newConfig().connectionConfig(connectionConfig().closeIdleCo
 }}}
 
 == `Json Config` ==
-
-[http://rest-assured.googlecode.com/svn/tags/1.8.1/apidocs/com/jayway/restassured/path/json/config/JsonPathConfig.html JsonPathConfig] allows you to configure the JsonPath settings either when used by REST Assured or by [http://rest-assured.googlecode.com/svn/tags/1.8.1/apidocs/com/jayway/restassured/path/json/JsonPath.html JsonPath]. It let's you configure how JSON numbers should be treated.
+[http://rest-assured.googlecode.com/svn/tags/1.8.1/apidocs/com/jayway/restassured/path/json/config/JsonPathConfig.html JsonPathConfig] allows you to configure the Json settings either when used by REST Assured or by [http://rest-assured.googlecode.com/svn/tags/1.8.1/apidocs/com/jayway/restassured/path/json/JsonPath.html JsonPath]. It let's you configure how JSON numbers should be treated.
 {{{
-RestAssured.config = newConfig().jsoConfig(jsonConfig().numberReturnType(NumberReturnType.BIG_DECIMAL))
+RestAssured.config = newConfig().jsonConfig(jsonConfig().numberReturnType(NumberReturnType.BIG_DECIMAL))
+}}}
+
+== HTTP Client Config == 
+Let's you configure properties for the HTTP Client instance that REST Assured will be using when executing requests. By default REST Assured creates a new instance of http client for each "given" statement. To configure reuse do the following:
+{{{
+RestAssured.config = newConfig().httpClient(httpClientConfig().reuseHttpClientInstance());
+}}}
+
+You can also supply a custom HTTP Client instance by using the `httpClientFactory` method, for example:
+{{{
+RestAssured.config = newConfig().httpClient(httpClientConfig().httpClientFactory(new           HttpClientConfig.HttpClientFactory() {
+
+            @Override
+            public AbstractHttpClient createHttpClient() {
+                return new SystemDefaultHttpClient();
+            }
+        }));
 }}}
 
 = More info =
