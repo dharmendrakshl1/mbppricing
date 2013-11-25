@@ -140,7 +140,7 @@ or
 expect().body(hasXPath("/greeting/firstName[text()='John']")).with().parameters("firstName", "John", "lastName", "Doe").post("/greetXML");
 }}}      
 
-To use namespaces you need to enable them in the configuration, for example:
+To use namespaces in the XPath expression you need to enable them in the configuration, for example:
 {{{
 given().
         config(newConfig().xmlConfig(xmlConfig().with().namespaceAware(true))).
