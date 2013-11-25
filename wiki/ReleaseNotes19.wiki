@@ -26,6 +26,7 @@ String pageTitle = get("/index.html").htmlPath().getString("html.head.title");
 
 == Other notable changes ==
   * Fixed issues that made an incorrect port being used under certain conditions
+  * Namespaces are now included when pretty printing or logging XML.
 
 == Minor changes ==
   * Fixed an issue where multi-valued query parameters defined in the URL now works. For example `get("/x?y=1&y=2")`
