@@ -13,11 +13,11 @@ String pageTitle = get("/index.html").htmlPath().getString("html.head.title");
   * It's now possible to use the Hamcrest XPath matcher with namespaces if XmlConfig in REST Assured is configured to be namespace aware, e.g.
     {{{
  given().
-              config(newConfig().xmlConfig(xmlConfig().with().namespaceAware(true))).
+           config(newConfig().xmlConfig(xmlConfig().with().namespaceAware(true))).
  expect().
-              body(hasXPath("/db:package-database", namespaceContext)).
+          body(hasXPath("/db:package-database", namespaceContext)).
  when().
-              get("/package-db-xml");
+          get("/package-db-xml");
     }}}
   * Added namespace support for body expectations if the namespace is declared correctly, for example given the following XML:
     {{{
