@@ -970,7 +970,7 @@ given().
 expect().
           statusCode(200).
 when().
-          get("/formAuth");
+          get("/x");
 }}}
 
 To get session id caught by the `SessionFilter` you can do like this:
