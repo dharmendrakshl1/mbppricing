@@ -41,7 +41,6 @@ when().
   * RestAssuredConfig no longer accepts a JsonPathConfig, it now uses a JsonConfig object instead.
   * Getting cookies as a Map now returns the last value returned instead of the first one if multiple cookies with the same name are sent from the server to comply with the HTTP specification
 
-
 == Other notable changes ==
   * Fixed issues that made an incorrect port being used under certain conditions
   * Namespaces are now included when pretty printing or logging XML.
@@ -49,6 +48,10 @@ when().
   * Added ability to supply an XmlPathConfig instance when using the xmlPath() method from a REST Assured Response object. For example:
     {{{
 XmlPath xmlPath = get("/namespace-example").xmlPath(xmlPathConfig().with().declaredNamespace("ns", "http://localhost/"));
+    }}}
+  * Added ability to supply a JsonPathConfig instance when using the jsonPath() method from a REST Assured Response object. For example:
+    {{{
+JsonPath jsonPath = get("/namespace-example").jsonPath(jsonPathConfig().with().numberReturnType(BIG_DECIMAL));
     }}}
 
 == Minor changes ==
