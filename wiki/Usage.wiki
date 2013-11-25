@@ -1055,11 +1055,15 @@ RestAssured.config = newConfig().httpClient(httpClientConfig().httpClientFactory
          new HttpClientConfig.HttpClientFactory() {
 
             @Override
-            public AbstractHttpClient createHttpClient() {
+            public HttpClient createHttpClient() {
                 return new SystemDefaultHttpClient();
             }
         }));
 }}}
+
+*Note that in version 1.9.0 you need to supply an instance of `AbstractHttpClient`* 
+
+It's also possible to configure default parameters etc.
 
 = More info =
 For more information refer to the [http://rest-assured.googlecode.com/svn/tags/1.8.1/apidocs/index.html javadoc]:
