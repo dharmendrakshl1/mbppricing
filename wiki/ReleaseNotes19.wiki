@@ -46,7 +46,7 @@ when().
   * Fixed issues that made an incorrect port being used under certain conditions
   * Namespaces are now included when pretty printing or logging XML.
   * XmlPath returned from REST Assured Response now takes features, namespaces, charset etc into account.
-  * Added ability to supply an XmlPathConfig instance when using the xmlPath() method from a REST Assured Response object. For example :
+  * Added ability to supply an XmlPathConfig instance when using the xmlPath() method from a REST Assured Response object. For example:
     {{{
 XmlPath xmlPath = get("/namespace-example").xmlPath(xmlPathConfig().with().declaredNamespace("ns", "http://localhost/"));
     }}}
