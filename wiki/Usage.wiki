@@ -103,6 +103,29 @@ with().parameters("firstName", "John", "lastName", "Doe").expect().body("greetin
 
 See [http://groovy.codehaus.org/Updating+XML+with+XmlSlurper this] link for more info about the syntax.
 
+=== XML namespaces ===
+To make body expectations take namespaces into account you need to declare the namespaces using the [http://rest-assured.googlecode.com/svn/tags/1.9.0/apidocs/com/jayway/restassured/config/XmlConfig.html com.jayway.restassured.config.XmlConfig]. For example let's say that a resource called `namespace-example` located at `http://localhost:8080` returns the following XML:
+{{{
+<foo xmlns:ns="http://localhost/">
+  <bar>sudo </bar>
+  <ns:bar>make me a sandwich!</ns:bar>
+</foo>
+}}}
+
+You can then declare the `http://localhost/` uri and validate the response:
+{{{
+given().
+        config(newConfig().xmlConfig(xmlConfig().declareNamespace("test", "http://localhost/"))).
+expect().
+         body("bar.text()", equalTo("sudo make me a sandwich!")).
+         body(":bar.text()", equalTo("sudo ")).
+         body("test:bar.text()", equalTo("make me a sandwich!")).
+when().
+         get("/namespace-example");
+}}}
+
+The syntax follows Groovy's XmlSlurper syntax.
+
 == XPath ==
 
 You can also verify XML responses using x-path. For example:
