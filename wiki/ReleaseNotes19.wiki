@@ -26,8 +26,8 @@ String pageTitle = get("/index.html").htmlPath().getString("html.head.title");
     <ns:bar>make me a sandwich!</ns:bar>
  </foo>
     }}}
-    you can verify it like this:
-    {{{
+  you can verify it like this:
+  {{{
 given().
           config(newConfig().xmlConfig(xmlConfig().declareNamespace("ns", "http://localhost/"))).
 expect().
@@ -36,7 +36,7 @@ expect().
           body("ns:bar.text()", equalTo("make me a sandwich!")).
 when().
           get("/namespace-example");
-    }}}
+  }}}
 == Non-backward compatible changes ==
   * RestAssuredConfig no longer accepts a JsonPathConfig, it now uses a JsonConfig object instead.
   * Getting cookies as a Map now returns the last value returned instead of the first one if multiple cookies with the same name are sent from the server to comply with the HTTP specification
