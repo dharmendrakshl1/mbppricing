@@ -10,6 +10,15 @@ given().config(newConfig().decoderConfig(decoderConfig().contentDecoders(DEFLATE
 String pageTitle = get("/index.html").htmlPath().getString("html.head.title");
     }}}
   * URL encoding (and disabling of URL encoding) has been completely re-written and will now work better
+  * It's now possible to use the Hamcrest XPath matcher with namespaces if XmlConfig in REST Assured is configured to be namespace aware, e.g.
+    {{{
+ given().
+              config(newConfig().xmlConfig(xmlConfig().with().namespaceAware(true))).
+ expect().
+              body(hasXPath("/db:package-database", namespaceContext)).
+ when().
+              get("/package-db-xml");
+    }}}
 == Non-backward compatible changes ==
   * RestAssuredConfig no longer accepts a JsonPathConfig, it now uses a JsonConfig object instead.
   * Getting cookies as a Map now returns the last value returned instead of the first one if multiple cookies with the same name are sent from the server to comply with the HTTP specification
