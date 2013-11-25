@@ -1,7 +1,7 @@
 = Release Notes for REST Assured 1.9.0 =
 
 == Highlights ==
-  * It's now possible to configure content decoders. Before GZIP and DEFLATE were always activated and there was no way to disable them. It's now possible to configure which to use, for example to remove GZIP but retain DEFLATE you can do the following:
+  * It's now possible to configure content decoders. Before GZIP and DEFLATE were always activated and there was no way to disable them. For example to remove GZIP but retain DEFLATE you can do the following:
    {{{
 given().config(newConfig().decoderConfig(decoderConfig().contentDecoders(DEFLATE))). ..
    }}}
