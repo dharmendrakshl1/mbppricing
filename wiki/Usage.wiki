@@ -126,7 +126,7 @@ when().
 
 The syntax follows Groovy's XmlSlurper syntax.
 
-== XPath ==
+=== XPath ===
 
 You can also verify XML responses using x-path. For example:
 
@@ -152,7 +152,7 @@ when().
 
 Where `namespaceContext` is an instance of [http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/NamespaceContext.html javax.xml.namespace.NamespaceContext].
 
-== Schema and DTD validation ==
+=== Schema and DTD validation ===
 
 XML response bodies can also be verified against an XML Schema (XSD) or DTD.
 <p>
