@@ -115,8 +115,19 @@ or
 
 {{{
 expect().body(hasXPath("/greeting/firstName[text()='John']")).with().parameters("firstName", "John", "lastName", "Doe").post("/greetXML");
-
 }}}      
+
+To use namespaces you need to enable them in the configuration, for example:
+{{{
+given().
+        config(newConfig().xmlConfig(xmlConfig().with().namespaceAware(true))).
+expect().
+         body(hasXPath("/db:package-database", namespaceContext)).
+when().
+         get("/package-db-xml");
+}}}
+
+Where `namespaceContext` is an instance of [http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/NamespaceContext.html javax.xml.namespace.NamespaceContext].
 
 == Schema and DTD validation ==
 
