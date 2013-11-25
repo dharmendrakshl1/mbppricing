@@ -37,6 +37,25 @@ expect().
 when().
           get("/namespace-example");
   }}}
+  * Added support for sessions by applying the `com.jayway.restassured.filter.session.SessionFilter`, for example:
+    {{{
+ SessionFilter sessionFilter = new SessionFilter();
+
+given().
+          auth().form("John", "Doe").
+          filter(sessionFilter).
+expect().
+          statusCode(200).
+when().
+          get("/formAuth");
+
+given().
+          filter(sessionFilter). // Reuse the same session filter instance to automatically apply the session id from the previous response
+expect().
+          statusCode(200).
+when().
+          get("/formAuth");
+    }}}
 == Non-backward compatible changes ==
   * RestAssuredConfig no longer accepts a JsonPathConfig, it now uses a JsonConfig object instead.
   * Getting cookies as a Map now returns the last value returned instead of the first one if multiple cookies with the same name are sent from the server to comply with the HTTP specification
