@@ -1,8 +1,12 @@
 = Release Notes for REST Assured 1.9.0 =
 
 == Highlights ==
-
+  * It's now possible to configure content decoders. Before GZIP and DEFLATE were always activated and there was no way to disable them. It's now possible to configure which to use, for example to remove GZIP but retain DEFLATE you can do the following:
+   {{{
+	  given().config(newConfig().decoderConfig(decoderConfig().contentDecoders(DEFLATE))). ..
+   }}}
 == Non-backward compatible changes ==
+  * RestAssuredConfig no longer accepts a JsonPathConfig, it now uses a JsonConfig object instead.
   * Getting cookies as a Map now returns the last value returned instead of the first one if multiple cookies with the same name are sent from the server to comply with the HTTP specification
 
 
