@@ -5,6 +5,10 @@
    {{{
 given().config(newConfig().decoderConfig(decoderConfig().contentDecoders(DEFLATE))). ..
    }}}
+  * Added method `htmlPath` to REST Assured Response which allows you to easily get values from an HTML page:
+    {{{
+String pageTitle = get("/index.html").htmlPath().getString("html.head.title");
+    }}}
 == Non-backward compatible changes ==
   * RestAssuredConfig no longer accepts a JsonPathConfig, it now uses a JsonConfig object instead.
   * Getting cookies as a Map now returns the last value returned instead of the first one if multiple cookies with the same name are sent from the server to comply with the HTTP specification
