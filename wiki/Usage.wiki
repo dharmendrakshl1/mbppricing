@@ -933,7 +933,7 @@ You can also set a default root path using:
 RestAssured.rootPath = "x.y";
 }}}
 
-In more advanced use cases it may also possible to append additional root arguments to existing root arguments. To do this you can use the `appendRoot` method, for example:
+In more advanced use cases it may also be useful to append additional root arguments to existing root arguments. To do this you can use the `appendRoot` method, for example:
 {{{
 expect().
          root("store.%s", withArgs("book")).
