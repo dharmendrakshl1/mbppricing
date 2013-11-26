@@ -958,8 +958,8 @@ Another usage is if you have complex [http://code.google.com/p/rest-assured/wiki
 {{{
 expect().
          root("filters.filterConfig[%d].filterConfigGroups.find { it.name == 'GroupName' }.includes").
-         body("", withArgs(0), hasItem("first")).
-         body("", withArgs(1), hasItem("second")).
+         body(withArgs(0), hasItem("first")).
+         body(withArgs(1), hasItem("second")).
          ..
 }}}
 
