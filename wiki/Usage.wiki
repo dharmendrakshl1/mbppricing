@@ -721,7 +721,7 @@ By default REST Assured will scan the classpath to find various object mappers. 
 given().body(myJavaObject, myObjectMapper).when().post("..")
 }}}
 
-or you can defined it statically once and for all:
+or you can define it statically once and for all:
 {{{
 RestAssured.config = RestAssuredConfig.config().objectMapperConfig(new ObjectMapperConfig(myObjectMapper));
 }}}
