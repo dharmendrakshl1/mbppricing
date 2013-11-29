@@ -12,12 +12,12 @@ given().
         contentType(JSON).
         body(dto).
 when().
-         post("/myresource").
+        post("/myresource").
 then().
-         statusCode(200).
-         header("headerName", not(nullValue())).
-         body("x.y", equalTo("y")).
-         body("x.z", equalTo("z"));
+        statusCode(200).
+        header("headerName", not(nullValue())).
+        body("x.y", equalTo("y")).
+        body("x.z", equalTo("z"));
     }}}
 
 == Other notable changes ==
