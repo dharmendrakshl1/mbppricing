@@ -37,8 +37,16 @@ Response response = get(myUri);
 RestAssured.baseURI = "http://localhost:8080/hello";
 String y = get().path("x.y");
     }}}
-
+  * Added static method `when` to `com.jayway.restassured.RestAssured` that allows you to write specifications without the use of parameters, headers etc. For example:
+    {{{
+when().
+        get("/x").
+then().
+        body("x.y.z1", equalTo("Z1")).
+        body("x.y.z2", equalTo("Z2"));
+}}}
 == Minor changes ==
+  * It's now possible to call asString() on a Response object after asByteArray() has been called and vice versa.
   * Fixed so that JsonPath and XmlPath and path expressions work after the "prettyPrint" and "print" methods have been called on a Response instance.
   * Fixed several regression bugs introduce with version 1.9.0.
 
