@@ -9,7 +9,7 @@ Includes JsonPath and XmlPath
 <dependency>
       <groupId>com.jayway.restassured</groupId>
       <artifactId>rest-assured</artifactId>
-      <version>2.0.0</version>
+      <version>2.0.1</version>
       <scope>test</scope>
 </dependency>
 }}}
@@ -24,7 +24,7 @@ Stand-alone JsonPath. Makes it easy to parse JSON documents.
 <dependency>
       <groupId>com.jayway.restassured</groupId>
       <artifactId>json-path</artifactId>
-      <version>2.0.0</version>
+      <version>2.0.1</version>
 </dependency>
 }}}
 
@@ -34,12 +34,12 @@ Stand-alone XmlPath. Makes it easy to parse XML documents.
 <dependency>
       <groupId>com.jayway.restassured</groupId>
       <artifactId>xml-path</artifactId>
-      <version>2.0.0</version>
+      <version>2.0.1</version>
 </dependency>
 }}}
 
 == Non-maven users ==
-Download [http://rest-assured.googlecode.com/files/rest-assured-2.0.0-dist.zip REST Assured], [http://rest-assured.googlecode.com/files/xml-path-2.0.0-dist.zip XmlPath] and/or [http://rest-assured.googlecode.com/files/json-path-2.0.0-dist.zip JsonPath]. Extract the distribution zip file and put the jar files in your class-path.
+Download [http://rest-assured.googlecode.com/files/rest-assured-2.0.1-dist.zip REST Assured], [http://rest-assured.googlecode.com/files/xml-path-2.0.1-dist.zip XmlPath] and/or [http://rest-assured.googlecode.com/files/json-path-2.0.1-dist.zip JsonPath]. Extract the distribution zip file and put the jar files in your class-path.
 
 = Static imports =
        
