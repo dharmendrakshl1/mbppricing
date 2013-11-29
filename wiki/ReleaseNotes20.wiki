@@ -27,6 +27,32 @@ then().
         body("x.y.z1", equalTo("Z1")).
         body("x.y.z2", equalTo("Z2"));
     }}}
+  * You can extract values from the response or return the response instance itself after you've done validating the response by using the `extract` method. This is useful for example if you want to use values from the response in sequent requests. For example given that a resource called `title` returns the following JSON:
+    {{{
+ {
+     "title" : "My Title",
+      "_links": {
+              "self": { "href": "/title" },
+              "next": { "href": "/title?page=2" }
+           }
+ }
+    }}}
+  and you want to validate that content type is equal to `JSON` and the title is equal to `My Title`
+but you also want to extract the link to the `next` title to use that in a subsequent request. This is how:
+    {{{
+String nextTitleLink =
+given().
+        param("param_name", "param_value").
+when().
+        get("/title").
+then().
+        contentType(JSON).
+        body("title", equalTo("My Title")).
+extract().
+        path("_links.next.href");
+
+get(nextTitleLink). ..
+    }}}
 == Other notable changes ==
   * Fixed so that the path method in the Response can be invoked multiple times, for example:
     {{{
