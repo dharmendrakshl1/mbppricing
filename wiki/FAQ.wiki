@@ -55,11 +55,11 @@ java.lang.IncompatibleClassChangeError: Found interface org.objectweb.asm.Method
      }}}
     To verify that `records` contains the attribute `Phone` (even though it's null) we can do like this:
     {{{
-expect().body("records.any { it.containsKey('Phone') }", is(true)).when().get("/json");
+get("/json").then().assertThat().body("records.any { it.containsKey('Phone') }", is(true));
     }}}
     Likewise we can check that `records` doesn't contain an attribute called `x`:
     {{{
-expect().body("records.any { it.containsKey('x') }", is(false)).when().get("/json");
+get("/json").then().assertThat().body("records.any { it.containsKey('x') }", is(false));
     }}}
 
    
