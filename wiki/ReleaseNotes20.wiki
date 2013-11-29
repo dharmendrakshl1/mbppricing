@@ -9,16 +9,16 @@ get("/x").then().assertThat().body("x.y", equalTo("z"));
   or using the parameters etc:
     {{{
 given().
-                contentType(JSON).
+           contentType(JSON).
 
-                body(dto).
+           body(dto).
 when().
                 post("/myresource").
 then().
                 statusCode(200).
                 header("headerName", not(nullValue())).
-                body("x.y", equalTo("y").
-                body("x.z", equalTo("z");
+                body("x.y", equalTo("y")).
+                body("x.z", equalTo("z"));
     }}}
 
 == Other notable changes ==
