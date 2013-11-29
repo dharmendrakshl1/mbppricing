@@ -1,0 +1,29 @@
+= Release Notes for REST Assured 2.0.0 =
+
+== Highlights ==
+* Given-When-Then syntax! This means that assertions can be defined at the end of the expression. For example:
+    {{{
+get("/x").then().assertThat().body("x.y", equalTo("z"));
+    }}}
+
+  or using the parameters etc:
+    {{{
+given().
+                contentType(JSON).
+
+                body(dto).
+when().
+                post("/myresource").
+then().
+                statusCode(200).
+                header("headerName", not(nullValue())).
+                body("x.y", equalTo("y").
+                body("x.z", equalTo("z");
+    }}}
+
+== Other notable changes ==
+
+== Minor changes ==
+* Fixed several regression bugs introduce with version 1.9.0.
+
+See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for more details
