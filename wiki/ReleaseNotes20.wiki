@@ -37,8 +37,7 @@ then().
            }
  }
     }}}
-  and you want to validate that content type is equal to `JSON` and the title is equal to `My Title`
-but you also want to extract the link to the `next` title to use that in a subsequent request. This is how:
+  and you want to validate that content type is equal to `JSON` and the title is equal to `My Title` but you also want to extract the link to the `next` title to use that in a subsequent request. This is how:
     {{{
 String nextTitleLink =
 given().
