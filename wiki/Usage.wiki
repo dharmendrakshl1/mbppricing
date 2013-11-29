@@ -819,9 +819,10 @@ or using a [http://code.google.com/p/rest-assured/wiki/Usage#Specification_Re-us
 By default REST assured assumes host localhost and port 8080 when doing a request. If you want a different port you can do:              
 {{{                                                                                                                                    
 given().port(80). ..
-}}}                                                                                                                                   
-or simply:                                                                                                                               
-{{{                                                                                                       ..when().get("http://myhost.org:80/doSomething");
+}}}
+or simply:
+{{{
+..when().get("http://myhost.org:80/doSomething");
 }}}
 You can also change the default base URI, base path, port and authentication scheme for all subsequent requests:
 {{{
