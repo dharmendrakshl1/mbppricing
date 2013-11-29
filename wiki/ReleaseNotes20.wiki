@@ -32,6 +32,11 @@ float maxPrice = response.path("store.book.price.max()");
 URI myUri = new URI(..)
 Response response = get(myUri);
     }}}
+  * Added possibility to call request methods without any parameters. This is useful if you want to call the root resource. For example:
+    {{{
+RestAssured.baseURI = "http://localhost:8080/hello";
+String y = get().path("x.y");
+    }}}
 
 == Minor changes ==
   * Fixed so that JsonPath and XmlPath and path expressions work after the "prettyPrint" and "print" methods have been called on a Response instance.
