@@ -6,7 +6,7 @@
 get("/x").then().assertThat().body("x.y", equalTo("z"));
     }}}
 
-  or using the parameters etc:
+or using the parameters etc:
     {{{
 given().
                 contentType(JSON).
