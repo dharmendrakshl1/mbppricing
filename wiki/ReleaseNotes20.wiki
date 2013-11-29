@@ -19,6 +19,12 @@ then().
         body("x.y", equalTo("y")).
         body("x.z", equalTo("z"));
     }}}
+  * Fixed so that the path method in the Response can be invoked multiple times, for example:
+    {{{
+Response response = get("/jsonStore");
+float minPrice = response.path("store.book.price.min()");
+float maxPrice = response.path("store.book.price.max()");
+    }}}
 
 == Other notable changes ==
 
