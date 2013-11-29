@@ -19,16 +19,22 @@ then().
         body("x.y", equalTo("y")).
         body("x.z", equalTo("z"));
     }}}
+
+== Other notable changes ==
   * Fixed so that the path method in the Response can be invoked multiple times, for example:
     {{{
 Response response = get("/jsonStore");
 float minPrice = response.path("store.book.price.min()");
 float maxPrice = response.path("store.book.price.max()");
     }}}
-
-== Other notable changes ==
+  * Added support for performing requests with URI's and URL's, for example:
+    {{{
+URI myUri = new URI(..)
+Response response = get(myUri);
+    }}}
 
 == Minor changes ==
+  * Fixed so that JsonPath and XmlPath and path expressions work after the "prettyPrint" and "print" methods have been called on a Response instance.
   * Fixed several regression bugs introduce with version 1.9.0.
 
 See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for more details
