@@ -1,7 +1,7 @@
 = Release Notes for REST Assured 2.0.0 =
 
 == Highlights ==
-  * Given-When-Then syntax! This means that assertions can be defined at the end of the expression. For example:
+  * Introducing support for Given-When-Then expressions! This means that assertions can be defined at the end of the expression. For example:
     {{{
 get("/x").then().assertThat().body("x.y", equalTo("z"));
     }}}
