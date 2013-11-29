@@ -267,6 +267,8 @@ int lottoId = jsonPath.getInt("lottoId");
 List<Integer> winnerIds = jsonPath.get("winners.winnderId");
 }}}
 
+Note that you can use `JsonPath` standalone without depending on REST Assured, see [GettingStarted getting started guide] for more info on this.
+
 === `JsonPath` Configuration === 
 You can configure object de-serializers etc for JsonPath by configuring it, for example:
 {{{
