@@ -821,7 +821,7 @@ By default REST assured assumes host localhost and port 8080 when doing a reques
 given().port(80). ..
 }}}                                                                                                                                   
 or simply:                                                                                                                               
-{{{                                                                                                       .. when().get("http://myhost.org:80/doSomething");
+{{{                                                                                                       ..when().get("http://myhost.org:80/doSomething");
 }}}
 You can also change the default base URI, base path, port and authentication scheme for all subsequent requests:
 {{{
