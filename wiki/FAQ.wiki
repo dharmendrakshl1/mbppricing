@@ -36,7 +36,13 @@ java.lang.IncompatibleClassChangeError: Found interface org.objectweb.asm.Method
     <scope>test</scope>
 </dependency>
     }}}
-
+  If you're using Gradle do like this:
+    {{{
+testCompile (group: 'com.jayway.restassured', name: 'rest-assured', version:'2.2.0') {
+        exclude(module: 'groovy')
+}
+testCompile group: 'org.codehaus.groovy', name: 'groovy-all', version:'2.2.0'
+}}}
 2. Q: How can I determine when a response path doesn't exist?
     A: Imagine that we have a resource called "/json" that returns the following JSON response:
     {{{
