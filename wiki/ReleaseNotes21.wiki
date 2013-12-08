@@ -85,6 +85,14 @@ expect().contentType(ContentType.JSON).body("error", equalTo(null)).when().get("
     {{{
     RestAssured.authentication = certificate(certUrl, password, certAuthSettings().with().port(435));
     }}}
+  * Removed the following methods from the AuthenticationSpecification API: 
+    * `certificate(String certURL, String password, String certType, int port)`
+    * `certificate(String certURL, String password, String certType, int port, KeystoreProvider trustStoreProvider, boolean checkServerHostname)`
+    * `certificate(String certURL, String password, String certType, int port, KeystoreProvider trustStoreProvider)`. 
+    They are replaced by the `certificate(String certURL, String password, CertificateAuthSettings certificateAuthSettings)` method. For example:
+    {{{
+ given().auth().certificate(certUrl, password, certAuthSettings().with().port(435)). ..
+    }}}
 
 == Minor changes ==
 See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for more details.
