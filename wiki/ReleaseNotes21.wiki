@@ -69,7 +69,7 @@ get("/products").then().assertThat().body(matchesJsonSchemaInClasspath("products
     {{{
  given().auth().certificate(certUrl, password, certAuthSettings().using().allowAllHostnames(). ..
     }}}
-  * Added [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/SSLConfig.html SSLConfig] which allows you to better configure SSL configuration such as KeyStore and host name verification strategies. It also much simpler allow for all host names (when a server has a bad certificate specifying an invalid host name). Instead of having to create and import a KeyStore you can now do:
+  * Added [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/SSLConfig.html SSLConfig] which allows you to better configure SSL configuration such as KeyStore and host name verification strategies. It's also much simpler to allow all host names (when a server has a bad certificate specifying an invalid host name). Instead of having to create and import a KeyStore you can now do:
     {{{
 RestAssured.config = newConfig().sslConfig(sslConifg().allowAllHostnames());
     }}}
