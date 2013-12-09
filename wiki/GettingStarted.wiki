@@ -45,6 +45,7 @@ If you want to validate that a JSON response conforms to a [http://json-schema.o
       <groupId>com.jayway.restassured</groupId>
       <artifactId>json-schema-validator</artifactId>
       <version>2.1.0</version>
+      <scope>test</scope>
 </dependency>
 }}}
 
