@@ -75,7 +75,7 @@ get("/products").then().assertThat().body(matchesJsonSchemaInClasspath("products
     {{{
 expect().contentType(ContentType.JSON).body("error", equalTo(null)).when().get("/statusCode409WithNoBody"); // This will now throw assertion error
     }}}
-  * Changed default response content charset from ISO-8859-1 to system default charset. The reason for this that most users would probably expect the system default charset. To change the behaviour use the [[http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/DecoderConfig.html DecoderConfig].
+  * Changed default response content charset from ISO-8859-1 to system default charset. The reason for this that most users would probably expect the system default charset. To change the behaviour use the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/DecoderConfig.html DecoderConfig].
   * Changed default request content charset from ISO-8859-1 to system default charset. The reason for this that most users would probably expect the system default charset. To change the behaviour use the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/EncoderConfig.html EncoderConfig].
   * Removed the following methods from the RestAssured and AuthenticationSpecification API: 
     * `certificate(String certURL, String password, String certType, int port, KeystoreProvider trustStoreProvider)`
