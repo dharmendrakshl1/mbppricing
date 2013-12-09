@@ -67,7 +67,7 @@ get("/products").then().assertThat().body(matchesJsonSchemaInClasspath("products
     }}}
   * Added support for disabling hostname verification during certificate authentication by using the CertificateAuthSettings:
     {{{
- given().auth().certificate(certUrl, password, certAuthSettings().with().checkServerHostname(false). ..
+ given().auth().certificate(certUrl, password, certAuthSettings().using().allowAllHostnames(). ..
     }}}
 
 ==Non-backward compatible changes ==
@@ -77,20 +77,24 @@ expect().contentType(ContentType.JSON).body("error", equalTo(null)).when().get("
     }}}
   * Changed default response content charset from ISO-8859-1 to system default charset. The reason for this that most users would probably expect the system default charset. To change the behaviour use the `DecoderConfig`.
   * Changed default request content charset from ISO-8859-1 to system default charset. The reason for this that most users would probably expect the system default charset. To change the behaviour use the `EncoderConfig`.
-  * Removed the following methods from the RestAssured API: 
-    * `certificate(String certURL, String password, String certType, int port)` 
+  * Removed the following methods from the RestAssured and AuthenticationSpecification API: 
     * `certificate(String certURL, String password, String certType, int port, KeystoreProvider trustStoreProvider)`
   They are replaced by the `certificate(String certURL, String password, CertificateAuthSettings certificateAuthSettings)` method. For example:
     {{{
     RestAssured.authentication = certificate(certUrl, password, certAuthSettings().with().port(435));
     }}}
-  * Removed the following methods from the AuthenticationSpecification API: 
-    * `certificate(String certURL, String password, String certType, int port)`
-    * `certificate(String certURL, String password, String certType, int port, KeystoreProvider trustStoreProvider)`. 
-    They are replaced by the `certificate(String certURL, String password, CertificateAuthSettings certificateAuthSettings)` method. For example:
+    and:
     {{{
  given().auth().certificate(certUrl, password, certAuthSettings().with().port(435)). ..
     }}}
+  * Removed static method "RestAssured.keystore()". You can now get the keystore settings from the SSL configuration instead.
+  * Removed the `com.jayway.restassured.authentication.KeyStoreProvider` interface. The `KeyStoreProvider` was actually NOT used to create a KeyStore but rather a trust store. To specify the trust store after this change use the SSLConfig or certificate authentication.
+  * All `keystore` related methods in the RestAssured API now returns `void` instead of `KeyStoreSpec`.
+  * Removed method "RestAssured.keyStore()". If you want to get the configured "keystore" configuration you can now call "RestAssured.config().getSSLConfig();".
+
+== Deprecations ==
+    * Deprecated `RestAssured#certificate(String certURL, String password, String certType, int port)` 
+    * Deprecated `AuthenticationSpecification#certificate(String certURL, String password, String certType, int port)` 
 
 == Minor changes ==
 See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for more details.
