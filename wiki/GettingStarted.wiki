@@ -62,5 +62,9 @@ In order to use REST assured effectively it's recommended to statically import m
   * `com.jayway.restassured.matcher.RestAssuredMatchers.*`
   * `org.hamcrest.Matchers.*`
 
+If you want to use [http://json-schema.org/ Json Schema] validation you should also statically import these methods:
+  * `com.jayway.restassured.module.jsv.JsonSchemaValidator.*`
+Refer to [https://code.google.com/p/rest-assured/wiki/Usage#JSON_Schema_validation Json Schema Validation] documentation for more info.
+
 = Documentation =
 When you've successfully downloaded and configured REST Assured in your classpath please refer to the [Usage user guide] for examples.
