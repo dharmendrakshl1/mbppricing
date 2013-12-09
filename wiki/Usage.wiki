@@ -1148,7 +1148,7 @@ String response = get("/rest/api/2.0.alpha1/search?jql={q}", query);
 }}}
 
 = Detailed configuration =
-Detailed configuration is provided by the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/RestAssuredConfig.html RestAssuredConfig] instance with which you can configure the parameters of [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/HttpClientConfig.html HTTP Client] as well as [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/RedirectConfig.html Redirect], [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/LogConfig.html Log], [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/EncoderConfig.html Encoder], [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/DecoderConfig.html Decoder], [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/SessionConfig.html Session], [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/ObjectMapperConfig.html ObjectMapper] and [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/ConnectionConfig.html Connection] settings. Examples:
+Detailed configuration is provided by the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/RestAssuredConfig.html RestAssuredConfig] instance with which you can configure the parameters of [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/HttpClientConfig.html HTTP Client] as well as [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/RedirectConfig.html Redirect], [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/LogConfig.html Log], [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/EncoderConfig.html Encoder], [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/DecoderConfig.html Decoder], [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/SessionConfig.html Session], [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/ObjectMapperConfig.html ObjectMapper], [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/ConnectionConfig.html Connection] and [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/SSLConfig.html SSL] settings. Examples:
 
 For a specific request:
 {{{
@@ -1228,6 +1228,13 @@ RestAssured.config = newConfig().httpClient(httpClientConfig().httpClientFactory
 *Note that currently you need to supply an instance of `AbstractHttpClient`.* 
 
 It's also possible to configure default parameters etc.
+
+== SSL Config ==
+The [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/SSLConfig.html SSLConfig] allows you to specify more advanced SSL configuration such as truststore, keystore type and host name verifier. For example:
+{{{
+RestAssured.config = RestAssured.config().sslConfig(sslConfig().with().keystoreType(<type>).and().strictHostnames();
+}}}
+
 
 = More info =
 For more information refer to the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/index.html javadoc]:
