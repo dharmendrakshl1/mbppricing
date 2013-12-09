@@ -52,7 +52,7 @@ If you want to validate that a JSON response conforms to a [http://json-schema.o
 Refer to the [https://code.google.com/p/rest-assured/wiki/Usage#JSON_Schema_validation documentation] for more info.
 
 == Non-maven users ==
-Download [http://rest-assured.googlecode.com/files/rest-assured-2.0.1-dist.zip REST Assured], [http://rest-assured.googlecode.com/files/xml-path-2.0.1-dist.zip XmlPath] and/or [http://rest-assured.googlecode.com/files/json-path-2.0.1-dist.zip JsonPath]. Extract the distribution zip file and put the jar files in your class-path.
+Download [http://rest-assured.googlecode.com/files/rest-assured-2.0.1-dist.zip REST Assured] and [https://rest-assured.googlecode.com/files/json-schema-validator-2.1.0-dist.zip Json Schema Validator] (optional). You can also download [http://rest-assured.googlecode.com/files/xml-path-2.0.1-dist.zip XmlPath] and/or [http://rest-assured.googlecode.com/files/json-path-2.0.1-dist.zip JsonPath] separately if you don't need REST Assured. Extract the distribution zip file and put the jar files in your class-path.
 
 = Static imports =
        
