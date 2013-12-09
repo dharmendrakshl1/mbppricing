@@ -71,6 +71,69 @@ then().
         body("price", is(new BigDecimal(12.12));
 }}}
 
+=== JSON Schema validation ===
+
+From version `2.1.0` REST Assured has support for [http://json-schema.org/ Json Schema] validation. For example given the following schema located in the classpath as `products-schema.json`: 
+{{{
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Product set",
+    "type": "array",
+    "items": {
+        "title": "Product",
+        "type": "object",
+        "properties": {
+            "id": {
+                "description": "The unique identifier for a product",
+                "type": "number"
+            },
+            "name": {
+                "type": "string"
+            },
+            "price": {
+                "type": "number",
+                "minimum": 0,
+                "exclusiveMinimum": true
+            },
+            "tags": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+            },
+            "dimensions": {
+                "type": "object",
+                "properties": {
+                    "length": {"type": "number"},
+                    "width": {"type": "number"},
+                    "height": {"type": "number"}
+                },
+                "required": ["length", "width", "height"]
+            },
+            "warehouseLocation": {
+                "description": "Coordinates of the warehouse with the product",
+                "$ref": "http://json-schema.org/geo"
+            }
+        },
+        "required": ["id", "name", "price"]
+    }
+}
+}}}
+you can validate that a resource (`/products`) conforms with the schema:
+{{{
+get("/products").then().assertThat().body(matchesJsonSchemaInClasspath("products-schema.json"));
+}}}
+`matchesJsonSchemaInClasspath` is statically imported from `com.jayway.restassured.module.jsv.JsonSchemaValidator` and it's recommended to statically import all methods from this class. However in order to use it you need to depend on the `json-schema-validator` module by either downloading it from the download page or add the following dependency from Maven:
+{{{
+<dependency>
+    <groupId>com.jayway.restassured</groupId>
+    <artifactId>json-schema-validator</artifactId>
+    <version>2.1.0</version>
+</dependency>
+}}}
+
 == Example 2 - XML == 
 XML can be verified in a similar way. Imagine that a POST request to `http://localhost:8080/greetXML` returns:
 {{{
