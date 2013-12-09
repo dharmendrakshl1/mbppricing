@@ -1112,7 +1112,7 @@ You can also define a keystore in a re-usable [http://code.google.com/p/rest-ass
 
 You can find a working example [https://github.com/jayway/rest-assured/blob/master/examples/rest-assured-itest-java/src/test/java/com/jayway/restassured/itest/java/SSLTest.java here].
 
-For more advanced SSL Configuration refer to ..
+For more advanced SSL Configuration refer to the [https://code.google.com/p/rest-assured/wiki/Usage#SSL_Config SSL Configuration] section.
 
 == SSL invalid hostname ==
 If the certificate is specifying an invalid hostname you don't need to create and import a keystore. As of version `2.1.0` you can do:
