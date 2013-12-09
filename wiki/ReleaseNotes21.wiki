@@ -79,7 +79,6 @@ expect().contentType(ContentType.JSON).body("error", equalTo(null)).when().get("
   * Changed default request content charset from ISO-8859-1 to system default charset. The reason for this that most users would probably expect the system default charset. To change the behaviour use the `EncoderConfig`.
   * Removed the following methods from the RestAssured API: 
     * `certificate(String certURL, String password, String certType, int port)` 
-    * `certificate(String certURL, String password, String certType, int port, KeystoreProvider trustStoreProvider, boolean checkServerHostname)`
     * `certificate(String certURL, String password, String certType, int port, KeystoreProvider trustStoreProvider)`
   They are replaced by the `certificate(String certURL, String password, CertificateAuthSettings certificateAuthSettings)` method. For example:
     {{{
@@ -87,7 +86,6 @@ expect().contentType(ContentType.JSON).body("error", equalTo(null)).when().get("
     }}}
   * Removed the following methods from the AuthenticationSpecification API: 
     * `certificate(String certURL, String password, String certType, int port)`
-    * `certificate(String certURL, String password, String certType, int port, KeystoreProvider trustStoreProvider, boolean checkServerHostname)`
     * `certificate(String certURL, String password, String certType, int port, KeystoreProvider trustStoreProvider)`. 
     They are replaced by the `certificate(String certURL, String password, CertificateAuthSettings certificateAuthSettings)` method. For example:
     {{{
