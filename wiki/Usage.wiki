@@ -173,7 +173,7 @@ with().parameters("firstName", "John", "lastName", "Doe").when().post("/greetXML
 See [http://groovy.codehaus.org/Updating+XML+with+XmlSlurper this] link for more info about the syntax.
 
 === XML namespaces ===
-To make body expectations take namespaces into account you need to declare the namespaces using the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/XmlConfig.html com.jayway.restassured.config.XmlConfig]. For example let's say that a resource called `namespace-example` located at `http://localhost:8080` returns the following XML:
+To make body expectations take namespaces into account you need to declare the namespaces using the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/XmlConfig.html com.jayway.restassured.config.XmlConfig]. For example let's say that a resource called `namespace-example` located at `http://localhost:8080` returns the following XML:
 {{{
 <foo xmlns:ns="http://localhost/">
   <bar>sudo </bar>
@@ -234,7 +234,7 @@ get("/carRecords").then().assertThat().body(matchesXsd(xsd));
 get("/videos").then().assertThat().body(matchesDtd(dtd));
 }}}
 
-The `matchesXsd` and `matchesDtd` methods are Hamcrest matchers which you can import from [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/matcher/RestAssuredMatchers.html com.jayway.restassured.matcher.RestAssuredMatchers]. 
+The `matchesXsd` and `matchesDtd` methods are Hamcrest matchers which you can import from [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/matcher/RestAssuredMatchers.html com.jayway.restassured.matcher.RestAssuredMatchers]. 
 </p>
 
 == Example 3 - Complex parsing and validation ==
@@ -320,7 +320,7 @@ String headerValue = response.header("headerName");
 }}}
 
 == JSON (using `JsonPath`) ==
-Once we have the response body we can then use the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/path/json/JsonPath.html JsonPath] to get data from the response body:
+Once we have the response body we can then use the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/path/json/JsonPath.html JsonPath] to get data from the response body:
 
 {{{
 int lottoId = from(json).getInt("lotto.lottoId");
@@ -351,7 +351,7 @@ JsonPath.config = new JsonPathConfig("UTF-8");
 You can read more about JsonPath at [http://www.jayway.com/2013/04/12/whats-new-in-rest-assured-1-8/ this blog].
 
 == XML (using `XmlPath`) == 
-You also have the corresponding functionality for XML using  [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/path/xml/XmlPath.html XmlPath]:
+You also have the corresponding functionality for XML using  [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/path/xml/XmlPath.html XmlPath]:
 {{{
 String xml = post("/greetXML?firstName=John&lastName=Doe").andReturn().asString();
 // Now use XmlPath to get the first and last name
@@ -420,15 +420,15 @@ int statusCode = response.getStatusCode();
 A header and a cookie can contain several values for the same name. 
 
 === Multi-value headers ===
-To get all values for a header you need to first get the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/response/Headers.html Headers] object from the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/response/Response.html Response] object. From the `Headers` instance you can get all values using the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/response/Headers.html#getValues(java.lang.String) Headers.getValues(<header name>)] method which returns a `List` with all header values.
+To get all values for a header you need to first get the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/response/Headers.html Headers] object from the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/response/Response.html Response] object. From the `Headers` instance you can get all values using the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/response/Headers.html#getValues(java.lang.String) Headers.getValues(<header name>)] method which returns a `List` with all header values.
 
 === Multi-value cookies ===
-To get all values for a cookie you need to first get the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/response/Cookies.html Cookies] object from the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/response/Response.html Response] object. From the `Cookies` instance you can get all values using the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/response/Cookies.html#getValues(java.lang.String) Cookies.getValues(<cookie name>)] method which returns a `List` with all cookie values.
+To get all values for a cookie you need to first get the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/response/Cookies.html Cookies] object from the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/response/Response.html Response] object. From the `Cookies` instance you can get all values using the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/response/Cookies.html#getValues(java.lang.String) Cookies.getValues(<cookie name>)] method which returns a `List` with all cookie values.
 
 == Detailed Cookies ==
-If you need to get e.g. the comment, path or expiry date etc from a cookie you need get a [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/response/Cookie.html detailed cookie] from REST Assured. To do this you can use the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookie(java.lang.String) Response.getDetailedCookie(java.lang.String)] method. The detailed cookie then contains all attributes from the cookie. 
+If you need to get e.g. the comment, path or expiry date etc from a cookie you need get a [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/response/Cookie.html detailed cookie] from REST Assured. To do this you can use the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookie(java.lang.String) Response.getDetailedCookie(java.lang.String)] method. The detailed cookie then contains all attributes from the cookie. 
 
-You can also get all detailed response [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/response/Cookies.html cookies] using the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookies() Response.getDetailedCookies()] method.
+You can also get all detailed response [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/response/Cookies.html cookies] using the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/response/Response.html#getDetailedCookies() Response.getDetailedCookies()] method.
 
 = Specifying Request Data=
 
@@ -818,7 +818,7 @@ Message message = get("/message").as(Message.class, ObjectMapperType.GSON);
 }}}
 
 == Configuration ==
-You can configure the pre-defined object mappers by using a [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/ObjectMapperConfig.html ObjectMapperConfig] and pass it to [https://code.google.com/p/rest-assured/wiki/Usage#Detailed_configuration detailed configuration]. For example to change GSON to use lower case with underscores as field naming policy you can do like this:
+You can configure the pre-defined object mappers by using a [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/ObjectMapperConfig.html ObjectMapperConfig] and pass it to [https://code.google.com/p/rest-assured/wiki/Usage#Detailed_configuration detailed configuration]. For example to change GSON to use lower case with underscores as field naming policy you can do like this:
 
 {{{
 RestAssured.config = RestAssuredConfig.config().objectMapperConfig(objectMapperConfig().gsonObjectMapperFactory(
@@ -834,7 +834,7 @@ There are pre-defined object mapper factories for GSON, JAXB, Jackson and Faster
 
 == Custom ==
 By default REST Assured will scan the classpath to find various object mappers. If you want to integrate an object mapper that is not supported by default or if you've rolled your own you can implement the 
-[http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/mapper/ObjectMapper.html com.jayway.restassured.mapper.ObjectMapper] interface. You tell REST Assured to use your object mapper either by passing it as a second parameter to the body:
+[http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/mapper/ObjectMapper.html com.jayway.restassured.mapper.ObjectMapper] interface. You tell REST Assured to use your object mapper either by passing it as a second parameter to the body:
 
 {{{
 given().body(myJavaObject, myObjectMapper).when().post("..")
@@ -920,7 +920,7 @@ RestAssured.reset();
 }}}
 
 = Specification Re-use =
-Instead of having to duplicate response expectations and/or request parameters for different tests you can re-use an entire specification. To do this you define a specification using either the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/builder/RequestSpecBuilder.html RequestSpecBuilder] or [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/builder/ResponseSpecBuilder.html ResponseSpecBuilder]. 
+Instead of having to duplicate response expectations and/or request parameters for different tests you can re-use an entire specification. To do this you define a specification using either the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/builder/RequestSpecBuilder.html RequestSpecBuilder] or [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/builder/ResponseSpecBuilder.html ResponseSpecBuilder]. 
 
 E.g. let's say you want to make sure that the expected status code is 200 and that the size of the JSON array "x.y" has size 2 in several tests you can define a ResponseSpecBuilder like this:
 
@@ -959,7 +959,7 @@ then().
 Here the request's data is merged with the data in the "requestSpec" so the request will contain two parameters ("parameter1" and "parameter2") and one header ("header1").
 
 = Filters =
-A filter allows you to inspect and alter a request before it's actually committed and also inspect and [#Response_Builder alter] the response before it's returned to the expectations. You can regard it as an "around advice" in AOP terms. Filters can be used to implement custom authentication schemes, session management, logging etc. To create a filter you need to implement the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/filter/Filter.html com.jayway.restassured.filter.log.Filter] interface. To use a filter you can do:
+A filter allows you to inspect and alter a request before it's actually committed and also inspect and [#Response_Builder alter] the response before it's returned to the expectations. You can regard it as an "around advice" in AOP terms. Filters can be used to implement custom authentication schemes, session management, logging etc. To create a filter you need to implement the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/filter/Filter.html com.jayway.restassured.filter.log.Filter] interface. To use a filter you can do:
 
 {{{
 given().filter(new MyFilter()). ..
@@ -972,7 +972,7 @@ There are a couple of filters provided by REST Assured that are ready to use:
 
 == Response Builder ==
 
-If you need to change the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/response/Response.html Response] from a filter you can use the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/builder/ResponseBuilder.html ResponseBuilder] to create a new Response based on the original response. For example if you want to change the body of the original response to something else you can do:
+If you need to change the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/response/Response.html Response] from a filter you can use the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/builder/ResponseBuilder.html ResponseBuilder] to create a new Response based on the original response. For example if you want to change the body of the original response to something else you can do:
 {{{
 Response newResponse = new ResponseBuilder().clone(originalResponse).setBody("Something").build();
 }}}
@@ -981,7 +981,7 @@ Response newResponse = new ResponseBuilder().clone(originalResponse).setBody("So
 In many cases it can be useful to print the response and/or request details in order to help you create the correct expectations and send the correct requests. To do help you do this you can use one of the predefined [#Filters filters] supplied with REST Assured or you can use one of the shortcuts. 
 
 == Request Logging ==
-Since version 1.5 REST Assured supports logging the _[http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/specification/RequestSpecification.html request specification]_ before it's sent to the server using the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/filter/log/RequestLoggingFilter.html RequestLoggingFilter]. Note that the HTTP Builder and HTTP Client may add additional headers then what's printed in the log. The filter will _only_ log details specified in the request specification. I.e. you can NOT regard the details logged by the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/filter/log/RequestLoggingFilter.html RequestLoggingFilter] to be what's actually sent to the server. Also subsequent filters may alter the request _after_ the logging has taken place. If you need to log what's _actually_ sent on the wire refer to the [http://hc.apache.org/httpcomponents-client-ga/logging.html HTTP Client logging docs] or use an external tool such [http://www.wireshark.org/ Wireshark]. Examples:
+Since version 1.5 REST Assured supports logging the _[http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/specification/RequestSpecification.html request specification]_ before it's sent to the server using the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/filter/log/RequestLoggingFilter.html RequestLoggingFilter]. Note that the HTTP Builder and HTTP Client may add additional headers then what's printed in the log. The filter will _only_ log details specified in the request specification. I.e. you can NOT regard the details logged by the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/filter/log/RequestLoggingFilter.html RequestLoggingFilter] to be what's actually sent to the server. Also subsequent filters may alter the request _after_ the logging has taken place. If you need to log what's _actually_ sent on the wire refer to the [http://hc.apache.org/httpcomponents-client-ga/logging.html HTTP Client logging docs] or use an external tool such [http://www.wireshark.org/ Wireshark]. Examples:
 
 {{{
 given().log().all(). .. // Log all request specification details including parameters, headers and body
@@ -1086,7 +1086,7 @@ then().
 
 The path arguments follows the standard [http://download.oracle.com/javase/1,5.0/docs/api/java/util/Formatter.html#syntax formatting syntax] of Java.
 
-Note that the `withArgs` method can be statically imported from the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/RestAssured.html com.jayway.restassured.RestAssured] class.
+Note that the `withArgs` method can be statically imported from the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/RestAssured.html com.jayway.restassured.RestAssured] class.
 
 Sometimes it's also useful to validate a body without any additional arguments when all arguments have already been specified in the root path. This is where `withNoArgs` come into play. For example:
 {{{
@@ -1136,7 +1136,7 @@ String sessionId = get("/something").sessionId();
 }}}
 
 == Session Filter ==
-As of version 2.0.1 you can use a [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/filter/session/SessionFilter.html session filter] to automatically capture and apply the session, for example:
+As of version 2.1.0 you can use a [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/filter/session/SessionFilter.html session filter] to automatically capture and apply the session, for example:
 {{{
 SessionFilter sessionFilter = new SessionFilter();
 
@@ -1215,7 +1215,7 @@ String response = get("/rest/api/2.0.alpha1/search?jql={q}", query);
 }}}
 
 = Detailed configuration =
-Detailed configuration is provided by the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/RestAssuredConfig.html RestAssuredConfig] instance with which you can configure the parameters of [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/HttpClientConfig.html HTTP Client] as well as [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/RedirectConfig.html Redirect], [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/LogConfig.html Log], [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/EncoderConfig.html Encoder], [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/DecoderConfig.html Decoder], [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/SessionConfig.html Session], [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/ObjectMapperConfig.html ObjectMapper], [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/ConnectionConfig.html Connection] and [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/SSLConfig.html SSL] settings. Examples:
+Detailed configuration is provided by the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/RestAssuredConfig.html RestAssuredConfig] instance with which you can configure the parameters of [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/HttpClientConfig.html HTTP Client] as well as [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/RedirectConfig.html Redirect], [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/LogConfig.html Log], [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/EncoderConfig.html Encoder], [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/DecoderConfig.html Decoder], [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/SessionConfig.html Session], [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/ObjectMapperConfig.html ObjectMapper], [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/ConnectionConfig.html Connection] and [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/SSLConfig.html SSL] settings. Examples:
 
 For a specific request:
 {{{
@@ -1232,13 +1232,13 @@ RestAssured.config = config().redirect(redirectConfig().followRedirects(true).an
 `config()` and `newConfig()` can be statically imported from `com.jayway.restassured.config.RestAssuredConfig`.
 
 == Encoder Config == 
-With the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/EncoderConfig.html EncoderConfig] you can specify the default content encoding charset (if it's not specified in the content-type header) and query parameter charset for all requests. If no content charset is specified then ISO-8859-1 is used and if no query parameter charset is specified then UTF-8 is used. Usage example:
+With the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/EncoderConfig.html EncoderConfig] you can specify the default content encoding charset (if it's not specified in the content-type header) and query parameter charset for all requests. If no content charset is specified then ISO-8859-1 is used and if no query parameter charset is specified then UTF-8 is used. Usage example:
 {{{
 RestAssured.config = newConfig().encoderConfig(encoderConfig().defaultContentCharset("US-ASCII"));
 }}}
 
 == Decoder Config ==
-With the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/config/DecoderConfig.html DecoderConfig] you can set the default response content decoding charset for all responses. This is useful if you expect a different content charset than ISO-8859-1 (which is the default charset) and the response doesn't define the charset in the content-type header. Usage example:
+With the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/config/DecoderConfig.html DecoderConfig] you can set the default response content decoding charset for all responses. This is useful if you expect a different content charset than ISO-8859-1 (which is the default charset) and the response doesn't define the charset in the content-type header. Usage example:
 {{{
 RestAssured.config = newConfig().decoderConfig(decoderConfig().defaultContentCharset("UTF-8"));
 }}}
@@ -1269,7 +1269,7 @@ RestAssured.config = newConfig().connectionConfig(connectionConfig().closeIdleCo
 }}}
 
 == `Json Config` ==
-[http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/path/json/config/JsonPathConfig.html JsonPathConfig] allows you to configure the Json settings either when used by REST Assured or by [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/path/json/JsonPath.html JsonPath]. It let's you configure how JSON numbers should be treated.
+[http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/path/json/config/JsonPathConfig.html JsonPathConfig] allows you to configure the Json settings either when used by REST Assured or by [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/path/json/JsonPath.html JsonPath]. It let's you configure how JSON numbers should be treated.
 {{{
 RestAssured.config = newConfig().jsonConfig(jsonConfig().numberReturnType(NumberReturnType.BIG_DECIMAL))
 }}}
@@ -1304,9 +1304,9 @@ RestAssured.config = RestAssured.config().sslConfig(sslConfig().with().keystoreT
 
 
 = More info =
-For more information refer to the [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/index.html javadoc]:
-  * [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/RestAssured.html RestAssured]
-  * [http://rest-assured.googlecode.com/svn/tags/2.0.1/apidocs/com/jayway/restassured/specification/package-summary.html Specification package]
+For more information refer to the [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/index.html javadoc]:
+  * [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/RestAssured.html RestAssured]
+  * [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/specification/package-summary.html Specification package]
 
 You can also have a look at some code examples:
   * REST Assured [https://github.com/jayway/rest-assured/tree/master/examples/rest-assured-itest-java/src/test/java/com/jayway/restassured/itest/java tests]
