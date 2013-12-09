@@ -38,6 +38,18 @@ Stand-alone XmlPath. Makes it easy to parse XML documents.
 </dependency>
 }}}
 
+=== JSON Schema Validation ===
+If you want to validate that a JSON response conforms to a [http://json-schema.org/ Json Schema] you can use the `json-schema-validator` module:
+{{{
+<dependency>
+      <groupId>com.jayway.restassured</groupId>
+      <artifactId>json-schema-validator</artifactId>
+      <version>2.1.0</version>
+</dependency>
+}}}
+
+Refer to the [https://code.google.com/p/rest-assured/wiki/Usage#JSON_Schema_validation documentation] for more info.
+
 == Non-maven users ==
 Download [http://rest-assured.googlecode.com/files/rest-assured-2.0.1-dist.zip REST Assured], [http://rest-assured.googlecode.com/files/xml-path-2.0.1-dist.zip XmlPath] and/or [http://rest-assured.googlecode.com/files/json-path-2.0.1-dist.zip JsonPath]. Extract the distribution zip file and put the jar files in your class-path.
 
