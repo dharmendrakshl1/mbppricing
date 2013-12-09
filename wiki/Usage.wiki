@@ -125,7 +125,7 @@ you can validate that a resource (`/products`) conforms with the schema:
 {{{
 get("/products").then().assertThat().body(matchesJsonSchemaInClasspath("products-schema.json"));
 }}}
-`matchesJsonSchemaInClasspath` is statically imported from `com.jayway.restassured.module.jsv.JsonSchemaValidator` and it's recommended to statically import all methods from this class. However in order to use it you need to depend on the `json-schema-validator` module by either downloading it from the download page or add the following dependency from Maven:
+`matchesJsonSchemaInClasspath` is statically imported from `com.jayway.restassured.module.jsv.JsonSchemaValidator` and it's recommended to statically import all methods from this class. However in order to use it you need to depend on the `json-schema-validator` module by either [https://rest-assured.googlecode.com/files/json-schema-validator-2.1.0-dist.zip downloading] it from the download page or add the following dependency from Maven:
 {{{
 <dependency>
     <groupId>com.jayway.restassured</groupId>
