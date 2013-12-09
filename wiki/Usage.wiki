@@ -15,6 +15,10 @@ In order to use REST assured effectively it's recommended to statically import m
   * `com.jayway.restassured.matcher.RestAssuredMatchers.*`
   * `org.hamcrest.Matchers.*`
 
+If you want to use [http://json-schema.org/ Json Schema] validation you should also statically import these methods:
+  * `com.jayway.restassured.module.jsv.JsonSchemaValidator.*`
+Refer to [#JSON_Schema_validation Json Schema Validation] section for more info.
+
 == Example 1 - JSON ==
 Assume that the GET request (to http://localhost:8080/lotto) returns JSON as:
 {{{
