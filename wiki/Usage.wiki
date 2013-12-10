@@ -180,6 +180,30 @@ To reset the `JsonSchemaValidator` to its default settings simply call the `rese
 JsonSchemaValidator.reset();
 }}}
 
+=== Json Schema Validation without REST Assured ===
+You can also use the `json-schema-validator` module without depending on REST Assured. As long as you have a JSON document represented as a `String` you can do like this:
+
+{{{
+import org.junit.Test;
+import static com.jayway.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static org.hamcrest.MatcherAssert.assertThat;
+ 
+public class JsonSchemaValidatorWithoutRestAssuredTest {
+ 
+ 
+    @Test public void
+    validates_schema_in_classpath() {
+        // Given
+        String json = ... // Greeting response
+ 
+        // Then
+        assertThat(json, matchesJsonSchemaInClasspath("greeting-schema.json"));
+    }
+}
+}}}
+
+Refer to the [https://code.google.com/p/rest-assured/wiki/GettingStarted#JSON_Schema_Validation getting started] page for more info on this.
+
 == Example 2 - XML == 
 XML can be verified in a similar way. Imagine that a POST request to `http://localhost:8080/greetXML` returns:
 {{{
