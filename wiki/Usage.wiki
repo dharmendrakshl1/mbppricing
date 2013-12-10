@@ -152,7 +152,7 @@ get("/products").then().assertThat().body(matchesJsonSchemaInClasspath("products
 
 The `using` method allows you to pass in a `jsonSchemaFactory` instance that REST Assured will use during validation. This allows fine-grained configuration for the validation.
 
-The `fge` library also allows the validation to be `checked` or `unchecked`. By default REST Assured uses `checked` validation but if you want to change this you can supply in instance of [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/module/jsv/JsonSchemaValidatorSettings.html JsonSchemaValidatorSettings] to the matcher. For example:
+The `fge` library also allows the validation to be `checked` or `unchecked`. By default REST Assured uses `checked` validation but if you want to change this you can supply an instance of [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/module/jsv/JsonSchemaValidatorSettings.html JsonSchemaValidatorSettings] to the matcher. For example:
 
 {{{
 get("/products").then().assertThat().body(matchesJsonSchemaInClasspath("products-schema.json").using(settings().with().checkedValidation(false)));
@@ -162,7 +162,7 @@ Where the `settings` method is statically imported from the [http://rest-assured
 
 === Json Schema Validation with static configuration ===
 
-Now imagine that you always want to use unchecked validation as well as setting the default json schema version to version 3. Instead of supplying this to all matchers throughout your code you can define it statically. For example:
+Now imagine that you always want to use `unchecked` validation as well as setting the default json schema version to version 3. Instead of supplying this to all matchers throughout your code you can define it statically. For example:
 
 {{{
 JsonSchemaValidator.settings = settings().with().jsonSchemaFactory(
