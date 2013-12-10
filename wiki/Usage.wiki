@@ -1354,3 +1354,7 @@ You can also have a look at some code examples:
   * REST Assured [https://github.com/jayway/rest-assured/tree/master/examples/rest-assured-itest-java/src/test/java/com/jayway/restassured/itest/java tests]
   * [https://github.com/jayway/rest-assured/blob/master/json-path/src/test/java/com/jayway/restassured/path/json/JsonPathTest.java JsonPathTest]
   * [https://github.com/jayway/rest-assured/blob/master/xml-path/src/test/java/com/jayway/restassured/path/xml/XmlPathTest.java XmlPathTest]
+
+If you need support then join the [http://groups.google.com/group/rest-assured mailing list].
+
+For professional support please contact [http://www.jayway.com Jayway].
