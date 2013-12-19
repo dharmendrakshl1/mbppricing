@@ -38,7 +38,7 @@ java.lang.IncompatibleClassChangeError: Found interface org.objectweb.asm.Method
     }}}
   If you're using Gradle do like this:
     {{{
-testCompile (group: 'com.jayway.restassured', name: 'rest-assured', version:'2.2.0') {
+testCompile (group: 'com.jayway.restassured', name: 'rest-assured', version:'2.1.0') {
         exclude(module: 'groovy')
 }
 testCompile group: 'org.codehaus.groovy', name: 'groovy-all', version:'2.2.0'
