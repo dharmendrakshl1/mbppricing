@@ -1202,7 +1202,7 @@ String sessionId = get("/something").sessionId();
 }}}
 
 == Session Filter ==
-As of version 2.1.0 you can use a [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/filter/session/SessionFilter.html session filter] to automatically capture and apply the session, for example:
+As of version 2.0.0 you can use a [http://rest-assured.googlecode.com/svn/tags/2.1.0/apidocs/com/jayway/restassured/filter/session/SessionFilter.html session filter] to automatically capture and apply the session, for example:
 {{{
 SessionFilter sessionFilter = new SessionFilter();
 
