@@ -46,6 +46,7 @@ get("/lotto").then().body("lotto.winners.winnerId", hasItems(23, 54));
 }}}     
 
 Note: `equalTo` and `hasItems` are Hamcrest matchers which you should statically import from `org.hamcrest.Matchers`.
+Note: The path syntax follows Groovy's [GPath http://groovy.codehaus.org/GPath] syntax .
 
 === Returning floats and doubles as BigDecimal ===
 
