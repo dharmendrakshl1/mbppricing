@@ -685,16 +685,27 @@ Other supported schemes are OAuth, digest, certificate, form and preemptive basi
 
 == OAuth ==
 
-In order to use the OAuth authentication you need to add the [http://code.google.com/p/oauth-signpost/ Signpost] framework to the classpath. In Maven you can simply add the following dependency:
+In order to use OAuth 1 or 2 authentication you need to add [https://github.com/fernandezpablo85/scribe-java Scribe] to your classpath (if you're using version 2.1.0 of REST Assured then please refer to the [Usage_Legacy#OAuth legacy] documentation). In Maven you can simply add the following dependency:
 {{{
 <dependency>
-            <groupId>oauth.signpost</groupId>
-            <artifactId>signpost-commonshttp4</artifactId>
-            <version>1.2.1.1</version>
+            <groupId>org.scribe</groupId>
+            <artifactId>scribe</artifactId>
+            <version>1.3.5</version>
+            <scope>test</scope>
 </dependency>
 }}}
 
-If you're not using Maven [http://code.google.com/p/oauth-signpost/downloads/list download] the jars ([http://oauth-signpost.googlecode.com/files/signpost-core-1.2.1.1.jar signpost-core-1.2.1.1.jar], [http://oauth-signpost.googlecode.com/files/signpost-commonshttp4-1.2.1.1.jar signpost-commonshttp4-1.2.1.1.jar]) manually and put them in your classpath. 
+If you're not using Maven https://github.com/fernandezpablo85/scribe-java/releases download] a Scribe release manually and put it in your classpath. 
+
+To use auth 1 authentication you can do:
+{{{
+given().auth().oauth(..);
+}}}
+
+And for oauth2: 
+{{{
+given().auth().oauth2(..);
+}}}
 
 = Multi-part form data =
 When sending larger amount of data to the server it's common to use the multipart form data technique. Rest Assured provide methods called `multiPart` that allows you to specify a file, byte-array, input stream or text to upload. In its simplest form you can upload a file like this:
