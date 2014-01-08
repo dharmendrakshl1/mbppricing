@@ -16,7 +16,7 @@ public class GreetingController {
     }
 }
     }}}
-you can test it using RestAssuredMockMvc like this:
+  you can test it using RestAssuredMockMvc like this:
 
   {{{
 given().
