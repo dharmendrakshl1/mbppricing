@@ -685,7 +685,7 @@ Other supported schemes are OAuth, digest, certificate, form and preemptive basi
 
 == OAuth ==
 
-In order to use OAuth 1 or 2 authentication you need to add [https://github.com/fernandezpablo85/scribe-java Scribe] to your classpath (if you're using version 2.1.0 of REST Assured then please refer to the [Usage_Legacy#OAuth legacy] documentation). In Maven you can simply add the following dependency:
+In order to use OAuth 1 or 2 authentication you need to add [https://github.com/fernandezpablo85/scribe-java Scribe] to your classpath (if you're using version 2.1.0 or older of REST Assured then please refer to the [Usage_Legacy#OAuth legacy] documentation). In Maven you can simply add the following dependency:
 {{{
 <dependency>
             <groupId>org.scribe</groupId>
