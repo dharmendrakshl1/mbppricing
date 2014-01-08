@@ -1380,6 +1380,118 @@ The [http://rest-assured.googlecode.com/svn/tags/2.2.0/apidocs/com/jayway/restas
 RestAssured.config = RestAssured.config().sslConfig(sslConfig().with().keystoreType(<type>).and().strictHostnames();
 }}}
 
+= Spring Mock Mvc Module =
+
+REST Assured 2.2.0 introduced support for [http://docs.spring.io/spring/docs/4.0.0.RELEASE/javadoc-api/org/springframework/test/web/servlet/MockMvc.html Spring Mock Mvc] using the `spring-mock-mvc` module. This means that you can unit test Spring Mvc Controllers. For example:
+For example given the following Spring controller:
+{{{
+@Controller
+public class GreetingController {
+
+    private static final String template = "Hello, %s!";
+    private final AtomicLong counter = new AtomicLong();
+
+    @RequestMapping(value = "/greeting", method = GET)
+    public @ResponseBody Greeting greeting(
+            @RequestParam(value="name", required=false, defaultValue="World") String name) {
+        return new Greeting(counter.incrementAndGet(), String.format(template, name));
+    }
+}
+}}}
+you can test it using [http://rest-assured.googlecode.com/svn/tags/2.2.0/apidocs/com/jayway/restassured/module/mockmvc/RestAssuredMockMvc.html RestAssuredMockMvc] like this:
+{{{
+given().
+        standaloneSetup(new GreetingController()).
+        param("name", "Johan").
+when().
+        get("/greeting").
+then().
+        statusCode(200).
+        body("id", equalTo(1)).
+        body("content", equalTo("Hello, Johan!"));  
+}}}
+i.e. it's very similar to the standard REST Assured syntax. This makes it really fast to run your tests and it's also easier to bootstrap the environment and use mocks (if needed) than standard REST Assured. Most things that you're used to in standard REST Assured works with RestAssured Mock Mvc as well. For example (certain) configuration, static specifications, logging etc etc. To use it you need to depend on the Spring Mock Mvc module:
+{{{
+<dependency>
+      <groupId>com.jayway.restassured</groupId>
+      <artifactId>spring-mock-mvc</artifactId>
+      <version>2.2.0</version>
+      <scope>test</scope>
+</dependency>
+}}}
+Or [https://rest-assured.googlecode.com/files/spring-mock-mvc-2.2.0-dist.zip download] it from the download page if you're not using Maven.
+
+== Bootstrapping RestAssuredMockMvc ==
+
+First of all you should statically import methods in:
+  * `com.jayway.restassured.module.mockmvc.RestAssuredMockMvc.*`
+instead of those defined in 
+ * `com.jayway.restassured.RestAssured.*`
+Refer to [Usage#Static_imports static import] section of the docuemntation for additional static imports.
+
+In order to start a test using RestAssuredMockMvc you need to initialize it with a either a set of Controllers, a MockMvc instance or a WebApplicationContext from Spring. You can do this for a single request as seen in the previous example (`given().standaloneSetup(new GreetingController()). ..`) or you can do it statically:
+{{{
+RestAssuredMockMvc.standaloneSetup(new GreetingController());
+}}}
+If defined statically you don't have to specify any Controllers (or MockMvc or WebApplicationContext instance) in the DSL. This means that the previous example can be written as:
+{{{
+given().
+        param("name", "Johan").
+when().
+        get("/greeting").
+then().
+        statusCode(200).
+        body("id", equalTo(1)).
+        body("content", equalTo("Hello, Johan!"));  
+}}}
+
+== Adding Result Handlers ==
+Spring MockMvc has support for [http://docs.spring.io/spring-framework/docs/4.0.0.RELEASE/javadoc-api/org/springframework/test/web/servlet/ResultHandler.html Result Handlers] and you can use these in RestAssuredMockMvc as well. For example let's say you want to use the native MockMvc logging:
+{{{
+given().resultHandlers(print()). .. 
+}}}
+where `print` is statically imported from `org.springframework.test.web.server.result.MockMvcResultHandlers`.
+
+== Using Result Matchers ==
+Spring MockMvc provides a bunch of [http://docs.spring.io/spring-framework/docs/4.0.0.RELEASE/javadoc-api/org/springframework/test/web/servlet/ResultMatcher.html Result Matchers] that you may find useful. RestAssuredMockMvc has support for these as well if needed. For example let's say that for some reason you want to verify that the status code is equal to 200 using a ResultMatcher:
+{{{
+given().
+        param("name", "Johan").
+when().
+        get("/greeting").
+then().
+        assertThat(status().isOk()).
+        body("id", equalTo(1)).
+        body("content", equalTo("Hello, Johan!"));  
+}}}
+where `status` is statically imported from `org.springframework.test.web.server.result.MockMvcResultMatchers`. Note that you can also use the `expect` method which is the same as `assertThat` but more close the the syntax of native MockMvc.
+
+== Interceptors ==
+For really advance use cases you can also get ahold of the [http://docs.spring.io/spring-framework/docs/4.0.0.RELEASE/javadoc-api/org/springframework/test/web/servlet/request/MockHttpServletRequestBuilder.html MockHttpServletRequestBuilder] before the request is performed. To do this define a [http://rest-assured.googlecode.com/svn/tags/2.2.0/apidocs/com/jayway/restassured/module/mockmvc/intercept/MockHttpServletRequestBuilderInterceptor.html MockHttpServletRequestBuilderInterceptor] and use it with RestAssuredMockMvc:
+
+{{{
+given().interceptor(myInterceptor). ..
+}}}
+
+== Specifications == 
+Just as with standard Rest Assured you can use [Usage#Specification_Re-use specifications] to allow for better re-use. Note that the request specification builder for RestAssuredMockMvc is called [http://rest-assured.googlecode.com/svn/tags/2.2.0/apidocs/com/jayway/restassured/module/mockmvc/specification/MockMvcRequestSpecBuilder.html MockMvcRequestSpecBuilder]. The same [http://rest-assured.googlecode.com/svn/tags/2.2.0/apidocs/com/jayway/restassured/builder/ResponseSpecBuilder.html ResponseSpecBuilder] can be used in RestAssuredMockMvc as well though. Specifications can be defined statically as well just as with standard Rest Assured. For example:
+{{{
+RestAssuredMockMvc.requestSpecification = new MockMvcRequestSpecBuilder().addQueryParam("name", "Johan").build();
+RestAssuredMockMvc.responseSpecification = new ResponseSpecBuilder().expectStatusCode(200).expectBody("content", equalTo("Hello, Johan!")).build();
+
+given().
+        standaloneSetup(new GreetingController()).
+when().
+        get("/greeting").
+then().
+        body("id", equalTo(1));
+}}}
+
+== Resetting RestAssuredMockMvc ==
+If you've used any static configuration you can easily reset RestAssuredMockMvc to its default state by callin the `RestAssuredMockMvc.reset()` method.
+
+== Note on parameters ==
+MockMvc doesn't differentiate between different kinds of parameters so `param`, `formParam` and `queryParam` currently just delegates to param in MockMvc. `formParam` adds the `application/x-www-form-urlencoded` content-type header automatically though just as standard Rest Assured does.
 
 = More info =
 For more information refer to the [http://rest-assured.googlecode.com/svn/tags/2.2.0/apidocs/index.html javadoc]:
