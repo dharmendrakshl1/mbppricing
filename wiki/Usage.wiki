@@ -695,7 +695,7 @@ In order to use OAuth 1 or 2 authentication you need to add [https://github.com/
 </dependency>
 }}}
 
-If you're not using Maven https://github.com/fernandezpablo85/scribe-java/releases download] a Scribe release manually and put it in your classpath. 
+If you're not using Maven [https://github.com/fernandezpablo85/scribe-java/releases download] a Scribe release manually and put it in your classpath. 
 
 To use auth 1 authentication you can do:
 {{{
