@@ -16,7 +16,7 @@ public class GreetingController {
     }
 }
     }}}
-  you can test it using RestAssuredMockMvc like this:
+  you can test it using [http://rest-assured.googlecode.com/svn/tags/2.2.0/apidocs/com/jayway/restassured/module/mockmvc/RestAssuredMockMvc.html RestAssuredMockMvc] like this:
   {{{
 given().
         standaloneSetup(new GreetingController()).
