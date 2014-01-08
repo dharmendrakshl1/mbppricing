@@ -1,7 +1,7 @@
 = Release Notes for REST Assured 2.2.0 =
 
 == Highlights ==
-  * Introducing support for Spring MVC unit testing using the REST Assured DSL on top of [http://docs.spring.io/spring/docs/4.0.0.RELEASE/javadoc-api/org/springframework/test/web/servlet/MockMvc.html MockMvc]. For example given the following schema controller:
+  * Introducing support for Spring MVC unit testing using the REST Assured DSL on top of [http://docs.spring.io/spring/docs/4.0.0.RELEASE/javadoc-api/org/springframework/test/web/servlet/MockMvc.html MockMvc]. For example given the following Spring controller:
     {{{
 @Controller
 public class GreetingController {
