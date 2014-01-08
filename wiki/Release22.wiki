@@ -34,7 +34,8 @@ then().
   {{{
 given().auth().oauth2("accessToken"). .. 
   }}}
- 
+  Big thanks to Waseem Shaik for helping out with this!
+
 ==Non-backward compatible changes ==
   * OAuth 1 authentication now uses the [https://github.com/fernandezpablo85/scribe-java Scribe]  framework instead of [https://code.google.com/p/oauth-signpost/ SignPost] since Scribe has support for both oauth 1 and 2. Please download scribe and replace the signpost dependencies that you have in classpath.
 
