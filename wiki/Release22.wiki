@@ -18,7 +18,7 @@ public class GreetingController {
     }}}
   you can test it using RestAssuredMockMvc like this:
 
-  {{{
+    {{{
 given().
         standaloneSetup(new GreetingController()).
         param("name", "Johan").
@@ -28,8 +28,8 @@ then().
         statusCode(200).
         body("id", equalTo(1)).
         body("content", equalTo("Hello, Johan!"));  
-  }}}
-  i.e. it's very similar to the standard REST Assured syntax. This makes it really fast to run your tests and it's also easier to bootstrap the environment and use mocks (if needed) than standard REST Assured. Most things that you're used to in standard REST Assured works with RestAssured Mock Mvc as well. For example (certain) configuration, static specifications, logging etc etc. For more info refer to the usage guide.
+    }}}
+    i.e. it's very similar to the standard REST Assured syntax. This makes it really fast to run your tests and it's also easier to bootstrap the environment and use mocks (if needed) than standard REST Assured. Most things that you're used to in standard REST Assured works with RestAssured Mock Mvc as well. For example (certain) configuration, static specifications, logging etc etc. For more info refer to the usage guide.
  
 ==Non-backward compatible changes ==
 
