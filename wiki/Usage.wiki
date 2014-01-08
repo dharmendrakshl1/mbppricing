@@ -1496,6 +1496,7 @@ MockMvc doesn't differentiate between different kinds of parameters so `param`, 
 = More info =
 For more information refer to the [http://rest-assured.googlecode.com/svn/tags/2.2.0/apidocs/index.html javadoc]:
   * [http://rest-assured.googlecode.com/svn/tags/2.2.0/apidocs/com/jayway/restassured/RestAssured.html RestAssured]
+  * [http://rest-assured.googlecode.com/svn/tags/2.2.0/apidocs/com/jayway/restassured/module/mockmvc/RestAssuredMockMvc.html REST Assured Mock Mvc Javadoc]
   * [http://rest-assured.googlecode.com/svn/tags/2.2.0/apidocs/com/jayway/restassured/specification/package-summary.html Specification package]
 
 You can also have a look at some code examples:
