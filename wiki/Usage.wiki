@@ -1466,7 +1466,7 @@ then().
         body("id", equalTo(1)).
         body("content", equalTo("Hello, Johan!"));  
 }}}
-where `status` is statically imported from `org.springframework.test.web.server.result.MockMvcResultMatchers`. Note that you can also use the `expect` method which is the same as `assertThat` but more close the the syntax of native MockMvc.
+where `status` is statically imported from `org.springframework.test.web.server.result.MockMvcResultMatchers`. Note that you can also use the `expect` method which is the same as `assertThat` but more close to the syntax of native MockMvc.
 
 == Interceptors ==
 For more advanced use cases you can also get ahold and modify the [http://docs.spring.io/spring-framework/docs/4.0.0.RELEASE/javadoc-api/org/springframework/test/web/servlet/request/MockHttpServletRequestBuilder.html MockHttpServletRequestBuilder] before the request is performed. To do this define a [http://rest-assured.googlecode.com/svn/tags/2.2.0/apidocs/com/jayway/restassured/module/mockmvc/intercept/MockHttpServletRequestBuilderInterceptor.html MockHttpServletRequestBuilderInterceptor] and use it with RestAssuredMockMvc:
