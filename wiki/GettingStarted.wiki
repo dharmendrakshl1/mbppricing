@@ -9,7 +9,7 @@ Includes JsonPath and XmlPath
 <dependency>
       <groupId>com.jayway.restassured</groupId>
       <artifactId>rest-assured</artifactId>
-      <version>2.1.0</version>
+      <version>2.2.0</version>
       <scope>test</scope>
 </dependency>
 }}}
@@ -24,7 +24,7 @@ Stand-alone JsonPath. Makes it easy to parse JSON documents.
 <dependency>
       <groupId>com.jayway.restassured</groupId>
       <artifactId>json-path</artifactId>
-      <version>2.1.0</version>
+      <version>2.2.0</version>
 </dependency>
 }}}
 
@@ -34,7 +34,7 @@ Stand-alone XmlPath. Makes it easy to parse XML documents.
 <dependency>
       <groupId>com.jayway.restassured</groupId>
       <artifactId>xml-path</artifactId>
-      <version>2.1.0</version>
+      <version>2.2.0</version>
 </dependency>
 }}}
 
@@ -44,15 +44,26 @@ If you want to validate that a JSON response conforms to a [http://json-schema.o
 <dependency>
       <groupId>com.jayway.restassured</groupId>
       <artifactId>json-schema-validator</artifactId>
-      <version>2.1.0</version>
+      <version>2.2.0</version>
       <scope>test</scope>
 </dependency>
 }}}
 
 Refer to the [https://code.google.com/p/rest-assured/wiki/Usage#JSON_Schema_validation documentation] for more info.
 
+=== Spring Mock Mvc ===
+If you're using Spring Mvc you can now unit test your controllers using the [http://rest-assured.googlecode.com/svn/tags/2.2.0/apidocs/com/jayway/restassured/module/mockmvc/RestAssuredMockMvc.html RestAssuredMockMvc] API in the [Usage#Spring_Mock_Mvc_Module spring-mock-mvc] module. For this to work you need to depend on the `spring-mock-mvc` module:
+{{{
+<dependency>
+      <groupId>com.jayway.restassured</groupId>
+      <artifactId>spring-mock-mvc</artifactId>
+      <version>2.2.0</version>
+      <scope>test</scope>
+</dependency>
+}}}
+
 == Non-maven users ==
-Download [http://rest-assured.googlecode.com/files/rest-assured-2.1.0-dist.zip REST Assured] and [https://rest-assured.googlecode.com/files/json-schema-validator-2.1.0-dist.zip Json Schema Validator] (optional). You can also download [http://rest-assured.googlecode.com/files/xml-path-2.1.0-dist.zip XmlPath] and/or [http://rest-assured.googlecode.com/files/json-path-2.1.0-dist.zip JsonPath] separately if you don't need REST Assured. Extract the distribution zip file and put the jar files in your class-path.
+Download [http://rest-assured.googlecode.com/files/rest-assured-2.2.0-dist.zip REST Assured] and [https://rest-assured.googlecode.com/files/json-schema-validator-2.2.0-dist.zip Json Schema Validator] (optional). You can also download [http://rest-assured.googlecode.com/files/xml-path-2.2.0-dist.zip XmlPath] and/or [http://rest-assured.googlecode.com/files/json-path-2.2.0-dist.zip JsonPath] separately if you don't need REST Assured. If you're using Spring Mvc then you can download the [https://rest-assured.googlecode.com/files/spring-mock-mvc-2.2.0-dist.zip spring-mock-mvc] module as well. Extract the distribution zip file and put the jar files in your class-path.
 
 = Static imports =
        
@@ -64,7 +75,10 @@ In order to use REST assured effectively it's recommended to statically import m
 
 If you want to use [http://json-schema.org/ Json Schema] validation you should also statically import these methods:
   * `com.jayway.restassured.module.jsv.JsonSchemaValidator.*`
-Refer to [https://code.google.com/p/rest-assured/wiki/Usage#JSON_Schema_validation Json Schema Validation] documentation for more info.
+Refer to [#JSON_Schema_validation Json Schema Validation] section for more info.
+
+If you're using Spring MVC you can use the [Usage#Spring_Mock_Mvc_Module spring-mock-mvc] module to unit test your Spring Controllers using the Rest Assured DSL. To do this statically import the methods from [http://rest-assured.googlecode.com/svn/tags/2.2.0/apidocs/com/jayway/restassured/module/mockmvc/RestAssuredMockMvc.html RestAssuredMockMvc] _instead_ of importing the methods from `com.jayway.restassured.RestAssured`:
+  * `com.jayway.restassured.module.mockmvc.RestAssuredMockMvc.*`
 
 = Documentation =
 When you've successfully downloaded and configured REST Assured in your classpath please refer to the [Usage user guide] for examples.
