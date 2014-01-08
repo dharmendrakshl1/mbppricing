@@ -29,8 +29,14 @@ then().
         body("content", equalTo("Hello, Johan!"));  
   }}}
   i.e. it's very similar to the standard REST Assured syntax. This makes it really fast to run your tests and it's also easier to bootstrap the environment and use mocks (if needed) than standard REST Assured. Most things that you're used to in standard REST Assured works with RestAssured Mock Mvc as well. For example (certain) configuration, static specifications, logging etc etc. For more info refer to the usage guide.
+
+  * Added support for oauth2 using the [https://github.com/fernandezpablo85/scribe-java Scribe] framework (whcih needs to be downloaded and put it classpath separately). For example:
+  {{{
+given().auth().oauth2("accessToken"). .. 
+  }}}
  
 ==Non-backward compatible changes ==
+  * OAuth 1 authentication now uses the [https://github.com/fernandezpablo85/scribe-java Scribe]  framework instead of [https://code.google.com/p/oauth-signpost/ SignPost] since Scribe has support for both oauth 1 and 2. Please download scribe and replace the signpost dependencies that you have in classpath.
 
 == Minor changes ==
 See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for more details.
