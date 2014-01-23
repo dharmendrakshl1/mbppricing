@@ -1519,9 +1519,9 @@ Some authentication methods require Spring Security to be on the classpath (opti
 {{{
 RestAssuredMockMvc.authentication = principal("username", "password");
 }}}
-  where the `principal` method is statically imported from [http://rest-assured.googlecode.com/svn/tags/2.3.0/apidocs/com/jayway/restassured/module/mockmvc/RestAssuredMockMvc.html RestAssuredMockMvc]. It's also possible to define an authentication scheme in a request builder:
+where the `principal` method is statically imported from [http://rest-assured.googlecode.com/svn/tags/2.3.0/apidocs/com/jayway/restassured/module/mockmvc/RestAssuredMockMvc.html RestAssuredMockMvc]. It's also possible to define an authentication scheme in a request builder:
 {{{
- MockMvcRequestSpecification spec = new MockMvcRequestSpecBuilder.setAuth(principal("username", "password")).build();
+MockMvcRequestSpecification spec = new MockMvcRequestSpecBuilder.setAuth(principal("username", "password")).build();
 }}}
 
 == Note on parameters ==
