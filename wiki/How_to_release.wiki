@@ -12,7 +12,7 @@
     * Remove all dist projects
     * If sonatype complains about missing javadoc from scalatra, remove the scaltra-example project from the sonatype browser
   # Upload the artifacts to [http://bintray.com bintray].
-   # Run the `./deploy_bintray.sh" script and enter the API Key (found on Bintray on the user profile page when pressing the edit button) and version to release.
+   # Run the `./deploy_bintray.sh` script and enter the API Key (found on Bintray on the user profile page when pressing the edit button) and version to release.
    # Login to [http://bintray.com bintray] and add release notes and publish the release.
   # Upload the javadoc to googlecode:
    # Run `mvn  clean javadoc:aggregate`
