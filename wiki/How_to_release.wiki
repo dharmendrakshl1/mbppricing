@@ -15,6 +15,7 @@
    # Run the `./deploy_bintray.sh` script and enter the API Key (found on Bintray on the user profile page when pressing the edit button) and version to release.
    # Login to [http://bintray.com bintray] and add release notes and publish the release.
   # Upload the javadoc to googlecode:
+   # Checkout the newly released version in git (`git co <version_tag>`)
    # Run `mvn  clean javadoc:aggregate`
    # Copy everything from REST Assured `target/site/apidocs` into `tags/X/apidocs` (in svn)
    # Run `svn add X"
