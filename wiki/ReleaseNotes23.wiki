@@ -1,7 +1,7 @@
 = Release Notes for REST Assured 2.3.0 =
 
 == Highlights ==
-  * Improved SSL configuration. Fixed several regression bugs and allows for defining a trust store and a `SSLSocketFactory`. 
+  * Improved [Usage#SSL_Config SSL configuration]. Fixed several regression bugs and allows for defining a trust store and a `SSLSocketFactory`. 
   * It's now much easier to connect to sites with invalid SSL certificates. All you have to do is to use the `relaxedHTTPSValidation` method. For example:
   {{{
 given().relaxedHTTPSValidation().when().get("https://some_server.com"). .. 
