@@ -2,7 +2,7 @@
 
 = Downloads =
 
-Since Google have stopped serving static files the REST Assured binaries are now hosted at [https://bintray.com/johanhaleby/generic/rest-assured Bintray]. 
+Google no longer accepts uploading of new binaries to the Google Code page the files are now hosted at [https://bintray.com/johanhaleby/generic/rest-assured Bintray]. 
 
 == Current direct downloads == 
 || File || Description ||
