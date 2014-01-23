@@ -1,6 +1,16 @@
 = Release Notes for REST Assured 2.3.0 =
 
 == Highlights ==
+  * Improved SSL configuration. Fixed several regression bugs and allows for defining a trust store and a `SSLSocketFactory`. 
+  * It's now much easier to connect to sites with invalid SSL certificates. All you have to do is to use the `relaxedHTTPSValidation` method. For example:
+  {{{
+given().relaxedHTTPSValidation().when().get("https://some_server.com"). .. 
+  }}}
+  You can also define this statically for all requests:
+  {{{
+RestAssured.useRelaxedHTTPSValidation();
+  }}}
+  or in a [Usage#Specification_Re-use request specification].
   * Introducing support for Spring MVC unit testing using the REST Assured DSL on top of [http://docs.spring.io/spring/docs/4.0.0.RELEASE/javadoc-api/org/springframework/test/web/servlet/MockMvc.html MockMvc]. For example given the following Spring controller:
     {{{
 @Controller
