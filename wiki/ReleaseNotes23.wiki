@@ -45,7 +45,7 @@ given().auth().oauth2("accessToken"). ..
   Big thanks to Waseem Shaik for helping out with this!
 
 ==Non-backward compatible changes ==
-  * OAuth 1 authentication now uses the [https://github.com/fernandezpablo85/scribe-java Scribe]  framework instead of [https://code.google.com/p/oauth-signpost/ SignPost] since Scribe has support for both oauth 1 and 2. Please download scribe and replace the signpost dependencies that you have in classpath if you're currently using oauth 1.
+  * The json-path module accidentally depended on faster-jackson, jackson, gson and simple-json and brought then in as transitive dependencies. This has now been resolved which means that these dependencies are optional as intended (issue 297).
 
 == Minor changes ==
 See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for more details.
