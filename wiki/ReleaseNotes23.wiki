@@ -23,7 +23,7 @@ RestAssuredMockMvc.authentication = principal("username", "password");
   {{{
  MockMvcRequestSpecification spec = new MockMvcRequestSpecBuilder.setAuth(principal("username", "password")).build();
   }}}
-  * Added support for using parts of the response when verifying another part of the response. For example consider the following JSON document returned from service x:
+  * Added support for using data from a response to verify another part of the response. For example consider the following JSON document returned from service x:
   {{{
 { "userId" : "some-id", "href" : "http://localhost:8080/some-id" }
   }}}
