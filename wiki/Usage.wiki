@@ -1288,8 +1288,9 @@ to allow all hostnames for all requests or:
 {{{
 given().config(RestAssured.config().sslConfig(sslConfig().allowAllHostnames()). .. ;
 }}}
-
 for a single request.
+
+Note that if you use "relaxed HTTPs validation" then `allowAllHostnames` is activated by default.
 
 = URL Encoding =
 Usually you don't have to think about URL encoding since Rest Assured provides this automatically out of the box. In some cases though it may be useful to turn URL Encoding off. One reason may be that you already the have some parameters encoded before you supply them to Rest Assured. To prevent double URL encoding you need to tell Rest Assured to disable it's URL encoding. E.g.
