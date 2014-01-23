@@ -46,6 +46,8 @@ given().auth().oauth2("accessToken"). ..
 
 ==Non-backward compatible changes ==
   * The json-path module accidentally depended on faster-jackson, jackson, gson and simple-json and brought then in as transitive dependencies. This has now been resolved which means that these dependencies are optional as intended (issue 297).
+  * Statically defined configuration (such as RestAssured.config = ..) is now automatically applied to RequestSpecBuilders in both RestAssured and RestAssuredMockMvc. To revert to previous behavior you can do
+    new RequestSpecBuilder.config(newConfig()). .
 
 == Minor changes ==
 See [http://github.com/jayway/rest-assured/raw/master/changelog.txt change log] for more details.
