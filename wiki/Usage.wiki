@@ -1510,7 +1510,7 @@ then().
 == Resetting RestAssuredMockMvc ==
 If you've used any static configuration you can easily reset RestAssuredMockMvc to its default state by callin the `RestAssuredMockMvc.reset()` method.
 
-== Authentication ==
+== Spring MVC Authentication ==
 Version `2.3.0` of `spring-mock-mvc` supports authentication. For example:
 {{{
 given().auth().principal(..). ..
