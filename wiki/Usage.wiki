@@ -1443,9 +1443,11 @@ Or [https://rest-assured.googlecode.com/files/spring-mock-mvc-2.3.0-dist.zip dow
 
 First of all you should statically import methods in:
   * `com.jayway.restassured.module.mockmvc.RestAssuredMockMvc.*`
+  * `com.jayway.restassured.module.mockmvc.matcher.RestAssuredMockMvcMatchers.*`
 instead of those defined in 
  * `com.jayway.restassured.RestAssured.*`
-Refer to [Usage#Static_imports static import] section of the docuemntation for additional static imports.
+ * `com.jayway.restassured.matcher.RestAssuredMatchers.*`
+Refer to [Usage#Static_imports static import] section of the documentation for additional static imports.
 
 In order to start a test using RestAssuredMockMvc you need to initialize it with a either a set of Controllers, a MockMvc instance or a WebApplicationContext from Spring. You can do this for a single request as seen in the previous example (`given().standaloneSetup(new GreetingController()). ..`) or you can do it statically:
 {{{
@@ -1507,6 +1509,20 @@ then().
 
 == Resetting RestAssuredMockMvc ==
 If you've used any static configuration you can easily reset RestAssuredMockMvc to its default state by callin the `RestAssuredMockMvc.reset()` method.
+
+== Authentication ==
+Version `2.3.0` of `spring-mock-mvc` supports authentication. For example:
+{{{
+given().auth().principal(..). ..
+}}}
+Some authentication methods require Spring Security to be on the classpath (optional). It's also possible to defined authentication statically:
+{{{
+RestAssuredMockMvc.authentication = principal("username", "password");
+}}}
+  where the `principal` method is statically imported from [http://rest-assured.googlecode.com/svn/tags/2.3.0/apidocs/com/jayway/restassured/module/mockmvc/RestAssuredMockMvc.html RestAssuredMockMvc]. It's also possible to define an authentication scheme in a request builder:
+{{{
+ MockMvcRequestSpecification spec = new MockMvcRequestSpecBuilder.setAuth(principal("username", "password")).build();
+}}}
 
 == Note on parameters ==
 MockMvc doesn't differentiate between different kinds of parameters so `param`, `formParam` and `queryParam` currently just delegates to param in MockMvc. `formParam` adds the `application/x-www-form-urlencoded` content-type header automatically though just as standard Rest Assured does.
