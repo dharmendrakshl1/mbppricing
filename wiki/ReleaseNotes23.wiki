@@ -39,7 +39,7 @@ get("/x").then().body("href", new ResponseAwareMatcher<Response>() {
   {{{
 get("/x").then().body("href", endsWithPath("userId"));
   }}}
-  `RestAssuredMatchers` can also be composed, either with another `RestAssuredMatcher` or with a Hamcrest Matcher. For example:
+  `ResponseAwareMatchers` can also be composed, either with another `ResponseAwareMatcher` or with a Hamcrest Matcher. For example:
   {{{
 get("/x").then().body("href", endsWithPath("userId").and(startsWith("http:/localhost:8080/")));
   }}}
