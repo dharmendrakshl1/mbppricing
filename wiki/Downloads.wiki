@@ -6,7 +6,10 @@ Google no longer accepts uploading of new binaries to the Google Code page the f
 
 == Current direct downloads == 
 || File || Description ||
-|| [http://dl.bintray.com/johanhaleby/generic/rest-assured-2.3.0-dist.zip rest-assured-2.3.0-dist.zip]  || rest-assured-2.3.0-dist.zip ||
+|| [http://dl.bintray.com/johanhaleby/generic/rest-assured-2.3.0-dist.zip rest-assured-2.3.0-dist.zip]  || 	 REST Assured 2.2.0 (including source and javadocs and dependencies, XmlPath and JsonPath) ||
+|| [http://dl.bintray.com/johanhaleby/generic/json-path-2.3.0-dist.zip json-path-2.3.0-dist.zip]  || 	 JsonPath 2.2.0 (standalone, including source and javadocs and dependencies) ||
+|| [http://dl.bintray.com/johanhaleby/generic/xml-path-2.3.0-dist.zip xml-path-2.3.0-dist.zip]  || 	 	 XmlPath 2.2.0 (standalone, including source and javadocs and dependencies) ||
+
 
 ==  Other versions ==
 If you want to download another version goto the REST Assured page on [https://bintray.com/johanhaleby/generic/rest-assured Bintray].
