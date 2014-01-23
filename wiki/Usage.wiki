@@ -1244,7 +1244,17 @@ String sessionId = sessionFilter.getSessionId();
 }}}
 
 = SSL =
-In most situations SSL should just work out of the box thanks to the excellent work of HTTP Builder and HTTP Client. There are how ever some cases where you'll run into trouble. You may for example run into a SSLPeerUnverifiedException if the server is using an invalid certificate. If this happens you should create a Java keystore file and use it with REST Assured. It's not too difficult, first follow the guide [http://groovy.codehaus.org/modules/http-builder/doc/ssl.html here] and then use the keystore in Rest Assured like this:
+In most situations SSL should just work out of the box thanks to the excellent work of HTTP Builder and HTTP Client. There are how ever some cases where you'll run into trouble. You may for example run into a SSLPeerUnverifiedException if the server is using an invalid certificate. The easiest way to workaround this is to use "relaxed HTTPs validation". For example:
+{{{
+given().relaxedHTTPSValidation().when().get("https://some_server.com"). .. 
+}}}
+You can also define this statically for all requests:
+{{{
+RestAssured.useRelaxedHTTPSValidation();
+}}}
+or in a [Usage#Specification_Re-use request specification].
+
+You can also be more fine-grained and create Java keystore file and use it with REST Assured. It's not too difficult, first follow the guide [http://groovy.codehaus.org/modules/http-builder/doc/ssl.html here] and then use the keystore in Rest Assured like this:
 
 {{{
 given().keystore("/pathToJksInClassPath", <password>). .. 
@@ -1257,6 +1267,11 @@ RestAssured.keystore("/pathToJksInClassPath", <password>);
 }}}
 
 You can also define a keystore in a re-usable [http://code.google.com/p/rest-assured/wiki/Usage#Specification_Re-use specification].
+
+If you already loaded a keystore with a password you can use it as a truststore:
+{{{
+RestAssured.trustStore(keystore);
+}}}
 
 You can find a working example [https://github.com/jayway/rest-assured/blob/master/examples/rest-assured-itest-java/src/test/java/com/jayway/restassured/itest/java/SSLTest.java here].
 
