@@ -12,5 +12,4 @@ Since Google have stopped serving static files the REST Assured binaries are now
 If you want to download another version goto the REST Assured page on [https://bintray.com/johanhaleby/generic/rest-assured Bintray].
 
 == Legacy versions ==
-If you're looking for legacy versions of REST Assured (version 2.2.0 and below) have a look at the old  [https://code.google.com/p/rest-assured/downloads/list?can=1&q=&colspec=Filename+Summary+Uploaded+ReleaseDate+Size+DownloadCount
- download page].
+If you're looking for legacy versions of REST Assured (version 2.2.0 and below) have a look at the old  <a href="https://code.google.com/p/rest-assured/downloads/list?can=1&q=&colspec=Filename+Summary+Uploaded+ReleaseDate+Size+DownloadCount">download page</a>.
