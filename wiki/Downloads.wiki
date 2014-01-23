@@ -1,5 +1,3 @@
-# Downloads
-
 = Downloads =
 
 Google no longer accepts uploading of new binaries to the Google Code page the files are now hosted at [https://bintray.com/johanhaleby/generic/rest-assured Bintray]. 
