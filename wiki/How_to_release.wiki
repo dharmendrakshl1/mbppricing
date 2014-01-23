@@ -9,6 +9,7 @@
   # Run `mvn release:perform -Prelease,dist`
   # Log in to [https://oss.sonatype.org Sonatype]. 
   # Follow the [https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide Sonatype release directions] in bullet 8.  
+    * Remove all dist projects
     * If sonatype complains about missing javadoc from scalatra, remove the scaltra-example project from the sonatype browser
   # Upload the artifacts to [http://bintray.com bintray].
    # Checkout tag X
