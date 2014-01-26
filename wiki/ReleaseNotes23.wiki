@@ -15,7 +15,7 @@ RestAssured.useRelaxedHTTPSValidation();
   {{{
 given().auth().principal(..). ..
   }}}
-  Some authentication methods require Spring Security to be on the classpath (optional). It's also possible to defined authentication statically:
+  Some authentication methods require Spring Security to be on the classpath (optional). It's also possible to define authentication statically:
   {{{
 RestAssuredMockMvc.authentication = principal("username", "password");
   }}}
