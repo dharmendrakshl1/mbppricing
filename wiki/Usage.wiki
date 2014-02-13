@@ -1422,7 +1422,7 @@ RestAssured.config = RestAssured.config().sslConfig(sslConfig().with().keystoreT
 
 = Spring Mock Mvc Module =
 
-REST Assured 2.3.0 introduced support for [http://docs.spring.io/spring/docs/4.0.0.RELEASE/javadoc-api/org/springframework/test/web/servlet/MockMvc.html Spring Mock Mvc] using the `spring-mock-mvc` module. This means that you can unit test Spring Mvc Controllers. For example given the following Spring controller:
+REST Assured 2.2.0 introduced support for [http://docs.spring.io/spring/docs/4.0.0.RELEASE/javadoc-api/org/springframework/test/web/servlet/MockMvc.html Spring Mock Mvc] using the `spring-mock-mvc` module. This means that you can unit test Spring Mvc Controllers. For example given the following Spring controller:
 {{{
 @Controller
 public class GreetingController {
