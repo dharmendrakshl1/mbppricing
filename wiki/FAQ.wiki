@@ -43,7 +43,7 @@ testCompile (group: 'com.jayway.restassured', name: 'rest-assured', version:'2.3
 }
 testCompile group: 'org.codehaus.groovy', name: 'groovy-all', version:'2.2.1'
 }}}
-2. Q: How can I determine when a JSON response path doesn't exist?
+2. Q: How can I determine when a JSON response path exists or doesn't exist?
     A: Imagine that we have a resource called "/json" that returns the following JSON response:
     {{{
 {
