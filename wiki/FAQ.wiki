@@ -67,7 +67,7 @@ get("/json").then().assertThat().body("records.any { it.containsKey('Phone') }",
     {{{
 get("/json").then().assertThat().body("records.any { it.containsKey('x') }", is(false));
     }}}
-    To verify that a JSON object contains an element, for example to check that "size" is defined you can do like this:
+    To verify that a JSON object contains an element, for example to check that "size" is defined in the example above you can do like this:
 {{{
 get("/json").then().assertThat().body("any { it.key == 'size') }", is(true));
 }}}
