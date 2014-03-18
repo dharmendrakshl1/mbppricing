@@ -19,7 +19,7 @@ Notes
   # REST Assured includes JsonPath and XmlPath as transitive dependencies
 
 === JsonPath ===
-Stand-alone JsonPath. Makes it easy to parse JSON documents.
+Stand-alone JsonPath (included if you depend on the `rest-assured` artifact). Makes it easy to parse JSON documents.
 {{{
 <dependency>
       <groupId>com.jayway.restassured</groupId>
@@ -29,7 +29,7 @@ Stand-alone JsonPath. Makes it easy to parse JSON documents.
 }}}
 
 === XmlPath ===
-Stand-alone XmlPath. Makes it easy to parse XML documents.
+Stand-alone XmlPath (included if you depend on the `rest-assured` artifact). Makes it easy to parse XML documents.
 {{{
 <dependency>
       <groupId>com.jayway.restassured</groupId>
