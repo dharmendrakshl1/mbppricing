@@ -1125,6 +1125,32 @@ get("/x").then().log().ifStatusCodeIsEqualTo(302). .. // Only log if the status 
 get("/x").then().log().ifStatusCodeMatches(matcher). .. // Only log if the status code matches the supplied Hamcrest matcher
 }}}
 
+== Logging if validation fails ==
+
+Since REST Assured 2.3.1 you can log the request of response only if the validation fails. To log the request do:
+{{{
+given().log().ifValidationFails(). ..
+}}}
+
+To log the response do:
+{{{
+.. .then().log().ifValidationFails(). ..
+}}}
+
+It's also possible to enable this for both the request and the response at the same time using the [http://rest-assured.googlecode.com/svn/tags/2.3.0/apidocs/com/jayway/restassured/config/LogConfig.html LogConfig]: 
+
+{{{
+given().             config(RestAssured.config().logConfig(logConfig().enableLoggingOfRequestAndResponseIfValidationFails(HEADERS))).
+}}}
+
+This will log only the headers if validation fails.
+
+There's also a shortcut for enabling logging of the request and response for all requests if validation fails:
+
+{{{
+RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+}}}
+
 = Root path =
 To avoid duplicated paths in body expectations you can specify a root path. E.g. instead of writing:
 {{{
