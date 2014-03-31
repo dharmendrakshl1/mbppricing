@@ -1191,6 +1191,17 @@ then().
          body(withNoArgs(), equalTo(4));
 }}}
 
+It's also possible to detach a root. For example:
+{{{
+when().
+         get("/jsonStore").
+then().
+         root("store.category").
+         body("size()", equalTo(4)).
+         detachRoot("category").
+         body("size()", equalTo(1));
+}}}
+
 = Path arguments =
 Path arguments are useful in situations where you have e.g. pre-defined variables that constitutes the path. For example
 {{{
