@@ -1125,7 +1125,7 @@ get("/x").then().log().ifStatusCodeIsEqualTo(302). .. // Only log if the status 
 get("/x").then().log().ifStatusCodeMatches(matcher). .. // Only log if the status code matches the supplied Hamcrest matcher
 }}}
 
-== Logging if validation fails ==
+== Log if validation fails ==
 
 Since REST Assured 2.3.1 you can log the request of response only if the validation fails. To log the request do:
 {{{
@@ -1140,7 +1140,7 @@ To log the response do:
 It's also possible to enable this for both the request and the response at the same time using the [http://rest-assured.googlecode.com/svn/tags/2.3.0/apidocs/com/jayway/restassured/config/LogConfig.html LogConfig]: 
 
 {{{
-given().             config(RestAssured.config().logConfig(logConfig().enableLoggingOfRequestAndResponseIfValidationFails(HEADERS))).
+given().config(RestAssured.config().logConfig(logConfig().enableLoggingOfRequestAndResponseIfValidationFails(HEADERS))). ..
 }}}
 
 This will log only the headers if validation fails.
