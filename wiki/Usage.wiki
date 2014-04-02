@@ -1454,7 +1454,7 @@ It's also possible to configure default parameters etc.
 == SSL Config ==
 The [http://rest-assured.googlecode.com/svn/tags/2.3.1/apidocs/com/jayway/restassured/config/SSLConfig.html SSLConfig] allows you to specify more advanced SSL configuration such as truststore, keystore type and host name verifier. For example:
 {{{
-RestAssured.config = RestAssured.config().sslConfig(sslConfig().with().keystoreType(<type>).and().strictHostnames();
+RestAssured.config = RestAssured.config().sslConfig(sslConfig().with().keystoreType(<type>).and().strictHostnames());
 }}}
 
 = Spring Mock Mvc Module =
