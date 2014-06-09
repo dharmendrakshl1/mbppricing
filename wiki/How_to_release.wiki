@@ -1,6 +1,6 @@
 = How to release =
   
-  # Switch to Java 7 because of javadoc issues
+  # Switch to Java 7 because of javadoc issues if using Java 8
   # Update changelog with the date of the new release
   # Run `mvn release:prepare -Prelease,dist -DautoVersionSubmodules=true`
      # Use SCM label rest-assured-X
