@@ -1369,6 +1369,47 @@ String response = get("/rest/api/2.0.alpha1/search?jql={q}", query);
 ..
 }}}
 
+= Proxy Configuration =
+Start from version 2.3.2 REST Assured has better support for proxies. For example if you have a proxy at localhost port 8888 you can do:
+{{{
+given().proxy("localhost", 8888). .. 
+}}}
+
+Actually you don't even have to specify the hostname if the server is running on your local environment:
+
+{{{
+given().proxy(8888). .. // Will assume localhost
+}}}
+
+To use HTTPS you need to supply a third parameter (scheme) or use the `com.jayway.restassured.specification.ProxySpecification`. For example: 
+
+{{{
+given().proxy(host("localhost").withScheme("https")). ..
+}}}
+
+where `host` is statically imported from `com.jayway.restassured.specification.ProxySpecification`. 
+
+== Static Proxy Configuration == 
+
+It's also possible to configure a proxy statically for all requests, for example:
+{{{
+RestAssured.proxy("localhost", 8888);    
+}}}
+
+or:
+
+{{{
+RestAssured.proxy = host("localhost").withPort(8888);
+}}}
+
+== Request Specificaiton Proxy Configuration ==
+You can also create a request specification and specify the proxy there:
+
+{{{
+RequestSpecification specification = new RequestSpecBuilder().setProxy("localhost").build();
+given().spec(specification). ..
+}}}
+
 = Detailed configuration =
 Detailed configuration is provided by the [http://rest-assured.googlecode.com/svn/tags/2.3.2/apidocs/com/jayway/restassured/config/RestAssuredConfig.html RestAssuredConfig] instance with which you can configure the parameters of [http://rest-assured.googlecode.com/svn/tags/2.3.2/apidocs/com/jayway/restassured/config/HttpClientConfig.html HTTP Client] as well as [http://rest-assured.googlecode.com/svn/tags/2.3.2/apidocs/com/jayway/restassured/config/RedirectConfig.html Redirect], [http://rest-assured.googlecode.com/svn/tags/2.3.2/apidocs/com/jayway/restassured/config/LogConfig.html Log], [http://rest-assured.googlecode.com/svn/tags/2.3.2/apidocs/com/jayway/restassured/config/EncoderConfig.html Encoder], [http://rest-assured.googlecode.com/svn/tags/2.3.2/apidocs/com/jayway/restassured/config/DecoderConfig.html Decoder], [http://rest-assured.googlecode.com/svn/tags/2.3.2/apidocs/com/jayway/restassured/config/SessionConfig.html Session], [http://rest-assured.googlecode.com/svn/tags/2.3.2/apidocs/com/jayway/restassured/config/ObjectMapperConfig.html ObjectMapper], [http://rest-assured.googlecode.com/svn/tags/2.3.2/apidocs/com/jayway/restassured/config/ConnectionConfig.html Connection] and [http://rest-assured.googlecode.com/svn/tags/2.3.2/apidocs/com/jayway/restassured/config/SSLConfig.html SSL] settings. Examples:
 
