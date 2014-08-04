@@ -346,7 +346,7 @@ when().
         get("/lotto");
 }}}
 
-While this works fine it turned out to be quite confusing and annoying for many users. The reason for not using "given / when / then" in the first place was mainly technical. So prior to REST Assured 2.0 there was no support "given / when / then" which is more or less the standard when you're doing some kind of BDD-like testing. The "given / expect / then" approach still works fine in 2.0 but "given / when / then" reads better and is easier to understand for more people. There's however one benefit of using the "given / expect /then" approach and that is that ALL expectation errors can be displayed at the same time which is not possible with the new syntax (since the expectations are defined last). This means that if you would have had multiple expectations in the previous example such as
+This is the so called "legacy syntax" which was the de facto way of writing tests in REST Assured 1.x. While this works fine it turned out to be quite confusing and annoying for many users. The reason for not using "given / when / then" in the first place was mainly technical. So prior to REST Assured 2.0 there was no support "given / when / then" which is more or less the standard when you're doing some kind of BDD-like testing. The "given / expect / then" approach still works fine in 2.0 but "given / when / then" reads better and is easier to understand for more people. There's however one benefit of using the "given / expect /then" approach and that is that ALL expectation errors can be displayed at the same time which is not possible with the new syntax (since the expectations are defined last). This means that if you would have had multiple expectations in the previous example such as
 
 {{{
 given().
