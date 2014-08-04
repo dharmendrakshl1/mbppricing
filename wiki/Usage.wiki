@@ -339,35 +339,35 @@ get("/price").then().assertThat().body("price", equalTo(12.12f));
 When reading blogs about REST Assured you may see a lot of examples using the "given / expect / when" syntax, for example: 
 {{{
 given().
-           param("x", "y").
+        param("x", "y").
 expect().
-           body("lotto.lottoId", equalTo(5)).
+        body("lotto.lottoId", equalTo(5)).
 when().
-           get("/lotto");
+        get("/lotto");
 }}}
 
 While this works fine it turned out to be quite confusing and annoying for many users. The reason for not using "given / when / then" in the first place was mainly technical. So prior to REST Assured 2.0 there was no support "given / when / then" which is more or less the standard when you're doing some kind of BDD-like testing. The "given / expect / then" approach still works fine in 2.0 but "given / when / then" reads better and is easier to understand for more people. There's however one benefit of using the "given / expect /then" approach and that is that ALL expectation errors can be displayed at the same time which is not possible with the new syntax (since the expectations are defined last). This means that if you would have had multiple expectations in the previous example such as
 
 {{{
 given().
-           param("x", "y").
+        param("x", "y").
 expect().
-           statusCode(400).
-           body("lotto.lottoId", equalTo(6)).
+        statusCode(400).
+        body("lotto.lottoId", equalTo(6)).
 when().
-           get("/lotto");
+        get("/lotto");
 }}}
 
 REST Assured will report that both the status code expectation and the body expectation are wrong. Rewriting this with the new syntax
 
 {{{
 given().
-           param("x", "y").
+        param("x", "y").
 when().
-           get("/lotto").
+        get("/lotto").
 then().
-           statusCode(400).
-           body("lotto.lottoId", equalTo(6));
+        statusCode(400).
+        body("lotto.lottoId", equalTo(6));
 }}}
 
 will only report an error at the first failed expectation / assertion (that status code was expected to be 400 but it was actually 200). You would have to re-run the test in order to catch the second error.
@@ -383,13 +383,13 @@ This is the same thing as:
 
 {{{
 given().
-          param("x", "y").
-          header("z", "w").
+        param("x", "y").
+        header("z", "w").
 when().
-          get("/something").
+        get("/something").
 then().
-         statusCode(200).
-         body("x.y", equalTo("z"));
+        statusCode(200).
+        body("x.y", equalTo("z"));
 }}}
 
 = Getting Response Data =
