@@ -9,7 +9,7 @@ Includes JsonPath and XmlPath
 <dependency>
       <groupId>com.jayway.restassured</groupId>
       <artifactId>rest-assured</artifactId>
-      <version>2.3.3</version>
+      <version>2.3.4</version>
       <scope>test</scope>
 </dependency>
 }}}
@@ -24,7 +24,7 @@ Stand-alone JsonPath (included if you depend on the `rest-assured` artifact). Ma
 <dependency>
       <groupId>com.jayway.restassured</groupId>
       <artifactId>json-path</artifactId>
-      <version>2.3.3</version>
+      <version>2.3.4</version>
 </dependency>
 }}}
 
@@ -34,7 +34,7 @@ Stand-alone XmlPath (included if you depend on the `rest-assured` artifact). Mak
 <dependency>
       <groupId>com.jayway.restassured</groupId>
       <artifactId>xml-path</artifactId>
-      <version>2.3.3</version>
+      <version>2.3.4</version>
 </dependency>
 }}}
 
@@ -44,7 +44,7 @@ If you want to validate that a JSON response conforms to a [http://json-schema.o
 <dependency>
       <groupId>com.jayway.restassured</groupId>
       <artifactId>json-schema-validator</artifactId>
-      <version>2.3.3</version>
+      <version>2.3.4</version>
       <scope>test</scope>
 </dependency>
 }}}
@@ -52,18 +52,18 @@ If you want to validate that a JSON response conforms to a [http://json-schema.o
 Refer to the [https://code.google.com/p/rest-assured/wiki/Usage#JSON_Schema_validation documentation] for more info.
 
 === Spring Mock Mvc ===
-If you're using Spring Mvc you can now unit test your controllers using the [http://rest-assured.googlecode.com/svn/tags/2.3.3/apidocs/com/jayway/restassured/module/mockmvc/RestAssuredMockMvc.html RestAssuredMockMvc] API in the [Usage#Spring_Mock_Mvc_Module spring-mock-mvc] module. For this to work you need to depend on the `spring-mock-mvc` module:
+If you're using Spring Mvc you can now unit test your controllers using the [http://rest-assured.googlecode.com/svn/tags/2.3.4/apidocs/com/jayway/restassured/module/mockmvc/RestAssuredMockMvc.html RestAssuredMockMvc] API in the [Usage#Spring_Mock_Mvc_Module spring-mock-mvc] module. For this to work you need to depend on the `spring-mock-mvc` module:
 {{{
 <dependency>
       <groupId>com.jayway.restassured</groupId>
       <artifactId>spring-mock-mvc</artifactId>
-      <version>2.3.3</version>
+      <version>2.3.4</version>
       <scope>test</scope>
 </dependency>
 }}}
 
 == Non-maven users ==
-Download [http://dl.bintray.com/johanhaleby/generic/rest-assured-2.3.3-dist.zip REST Assured] and [http://dl.bintray.com/johanhaleby/generic/json-schema-validator-2.3.3-dist.zip Json Schema Validator] (optional). You can also download [http://dl.bintray.com/johanhaleby/generic/xml-path-2.3.3-dist.zip XmlPath] and/or [http://dl.bintray.com/johanhaleby/generic/json-path-2.3.3-dist.zip JsonPath] separately if you don't need REST Assured. If you're using Spring Mvc then you can download the [http://dl.bintray.com/johanhaleby/generic/spring-mock-mvc-2.3.3-dist.zip spring-mock-mvc] module as well. Extract the distribution zip file and put the jar files in your class-path.
+Download [http://dl.bintray.com/johanhaleby/generic/rest-assured-2.3.4-dist.zip REST Assured] and [http://dl.bintray.com/johanhaleby/generic/json-schema-validator-2.3.4-dist.zip Json Schema Validator] (optional). You can also download [http://dl.bintray.com/johanhaleby/generic/xml-path-2.3.4-dist.zip XmlPath] and/or [http://dl.bintray.com/johanhaleby/generic/json-path-2.3.4-dist.zip JsonPath] separately if you don't need REST Assured. If you're using Spring Mvc then you can download the [http://dl.bintray.com/johanhaleby/generic/spring-mock-mvc-2.3.4-dist.zip spring-mock-mvc] module as well. Extract the distribution zip file and put the jar files in your class-path.
 
 = Static imports =
        
@@ -77,7 +77,7 @@ If you want to use [http://json-schema.org/ Json Schema] validation you should a
   * `com.jayway.restassured.module.jsv.JsonSchemaValidator.*`
 Refer to [#JSON_Schema_validation Json Schema Validation] section for more info.
 
-If you're using Spring MVC you can use the [Usage#Spring_Mock_Mvc_Module spring-mock-mvc] module to unit test your Spring Controllers using the Rest Assured DSL. To do this statically import the methods from [http://rest-assured.googlecode.com/svn/tags/2.3.3/apidocs/com/jayway/restassured/module/mockmvc/RestAssuredMockMvc.html RestAssuredMockMvc] _instead_ of importing the methods from `com.jayway.restassured.RestAssured` and `com.jayway.restassured.matcher.RestAssuredMatchers`:
+If you're using Spring MVC you can use the [Usage#Spring_Mock_Mvc_Module spring-mock-mvc] module to unit test your Spring Controllers using the Rest Assured DSL. To do this statically import the methods from [http://rest-assured.googlecode.com/svn/tags/2.3.4/apidocs/com/jayway/restassured/module/mockmvc/RestAssuredMockMvc.html RestAssuredMockMvc] _instead_ of importing the methods from `com.jayway.restassured.RestAssured` and `com.jayway.restassured.matcher.RestAssuredMatchers`:
   * `com.jayway.restassured.module.mockmvc.RestAssuredMockMvc.*`
   * `com.jayway.restassured.matcher.RestAssuredMatchers.*`
 
