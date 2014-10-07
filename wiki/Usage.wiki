@@ -49,7 +49,8 @@ get("/lotto").then().body("lotto.winners.winnerId", hasItems(23, 54));
 }}}     
 
 Note: `equalTo` and `hasItems` are Hamcrest matchers which you should statically import from `org.hamcrest.Matchers`.
-Note: The path syntax follows Groovy's [http://groovy.codehaus.org/GPath GPath] syntax .
+
+Note that the JsonPath implementation uses <a href="http://groovy.codehaus.org/GPath">Groovy's GPath</a> syntax and is not to be confused with Jayway's other <a href="https://github.com/jayway/JsonPath">JsonPath</a> implementation.
 
 === Returning floats and doubles as BigDecimal ===
 
