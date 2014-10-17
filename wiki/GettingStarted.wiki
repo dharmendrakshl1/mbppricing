@@ -1,10 +1,11 @@
 = Installation = 
-== Maven users ==
+== Maven / Gradle Users ==
 Add the following dependency to your pom.xml:
 
 === REST Assured === 
 Includes JsonPath and XmlPath
 
+Maven:
 {{{
 <dependency>
       <groupId>com.jayway.restassured</groupId>
@@ -14,12 +15,19 @@ Includes JsonPath and XmlPath
 </dependency>
 }}}
 
+Gradle: 
+{{{
+testCompile 'com.jayway.restassured:rest-assured:2.3.4'
+}}}
+
 Notes 
   # You should place rest-assured before JUnit in your pom.xml dependency declaration in order to make sure that the correct version of Hamcrest is used. 
   # REST Assured includes JsonPath and XmlPath as transitive dependencies
 
 === JsonPath ===
 Standalone JsonPath (included if you depend on the `rest-assured` artifact). Makes it easy to parse JSON documents. Note that this JsonPath implementation uses <a href="http://groovy.codehaus.org/GPath">Groovy's GPath</a> syntax and is not to be confused with Jayway's other <a href="https://github.com/jayway/JsonPath">JsonPath</a> implementation.
+
+Maven:
 {{{
 <dependency>
       <groupId>com.jayway.restassured</groupId>
@@ -28,8 +36,15 @@ Standalone JsonPath (included if you depend on the `rest-assured` artifact). Mak
 </dependency>
 }}}
 
+Gradle:
+{{{
+compile 'com.jayway.restassured:json-path:2.3.4'
+}}}
+
 === XmlPath ===
 Stand-alone XmlPath (included if you depend on the `rest-assured` artifact). Makes it easy to parse XML documents.
+
+Maven:
 {{{
 <dependency>
       <groupId>com.jayway.restassured</groupId>
@@ -38,8 +53,15 @@ Stand-alone XmlPath (included if you depend on the `rest-assured` artifact). Mak
 </dependency>
 }}}
 
+Gradle:
+{{{
+compile 'com.jayway.restassured:xml-path:2.3.4'
+}}}
+
 === JSON Schema Validation ===
 If you want to validate that a JSON response conforms to a [http://json-schema.org/ Json Schema] you can use the `json-schema-validator` module:
+
+Maven:
 {{{
 <dependency>
       <groupId>com.jayway.restassured</groupId>
@@ -49,10 +71,17 @@ If you want to validate that a JSON response conforms to a [http://json-schema.o
 </dependency>
 }}}
 
+Gradle:
+{{{
+testCompile 'com.jayway.restassured:json-schema-validator:2.3.4'
+}}}
+
 Refer to the [https://code.google.com/p/rest-assured/wiki/Usage#JSON_Schema_validation documentation] for more info.
 
 === Spring Mock Mvc ===
 If you're using Spring Mvc you can now unit test your controllers using the [http://rest-assured.googlecode.com/svn/tags/2.3.4/apidocs/com/jayway/restassured/module/mockmvc/RestAssuredMockMvc.html RestAssuredMockMvc] API in the [Usage#Spring_Mock_Mvc_Module spring-mock-mvc] module. For this to work you need to depend on the `spring-mock-mvc` module:
+
+Maven:
 {{{
 <dependency>
       <groupId>com.jayway.restassured</groupId>
@@ -60,6 +89,11 @@ If you're using Spring Mvc you can now unit test your controllers using the [htt
       <version>2.3.4</version>
       <scope>test</scope>
 </dependency>
+}}}
+
+Gradle:
+{{{
+testCompile 'com.jayway.restassured:spring-mock-mvc:2.3.4'
 }}}
 
 == Non-maven users ==
