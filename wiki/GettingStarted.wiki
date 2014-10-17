@@ -21,7 +21,7 @@ testCompile 'com.jayway.restassured:rest-assured:2.3.4'
 }}}
 
 Notes 
-  # You should place rest-assured before JUnit in your pom.xml dependency declaration in order to make sure that the correct version of Hamcrest is used. 
+  # You should place rest-assured before the JUnit dependency declaration in your pom.xml / build.gradle in order to make sure that the correct version of Hamcrest is used. 
   # REST Assured includes JsonPath and XmlPath as transitive dependencies
 
 === JsonPath ===
