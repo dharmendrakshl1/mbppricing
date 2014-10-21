@@ -209,6 +209,23 @@ public class JsonSchemaValidatorWithoutRestAssuredTest {
 
 Refer to the [https://code.google.com/p/rest-assured/wiki/GettingStarted#JSON_Schema_Validation getting started] page for more info on this.
 
+=== Anonymous JSON root validation   ===
+
+A JSON document doesn't necessarily need a named root attribute. This is for example valid JSON:
+
+{{{
+[1, 2, 3]
+}}}  
+
+An anonymous JSON root can be verified by using <code>$</code> or an empty string as path. For example let's say that this JSON document is exposed from <code>http://localhost:8080/json</code> then we can validate it like this with REST Assured:
+
+{{{
+when().
+	   get("/json").
+then().
+	   body("$", hasItems(1, 2, 3)); // An empty string "" would work as well
+}}}
+
 == Example 2 - XML == 
 XML can be verified in a similar way. Imagine that a POST request to `http://localhost:8080/greetXML` returns:
 {{{
