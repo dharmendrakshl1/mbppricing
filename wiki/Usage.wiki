@@ -217,7 +217,7 @@ A JSON document doesn't necessarily need a named root attribute. This is for exa
 [1, 2, 3]
 }}}  
 
-An anonymous JSON root can be verified by using <code>$</code> or an empty string as path. For example let's say that this JSON document is exposed from <code>http://localhost:8080/json</code> then we can validate it like this with REST Assured:
+An anonymous JSON root can be verified by using `$` or an empty string as path. For example let's say that this JSON document is exposed from `http://localhost:8080/json` then we can validate it like this with REST Assured:
 
 {{{
 when().
