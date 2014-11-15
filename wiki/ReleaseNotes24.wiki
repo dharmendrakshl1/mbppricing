@@ -31,6 +31,7 @@ RequestSpecification spec = new RequestSpecBuilder.addHeader("header1", "value2"
 given().
         config(RestAssuredConfig.config().headerConfig(headerConfig().overwriteHeadersWithName("header1"))).
         header("header1", "value1").
+        spec(spec)
 when().
         get(..)
   }}}
