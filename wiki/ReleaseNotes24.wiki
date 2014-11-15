@@ -27,7 +27,7 @@ when().
 == Other Notable Changes ==
   * Added ability to configure if headers should be merged or overwritten when multiple headers with the same name are specified by using the new com.jayway.restassured.config.HeaderConfig. By default content-type and accept headers are now overwritten instead of merged. For example to configure "header1" to be overwritten instead of merged you can do:
   {{{
- RequestSpecification spec = new RequestSpecBuilder.addHeader("header1", "value2").build();
+RequestSpecification spec = new RequestSpecBuilder.addHeader("header1", "value2").build();
 given().
         config(RestAssuredConfig.config().headerConfig(headerConfig().overwriteHeadersWithName("header1"))).
         header("header1", "value1").
