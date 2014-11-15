@@ -1168,6 +1168,8 @@ given().log().params(). .. // Log only the parameters of the request
 given().log().body(). .. // Log only the request body
 given().log().headers(). .. // Log only the request headers
 given().log().cookies(). .. // Log only the request cookies
+given().log().method(). .. // Log only the request method
+given().log().path(). .. // Log only the request path
 }}}
 
 == Response Logging ==
