@@ -41,7 +41,7 @@ java.lang.IncompatibleClassChangeError: Found interface org.objectweb.asm.Method
 testCompile (group: 'com.jayway.restassured', name: 'rest-assured', version:'2.4.0') {
         exclude(module: 'groovy')
 }
-testCompile group: 'org.codehaus.groovy', name: 'groovy-all', version:'2.4.0'
+testCompile group: 'org.codehaus.groovy', name: 'groovy-all', version:'2.3.7'
 }}}
 2. Q: How can I determine if a JSON response path exists or doesn't exist?
     A: Imagine that we have a resource called "/json" that returns the following JSON response:
