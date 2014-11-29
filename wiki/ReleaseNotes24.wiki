@@ -21,7 +21,7 @@ given().
 when().
         get(..)
   }}}
-  This will now cause the resulting config to include both the header config and session config. Before this change ONLY header config would be applied since all configs from the specs were overwritten. This also applies to the MockMvc extension.
+  This will now cause the resulting config to include both the header config and session config. Before this change ONLY the header config would be applied since all configs from the specs were overwritten. This also applies to the MockMvc extension.
   * You can now send form parameters with a GET request in accordance with RFC1866 (page 46, HTML 4.x section 17.13.3). Form parameters will be added a query parameters for a GET request and Content-Type will automatically be set to "application/x-www-form-urlencoded" with the default charset.
 
 == Other Notable Changes ==
