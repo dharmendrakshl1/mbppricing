@@ -258,7 +258,7 @@ or a little shorter:
 with().parameters("firstName", "John", "lastName", "Doe").when().post("/greetXML").then().body("greeting.firstName", equalTo("John"), "greeting.lastName", equalTo("Doe"));
 }}}      
 
-See [http://groovy.codehaus.org/Updating+XML+with+XmlSlurper this] link for more info about the syntax (it follows Groovy's [http://groovy.codehaus.org/GPath GPath] syntax).
+See [http://groovy-lang.org/processing-xml.html#_gpath this] link for more info about the syntax (it follows Groovy's [http://groovy.codehaus.org/GPath GPath] syntax).
 
 === XML namespaces ===
 To make body expectations take namespaces into account you need to declare the namespaces using the [http://rest-assured.googlecode.com/svn/tags/2.4.0/apidocs/com/jayway/restassured/config/XmlConfig.html com.jayway.restassured.config.XmlConfig]. For example let's say that a resource called `namespace-example` located at `http://localhost:8080` returns the following XML:
