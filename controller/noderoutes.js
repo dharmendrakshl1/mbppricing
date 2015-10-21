@@ -12,10 +12,10 @@ module.exports = function(app){
 	app.get('/businessUnit/marketArea/:marketAreaId/facilities/:facilityId',restController.getBusinessUnit);
 	app.get('/lob/marketArea/:marketAreaId/facilities/:facilityId/businessUnit/:businessunitId',restController.getLOB);*/
 
-	app.get('/api/group/:groupId/marketArea',restController.getMarketArea);
-	app.get('/api/marketArea/:marketAreaId/facilities',restController.getFacilities);
-	app.get('/api/marketArea/:marketAreaId/facilities/:facilityId/businessUnit',restController.getBusinessUnit);
-	app.get('/api/marketArea/:marketAreaId/facilities/:facilityId/businessUnit/:businessunitId/lobMaterialStream',restController.getLOB);
-	app.get('/api/businessUnit/:businessunitId/lobMaterialStream/:lobMaterialStreamId/quarter',restController.getQuarter);
-	app.get('/api/businessUnit/:businessunitId/lobMaterialStream/:lobMaterialStreamId/goBuQuarterInsert',restController.goBuQuarterInsert);
+	app.get('/api/corpDB/group/:groupId/marketArea',restController.getMarketArea);
+	app.get('/api/corpDB/marketArea/:marketAreaId/facilities',restController.getFacilities);
+	app.get('/api/corpDB/marketArea/:marketAreaId/facilities/:facilityId/businessUnit',restController.getBusinessUnit);
+	app.get('/api/corpDB/marketArea/:marketAreaId/facilities/:facilityId/businessUnit/:businessunitId/lobMaterialStream',restController.getLOB);
+	app.get('/api/corpDB/businessUnit/:businessunitId/lobMaterialStream/:lobMaterialStreamId/quarter',restController.getQuarter);
+	app.get('/api/corpDB/businessUnit/:businessunitId/lobMaterialStream/:lobMaterialStreamId/goBuQuarterInsert',restController.goBuQuarterInsert);
 }
