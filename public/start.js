@@ -22,7 +22,7 @@ MBPApp.service('getCropDB', ['$http', function($http) {
     corpDB.getCorpDBHierarchy = function(url) {
         //return $http.get('http://adcvdij7009:3000/api' + url);
         //return $http.get('http://10.248.92.159:3000/api' + url);
-        return $http.get('http://localhost:3000/api' + url);
+        return $http.get('http://localhost:3000/api/corpdb' + url);
     };
 }]);
 
