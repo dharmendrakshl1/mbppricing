@@ -38,7 +38,6 @@ MBPApp.controller("financialSettingController", ['$scope', 'getCropDB', function
         }
     ];
 
-
     
     $scope.$watch('group', function(newVal) {        
         if(newVal) {           
@@ -52,15 +51,21 @@ MBPApp.controller("financialSettingController", ['$scope', 'getCropDB', function
     });
 
     $scope.$watch('marketArea', function(newVal) {
+
         if(newVal) {
             getCropDB.getCorpDBHierarchy('/marketArea/'+ $scope.marketArea.ma_id + '/facilities') 
                 .success(function(response) {
-                    var temp = {
-                        "facility_type_id" : "5",
+                    
+                    var allFacilities = {
+                        "facility_type_id" : 5,
                         "facility_type" : "All"
                     }; 
-                    response.push(temp);                              
+                   
+                    response.push(allFacilities);       
+                    
                     $scope.facilities = response;
+                    $scope.facility = allFacilities.facility_type_id;
+                 
                 }).error(function(err, status) {
                     console.log(err);
                 });   
@@ -84,8 +89,8 @@ MBPApp.controller("financialSettingController", ['$scope', 'getCropDB', function
         if( newVal ) {
             if($scope.facility === 1){
                 $scope.isRead = false;
-               getCropDB.getCorpDBHierarchy('/marketArea/' + $scope.marketArea.ma_id +'/facilities/' + $scope.facility+ '/businessUnit/'+ $scope.businessUnit.bu_id + '/lobMaterialStream')
-                 .success(function(response) {
+                getCropDB.getCorpDBHierarchy('/marketArea/' + $scope.marketArea.ma_id +'/facilities/' + $scope.facility+ '/businessUnit/'+ $scope.businessUnit.bu_id + '/lobMaterialStream')
+                .success(function(response) {
                     $scope.LOBs = response;
                     
                 }).error(function(err, status) {
@@ -119,10 +124,10 @@ MBPApp.controller("financialSettingController", ['$scope', 'getCropDB', function
                   $scope.LOBs = response;
                   $scope.lob = response[0];
                     
-                }else {
+                }else{
                     $scope.isRead = false;
-                    getCropDB.getCorpDBHierarchy('/marketArea/' + $scope.marketArea.ma_id +'/facilities/' + $scope.facility+ '/businessUnit/'+ $scope.businessUnit.bu_id + '/lobMaterialStream')
-                 .success(function(response) {
+                     getCropDB.getCorpDBHierarchy('/marketArea/' + $scope.marketArea.ma_id +'/facilities/' + $scope.facility+ '/businessUnit/'+ $scope.businessUnit.bu_id + '/lobMaterialStream')
+                .success(function(response) {
                     $scope.LOBs = response;
                     
                 }).error(function(err, status) {
@@ -162,4 +167,3 @@ MBPApp.controller("financialSettingController", ['$scope', 'getCropDB', function
 
 
 }]);
-

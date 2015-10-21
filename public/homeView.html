@@ -8,7 +8,8 @@
 <body>
 -->
   <div ng-controller = "financialSettingController">
-    <br><br>
+  <br>
+  <br>
         Group : 
         <select id="group" ng-model="group" ng-options = "group.ID +' - ' + group.value for group in groups | orderBy:'ID'" ng-change="marketArea=null;facility=null; businessUnit=null;lob=null;quarters=null;">
           <option value="">Select a value</option>
@@ -22,14 +23,15 @@
 
        <br>
        Facility : 
-       <select id="facility" ng-model="facility" ng-options = "facility.facility_type_id as facility.facility_type for facility in facilities | orderBy:'facility_type_id'" ng-change="businessUnit=null;lob=null;quarters=null;"> 
-       </select> <br> 
+       <select id="facility" ng-model="facility" ng-options = "facility.facility_type_id as facility.facility_type for facility in facilities | orderBy:'facility_type'" ng-change="businessUnit=null;lob=null;quarters=null;"> 
+       
+       </select>  <br> 
 
        <br>
        BusinessUnit : 
        <select id="businessUnit" ng-model="businessUnit" ng-options = "businessUnit.bu_id +' - ' + businessUnit.bu_name for businessUnit in businessUnits | orderBy:'bu_id'" ng-change="lob=null;quarters=null;"> 
         <option value="">Select a value</option>
-      </select> <br>
+      </select>  <br>
 
        <br>
        LOB : 
