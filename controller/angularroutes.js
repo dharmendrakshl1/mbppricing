@@ -5,8 +5,8 @@ module.exports = function(app){
 		res.send("Angular ouput");
 	});*/
 	
-	app.get('/angular', function(req, res){
+	app.get('/', function(req, res){
 		//res.sendfile('./public/main.html');
-		res.sendFile(path.join(__dirname, '../public', 'main.html'));
+		res.sendFile(path.join(__dirname, '../public/app', 'index.html'));
 	});
 }
