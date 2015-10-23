@@ -183,7 +183,7 @@ exports.getQuarter = function(req,res){
 				bu_quarter_id_query.on("end", function(result){
 					var quarterValue = result.rows[0].quarter;
 					quarterRange.appliedQuarterRange = "";
-					quarterRange.availaibleQuarterRange = quarterValue;
+					quarterRange.availableQuarterRange = quarterValue;
 
 					/*var bu_quarter_id = result.rows[0].quarter_id;
 
@@ -231,7 +231,7 @@ exports.getQuarter = function(req,res){
 								q_quarter_id_query.on("end", function(result) {
 									console.log(JSON.stringify(result.rows, null, "    "));
 									quarterRange.appliedQuarterRange = result.rows[1].quarter;
-									quarterRange.availaibleQuarterRange = result.rows[0].quarter;
+									quarterRange.availableQuarterRange = result.rows[0].quarter;
 									res.send(quarterRange);
 
 									/*res.send(JSON.stringify({
@@ -260,7 +260,7 @@ exports.getQuarter = function(req,res){
 								q_quarter_id_query.on("end", function(result) {
 									console.log(JSON.stringify(result.rows, null, "    "));
 									quarterRange.appliedQuarterRange = result.rows[0].quarter;
-									quarterRange.availaibleQuarterRange = result.rows[0].quarter;
+									quarterRange.availableQuarterRange = result.rows[0].quarter;
 									res.send(quarterRange);
 
 									/*res.send(JSON.stringify({

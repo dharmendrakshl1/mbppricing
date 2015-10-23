@@ -2,37 +2,37 @@
   <br>
   <br>
         Group : 
-        <select id="group" ng-model="group" ng-options = "group.ID +' - ' + group.value for group in groups | orderBy:'ID'" ng-change="marketArea=null;facility=null; businessUnit=null;lob=null;quarters=null;">
+        <select id="group" ng-model="group" ng-options = "group.ID +' - ' + group.value for group in groups | orderBy:'ID'" ng-change="marketArea=null;facility=null; businessUnit=null;lob=null;quarters=null">
           <option value="">Select a value</option>
         </select><br>
 
         <br>
         Market Area :
-       <select id="marketArea" ng-model="marketArea" ng-options = "marketArea.ma_id +' - ' + marketArea.ma_name for marketArea in marketAreas | orderBy:'ma_id'" ng-change="facility=null; businessUnit=null;lob=null;quarters=null;">
+       <select id="marketArea" ng-model="marketArea" ng-options = "marketArea.ma_id +' - ' + marketArea.ma_name for marketArea in marketAreas | orderBy:'ma_id'" ng-change="facility=null; businessUnit=null;lob=null;quarters=null">
         <option value="">Select a value</option>
        </select><br>
 
        <br>
        Facility : 
-       <select id="facility" ng-model="facility" ng-options = "facility.facility_type_id as facility.facility_type for facility in facilities | orderBy:'facility_type'" ng-change="businessUnit=null;lob=null;quarters=null;"> 
+       <select id="facility" ng-model="facility" ng-options = "facility.facility_type_id as facility.facility_type for facility in facilities | orderBy:'facility_type'" ng-change="businessUnit=null;lob=null;quarters=null"> 
        
        </select>  <br> 
 
        <br>
        BusinessUnit : 
-       <select id="businessUnit" ng-model="businessUnit" ng-options = "businessUnit.bu_id +' - ' + businessUnit.bu_name for businessUnit in businessUnits | orderBy:'bu_id'" ng-change="lob=null;quarters=null;"> 
+       <select id="businessUnit" ng-model="businessUnit" ng-options = "businessUnit.bu_id +' - ' + businessUnit.bu_name for businessUnit in businessUnits | orderBy:'bu_id'" ng-change="lob=null;quarters=null"> 
         <option value="">Select a value</option>
       </select>  <br>
 
        <br>
        LOB : 
-       <select id="lob" ng-disabled = "isRead" ng-model="lob" ng-options = "lob.lob4_id + ' - ' + lob.lobms for lob in LOBs | orderBy:'lob4_id'" > 
+       <select id="lob" ng-disabled = "isRead" ng-model="lob" ng-options = "lob.lob4_id + ' - ' + lob.lobms for lob in LOBs | orderBy:'lob4_id'" ng-change="quarters=null"> 
          <option value="">Select a value</option>
        </select>
        <br>
 
        <br><br>
-       <input type="radio" ng-model="quarters" value="quartersRecieved" ng-disabled="isQuarterNull"/>Quarters Applied {{quartersRecieved.appliedQuarterRange}} <br>
-       <input type="radio" ng-model="quarters" value="available" ng-disabled="isAvailQuarterNull"/>Available Quarters {{quartersRecieved.availaibleQuarterRange}}
+       <input id="quarters" type="radio" ng-model="quarters" value="applied" ng-disabled="isQuarterNull" />Quarters Applied {{quartersRecieved.appliedQuarterRange}} <br>
+       <input id="quarters" type="radio" ng-model="quarters" value="available" ng-disabled="isAvailQuarterNull" ng-value = "item.checked" />Available Quarters {{quartersRecieved.availableQuarterRange}}
     </div>
 

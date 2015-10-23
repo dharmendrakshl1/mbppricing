@@ -25,6 +25,10 @@ MBPApp.service('getCropDB', ['$http', function($http) {
 }]);
 
 MBPApp.controller("financialSettingController", ['$scope', 'getCropDB', function($scope, getCropDB){
+            
+    $scope.item = {};
+
+    $scope.item.checked = false;
     $scope.groups = [
          {
             value: "North Tier",
@@ -38,7 +42,9 @@ MBPApp.controller("financialSettingController", ['$scope', 'getCropDB', function
 
     
     $scope.$watch('group', function(newVal) {        
-        if(newVal) {           
+        if(newVal) { 
+        $scope.quartersRecieved="";
+            $scope.item.checked = false;          
             getCropDB.getCorpDBHierarchy('/group/' + $scope.group.ID + '/marketArea')
                 .success(function(response) {
                     $scope.marketAreas = response;
@@ -51,6 +57,8 @@ MBPApp.controller("financialSettingController", ['$scope', 'getCropDB', function
     $scope.$watch('marketArea', function(newVal) {
 
         if(newVal) {
+            $scope.quartersRecieved="";
+            $scope.item.checked = false;
             getCropDB.getCorpDBHierarchy('/marketArea/'+ $scope.marketArea.ma_id + '/facilities') 
                 .success(function(response) {
                     
@@ -73,6 +81,8 @@ MBPApp.controller("financialSettingController", ['$scope', 'getCropDB', function
 
     $scope.$watch('facility', function(newVal) {
         if(newVal) {
+            $scope.quartersRecieved="";
+            $scope.item.checked = false;
             getCropDB.getCorpDBHierarchy('/marketArea/' + $scope.marketArea.ma_id + '/facilities/'+ $scope.facility + '/businessUnit')
                 .success(function(response) {
                     $scope.businessUnits = response;
@@ -85,6 +95,8 @@ MBPApp.controller("financialSettingController", ['$scope', 'getCropDB', function
 
     $scope.$watch('businessUnit', function(newVal) {
         if( newVal ) {
+            $scope.quartersRecieved="";
+            $scope.item.checked = false;
             if($scope.facility === 1){
                 $scope.isRead = false;
                 getCropDB.getCorpDBHierarchy('/marketArea/' + $scope.marketArea.ma_id +'/facilities/' + $scope.facility+ '/businessUnit/'+ $scope.businessUnit.bu_id + '/lobMaterialStream')
@@ -139,7 +151,8 @@ MBPApp.controller("financialSettingController", ['$scope', 'getCropDB', function
     $scope.$watch('lob', function(newVal) {
 
         if( newVal ) {
-            
+            $scope.quartersRecieved="";
+            $scope.item.checked = false;
             getCropDB.getCorpDBHierarchy('/businessUnit/'+ $scope.businessUnit.bu_id + '/lobMaterialStream/'+$scope.lob.lob4_id+'/quarter')
                 .success(function(response) {
                 $scope.quartersRecieved = response;
@@ -150,11 +163,17 @@ MBPApp.controller("financialSettingController", ['$scope', 'getCropDB', function
                 }else{
                     $scope.isQuarterNull = false;
                 }
-                if($scope.quartersRecieved.availaibleQuarterRange === "" || $scope.quartersRecieved.availaibleQuarterRange === null){
+                if($scope.quartersRecieved.availableQuarterRange === "" || $scope.quartersRecieved.availableQuarterRange === null){
                     $scope.isAvailQuarterNull = true;
                 }else{
                    
                     $scope.isAvailQuarterNull = false;
+                }
+                if($scope.quartersRecieved.availableQuarterRange === $scope.quartersRecieved.appliedQuarterRange)
+                {
+                   
+                    $scope.isQuarterNull = false;
+                    $scope.isAvailQuarterNull = true;
                 }
 
                 }).error(function(err, status) {
