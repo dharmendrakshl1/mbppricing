@@ -24,8 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
  });
 
 //app.use('/api', routes);
-require('./controller/angularroutes.js')(app);
-require('./controller/noderoutes.js')(app);
+require('./routes/angularroutes.js')(app);
+require('./routes/noderoutes.js')(app);
 
 app.listen(3000,function(req,res){
   console.log("server running at port 3000");
