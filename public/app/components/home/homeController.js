@@ -172,11 +172,3 @@ MBPApp.controller("financialSettingController", ['$scope', 'corpDB', function($s
 
 
 }]);
-
-MBPApp.controller("onGoController", ['$scope', 'corpDB', function($scope, corpDB){
-
-    $scope.$watch('lob', function(newVal) {
-            
-            console.log("bu id:"+ $scope.businessUnits[0].bu_id);
-    });
-}]);
