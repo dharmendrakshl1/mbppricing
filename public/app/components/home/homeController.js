@@ -26,7 +26,7 @@ MBPApp.service('corpDB', ['$http', function($http) {
     var corpDB = this;
     corpDB.corpDBHierarchy = function(url) {
 
-        return $http.get('http://localhost:3000/api/corpdb' + url);
+        return $http.get('api/corpdb' + url);
     };
 }]);
 
