@@ -102,7 +102,7 @@ exports.getQuarterRange = function(businessunitId, lobMaterialStreamId, callBack
 	console.log("Entering CorpDBService->getQuarterRange");
 	var max_quarter_id;
 	var property_query;
-	var quarterRange = {};
+	var quarter = {};
 
 	property_query = properties.get("quarterrange.quarter.max.quarterid");
 	console.log("Max Query  = "+property_query);
@@ -137,8 +137,8 @@ exports.getQuarterRange = function(businessunitId, lobMaterialStreamId, callBack
 					console.log(JSON.stringify(result.rows, null, "    "));
 
 					var quarterValue = result.rows[0].quarter;
-					quarterRange.appliedQuarterRange = "";
-					quarterRange.availableQuarterRange = quarterValue;
+					quarter.appliedQuarter = "";
+					quarter.availableQuarter = quarterValue;
 
 					/*var bu_quarter_id = result.rows[0].quarter_id;
 
@@ -156,7 +156,7 @@ exports.getQuarterRange = function(businessunitId, lobMaterialStreamId, callBack
 
 					console.log("Exiting CorpDBService->getQuarterRange");
 					//return quarterRange;
-					callBackQuarterRange(quarterRange);
+					callBackQuarterRange(quarter);
 				});
 			}
 
@@ -186,12 +186,12 @@ exports.getQuarterRange = function(businessunitId, lobMaterialStreamId, callBack
 						});
 						q_quarter_id_query.on("end", function(result) {
 							console.log(JSON.stringify(result.rows, null, "    "));
-							quarterRange.appliedQuarterRange = result.rows[1].quarter;
-							quarterRange.availableQuarterRange = result.rows[0].quarter;
+							quarter.appliedQuarter = result.rows[1].quarter;
+							quarter.availableQuarter = result.rows[0].quarter;
 							
 							console.log("Exiting CorpDBService->getQuarterRange");
 							//return quarterRange;
-							callBackQuarterRange(quarterRange);
+							callBackQuarterRange(quarter);
 						});
 							
 					}
@@ -210,12 +210,12 @@ exports.getQuarterRange = function(businessunitId, lobMaterialStreamId, callBack
 						});
 						q_quarter_id_query.on("end", function(result) {
 							console.log(JSON.stringify(result.rows, null, "    "));
-							quarterRange.appliedQuarterRange = result.rows[0].quarter;
-							quarterRange.availableQuarterRange = result.rows[0].quarter;
+							quarter.appliedQuarter = result.rows[0].quarter;
+							quarter.availableQuarter = result.rows[0].quarter;
 							
 							console.log("Exiting CorpDBService->getQuarterRange");
 							//return quarterRange;							
-							callBackQuarterRange(quarterRange);
+							callBackQuarterRange(quarter);
 						});
 					}
 				});
