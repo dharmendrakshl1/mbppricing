@@ -32,7 +32,8 @@
        <br>
 
        <br><br>
-       <input id="quarters" type="radio" ng-model="quarters" value="applied" ng-disabled="isQuarterNull" />Quarters Applied {{quartersRecieved.appliedQuarterRange}} <br>
-       <input id="quarters" type="radio" ng-model="quarters" value="available" ng-disabled="isAvailQuarterNull" ng-value = "item.checked" />Available Quarters {{quartersRecieved.availableQuarterRange}}
-    </div>
+      
+       <input id="quarters" type="radio" ng-model="quarter.checked"  ng-disabled="!quarters.appliedQuarter.length" ng-value="(quarters.availableQuarter===quarters.appliedQuarter)" />Quarters Applied {{quarters.appliedQuarter}} <br>
+       <input id="quarters" type="radio" ng-model="quarter.checked" ng-disabled="(quarters.availableQuarter===quarters.appliedQuarter)"  />Available Quarters {{quarters.availableQuarter}}
+</div>
 
