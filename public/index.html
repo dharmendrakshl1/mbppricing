@@ -1,23 +1,26 @@
 <html  ng-app="MBPApp">
   <head>
-    <title>Tabs MBP</title>
+    <title>PGM</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-rc.0/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
-    <script src="/app/components/home/homeController.js"></script>
+    <!--<script src="/app/components/home/homeController.js"></script>-->
+    <script src="/app/appRoute.js"></script>
+    <script src="/app/components/home/financialSettingController.js"></script>
+    <script src="/app/components/home/homeService.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/style.css">
   </head>
   <body >
-    <h2>Financial Setting Page</h2>
-  
+    
+   
+
         <ul> 
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
+            <li><a href="#/">Financial Settings</a></li>
+            <li><a href="#/serviceCost">Service Cost Calculation</a></li>
             
             
         </ul>
-        <div ng-view> </div>
-
+       <div ng-view> </div>
      
 </body>
 </html>
