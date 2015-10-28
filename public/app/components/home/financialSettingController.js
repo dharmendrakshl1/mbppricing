@@ -1,36 +1,6 @@
-var MBPApp = angular.module('MBPApp',['ngRoute']);
+//financialSettingController for dropdowns
 
-MBPApp.config(
-  function($routeProvider) {
-    $routeProvider.
-      when('/', {
-        templateUrl: '/app/components/home/homeView.html',
-        controller: 'financialSettingController'
-      }).
-      when('/about',{
-        templateUrl: 'about.html',
-      }).
-      otherwise({
-            redirectTo: '/'
-        });
-      
-  });
-
-  /*var imported = document.createElement('script');
-imported.src = '/public/app/app.route.js';
-document.head.appendChild(imported);*/
-
-//var route=require('../../app.route.js');
-//var MBPApp=angular.module('MBPApp',[]);
-MBPApp.service('corpDB', ['$http', function($http) {
-    var corpDB = this;
-    corpDB.corpDBHierarchy = function(url) {
-
-        return $http.get('api/corpdb' + url);
-    };
-}]);
-
-MBPApp.controller("financialSettingController", ['$scope', 'corpDB', function($scope, corpDB){
+MBPApp.controller('financialSettingController', ['$scope', 'corpDB', function($scope, corpDB){
             
     $scope.quarter = {};
 
