@@ -52,7 +52,7 @@ exports.getLOB = function(req,res){
 }
 
 exports.getQuarterRange = function(req,res){
-	console.log("ntered CorpDBController->getQuarter");
+	console.log("Entered CorpDBController->getQuarter");
 	var businessunitId = req.params.businessunitId;
 	var lobMaterialStreamId = req.params.lobMaterialStreamId;
 	console.log("Printing------>"+businessunitId+"------->"+lobMaterialStreamId);
