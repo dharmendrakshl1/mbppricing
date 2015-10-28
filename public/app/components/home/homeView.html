@@ -26,7 +26,7 @@
 
        <br>
        LOB : 
-       <select id="lob" ng-disabled = "isRead" ng-model="lob" ng-options = "lob.lob4_id + ' - ' + lob.lobms for lob in LOBs | orderBy:'lob4_id'" ng-change="quarters=null"> 
+       <select id="lob" ng-disabled = "isRead" ng-model="lob" ng-options = "lob.lobms_id + ' - ' + lob.lobms for lob in LOBs | orderBy:'lobms_id'" ng-change="quarters=null"> 
          <option value="">Select a value</option>
        </select>
        <br>
@@ -35,4 +35,54 @@
       
        <input id="quarters" type="radio" ng-model="quarter.checked"  ng-disabled="!quarters.appliedQuarter.length" ng-value=" !(quarters.appliedQuarter.length)" />Quarters Applied {{quarters.appliedQuarter}} <br>
        <input id="quarters" type="radio" ng-model="quarter.checked" ng-disabled="(quarters.availableQuarter===quarters.appliedQuarter)" ng-value="!(quarters.appliedQuarter.length===0)"/>Available Quarters {{quarters.availableQuarter}}
+<br>
+<br>
+<!-- <div ng-include="'/finalAdjustmentView.html'"></div> -->
+        <div ng-controller = "financialAdjustmentController">
+        <button ng-click="financialAdjustmentValues()">GO</button>
+        <table>
+          <thead>
+            <tr>
+              <th>Financial Data and Statistics</th>
+              <th>Actual(From Financials)</th>
+              <th>Adjustment</th>
+              <th>Total Adjusted</th>
+              <th>Applied-Unit P & L</th>
+              <th>Saved By/Date & Time</th>
+            </tr>
+            <tr>
+              <th>Cost Buckets</th>
+            </tr>
+          </thead>
+          <tbody ng-repeat="(costBucket,value) in financialValues" ng-if="!(costBucket==='Service Related Statistics')">
+          
+          <tr ng-repeat="(bucketKey, bucketValue) in financialValues[costBucket]">
+            <td>{{bucketKey}}</td>
+            <td>{{bucketValue.actual}}</td>
+            <td>{{bucketValue.adjusted}}</td>
+            <td>{{bucketValue.total_adjusted}}</td>
+            <td>{{bucketValue.per_unit}}</td>
+            <td>{{bucketValue.updated_by}} / {{bucketValue.updated_date}}</td>
+          </tr>
+          <tr >
+            <td><b>{{costBucket}}</b></td>
+          </tr>
+          </tbody>
+          <tbody ng-repeat="(costBucket,value) in financialValues"  ng-if="costBucket==='Service Related Statistics'">
+
+          <tr>
+              <td><b>{{costBucket}}</b></td>
+          </tr>
+          <tr ng-repeat="(bucketKey, bucketValue) in financialValues[costBucket]">
+            <td>{{bucketKey}}</td>
+            <td>{{bucketValue.actual}}</td>
+            <td>{{bucketValue.adjusted}}</td>
+            <td>{{bucketValue.total_adjusted}}</td>
+            <td>{{bucketValue.per_unit}}</td>
+            <td>{{bucketValue.updated_by}} / {{bucketValue.updated_date}}</td>
+          </tr>
+
+          </tbody>
+        </table>
+       </div>
 </div>

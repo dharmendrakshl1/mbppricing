@@ -72,7 +72,7 @@ exports.getLOB = function(marketId, facId, businessunitId, callBackLOB){
 	console.log("Entering CorpDBService->getLOB");
 	if(facId == 5){
 		console.log("LOB Facility Type = All");
-		var query = client.query("select distinct lob4_id, lobms from corpdb_vw where ma_id= ($1) and bu_id = ($2) " ,[marketId,businessunitId]);
+		var query = client.query("select distinct lobms_id, lobms from corpdb_vw where ma_id= ($1) and bu_id = ($2) " ,[marketId,businessunitId]);
 		query.on("row", function(row, result){
 			result.addRow(row);
 		});
@@ -85,7 +85,7 @@ exports.getLOB = function(marketId, facId, businessunitId, callBackLOB){
 	}
 	else{
 		console.log("LOB Facility Type = Selected one");
-		var query = client.query("select distinct lob4_id, lobms from corpdb_vw where ma_id= ($1) and facility_type_id= ($2) and bu_id = ($3) " ,[marketId,facId,businessunitId]);
+		var query = client.query("select distinct lobms_id, lobms from corpdb_vw where ma_id= ($1) and facility_type_id= ($2) and bu_id = ($3) " ,[marketId,facId,businessunitId]);
 		query.on("row", function(row, result) {
 			result.addRow(row);
 		});

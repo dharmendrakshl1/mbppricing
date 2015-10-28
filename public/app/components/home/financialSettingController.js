@@ -1,6 +1,6 @@
 //financialSettingController for dropdowns
 
-MBPApp.controller('financialSettingController', ['$scope', 'corpDB', function($scope, corpDB){
+MBPApp.controller("financialSettingController", ['$scope', 'corpDB', function($scope, corpDB){
             
     $scope.quarter = {};
 
@@ -86,7 +86,7 @@ MBPApp.controller('financialSettingController', ['$scope', 'corpDB', function($s
               if($scope.facility === 2){
                 $scope.isRead = true ;
                 var response = [{
-                        "lob4_id" : "2",
+                        "lobms_id" : "2",
                         "lobms" : "Transfer Station"
                     }];
                   $scope.LOBs = response;
@@ -95,7 +95,7 @@ MBPApp.controller('financialSettingController', ['$scope', 'corpDB', function($s
                 }else if($scope.facility === 3){
                     $scope.isRead = true ;
                     var response = [{
-                        "lob4_id" : "3",
+                        "lobms_id" : "3",
                         "lobms" : "Disposal"
                     }];
                   $scope.LOBs = response;
@@ -104,7 +104,7 @@ MBPApp.controller('financialSettingController', ['$scope', 'corpDB', function($s
                 }else if($scope.facility === 4) {
                     $scope.isRead = true ;
                     var response = [{
-                        "lob4_id" : "4",
+                        "lobms_id" : "4",
                         "lobms" : "MRF Recycling"
                     }];
                   $scope.LOBs = response;
@@ -129,11 +129,9 @@ MBPApp.controller('financialSettingController', ['$scope', 'corpDB', function($s
         if( newVal ) {
             $scope.quartersRecieved="";
             $scope.quarter.checked = false;
-           corpDB.corpDBHierarchy('/businessUnit/'+ $scope.businessUnit.bu_id + '/lobMaterialStream/'+$scope.lob.lob4_id+'/quarter')
+           corpDB.corpDBHierarchy('/businessUnit/'+ $scope.businessUnit.bu_id + '/lobMaterialStream/'+$scope.lob.lobms_id+'/quarter')
                 .success(function(response) {
                 $scope.quarters = response;
-                
-
                 }).error(function(err, status) {
                     console.log(err);
                 });

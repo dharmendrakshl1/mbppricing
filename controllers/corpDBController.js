@@ -17,6 +17,7 @@ exports.getMarketArea = function(req, res){
 
 exports.getFacilities = function(req, res){
 	console.log("Entered CorpDBController->getFacilities");
+	
 	var marketId = req.params.marketAreaId;
 	console.log("printing market id--> "+marketId);
 
