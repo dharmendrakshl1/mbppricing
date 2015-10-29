@@ -2,6 +2,9 @@ var orm = require('orm');
 
 var confDB = require('../config/database.js');
 
+var PropertiesReader = require("properties-reader");
+var properties = new PropertiesReader("./propertylibs/mbpPricingQuery.properties");
+
 function inArray(needle, haystack) {
     var length = haystack.length;
     for(var i = 0; i < length; i++) {
@@ -47,6 +50,7 @@ exports.getFinancialValues = function(businessUnitID, lobMaterialStreamId, getFi
 	console.log("Entering FinancialValueService->getFinancialValues");
 
 	var financialsValues = {};
+	var financialadjustmentQuery;
 
 	var db = orm.connect(confDB.url);
 	db.on('connect', function(err, result){
@@ -55,11 +59,8 @@ exports.getFinancialValues = function(businessUnitID, lobMaterialStreamId, getFi
 
 			//below query is to define financialsValues JSON structure for financialmaster heading & 
 			//sub-heading name for "financial setting adjustement page"
-			db.driver.execQuery("select f.financialmasterid, fm.name as fmname, f.name as fname, "
-				+"f.isadjustable, f.isactualeditable, pu.name as puname from financialmaster fm "
-				+"join financials f on fm.id = f.financialmasterid left outer join perunitmaster pu "
-				+"on f.per_unit = pu.id "
-				+"where f.lobms_id=?",[lobMaterialStreamId], function(err, data){
+			financialadjustmentQuery = properties.get('financialadjustment.financial.json.structure');
+			db.driver.execQuery(financialadjustmentQuery,[lobMaterialStreamId], function(err, data){
 				if(!err){
 					console.log("Data Length "+data.length);
 					for(var i=0; i<data.length; i++){
@@ -103,11 +104,8 @@ exports.getFinancialValues = function(businessUnitID, lobMaterialStreamId, getFi
 			//below query is to get financial values(like adjustment, total adjustment)
 			//for sub-heading and push to financialsValues JSON
 			//for financial setting adjustement page
-			db.driver.execQuery("select fm.name as fmname, f.financialmasterid, f.name as fname, "
-				+"fv.bu_id, fv.quarter_id, fv.actual, fv.adjusted, fv.total_adjusted, fv.updated_by, "
-				+"fv.updated_date from financialmaster fm join financials f on fm.id = f.financialmasterid "
-				+"join financialvalues fv on fv.financial_id = f.id where f.lobms_id = ? and "
-				+"fv.bu_id = ?",[lobMaterialStreamId, businessUnitID], function(err, data){
+			financialadjustmentQuery = properties.get('financialadjustment.financial.json.value');
+			db.driver.execQuery(financialadjustmentQuery,[lobMaterialStreamId, businessUnitID], function(err, data){
 				if(!err){
 					for(var i=0; i<data.length; i++){
 						var fmname = data[i].fmname;
