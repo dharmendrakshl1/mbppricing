@@ -20,7 +20,8 @@ MBPApp.controller("financialSettingController", ['$scope', 'corpDB', function($s
     $scope.$watch('group', function(newVal) {        
         if(newVal) { 
         $scope.quartersRecieved="";
-            $scope.quarter.checked = false;          
+            $scope.quarter.checked = false; 
+            console.log($scope.group.ID)         
             corpDB.corpDBHierarchy('/group/' + $scope.group.ID + '/marketArea')
                 .success(function(response) {
                     $scope.marketAreas = response;

@@ -1,0 +1,62 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 60px 15px 0;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+footer.footer {
+    background: #57584f;
+    color: #C6C6BC;
+    margin-top: 25px;
+    font-size: 0.90em;
+}
+
+.footer-logo {
+  background: url(/assets/images/wm-logo-footer.svg);
+  width: 64px;
+  height: 50px;
+  background-size: 64px 56px;
+  background-repeat: no-repeat;
+  background-position: 0px 4px;
+  text-indent: -999em;
+  color: #57584f;
+  float: left;
+}
+.copyright {
+  float: right;
+  padding-top: 24px;
+}

@@ -1,0 +1,29 @@
+.btn-group button {
+    width: 100%;
+         
+}
+
+.tableClass{
+margin-top: 20px;
+}
+
+.firstThead{
+   color: #fff;
+   background: url(/assets/images/nav-bar.svg);
+}
+.panel-default {
+	padding: 40px 40px 40px 60px;
+}
+
+.finRadio {
+	float : left;
+	margin-right: 25px;
+}
+
+#financialResp{
+	margin-top: 20px;
+}
+
+.btnWidth{
+	width: 100px;
+}

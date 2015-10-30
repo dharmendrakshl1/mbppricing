@@ -1,88 +1,95 @@
-  <div >
-  <br>
-  <br>
-        Group : 
-        <select id="group" ng-model="group" ng-options = "group.ID +' - ' + group.value for group in groups | orderBy:'ID'" ng-change="marketArea=null;facility=null; businessUnit=null;lob=null;quarters=null">
-          <option value="">Select a value</option>
-        </select><br>
 
-        <br>
-        Market Area :
-       <select id="marketArea" ng-model="marketArea" ng-options = "marketArea.ma_id +' - ' + marketArea.ma_name for marketArea in marketAreas | orderBy:'ma_id'" ng-change="facility=null; businessUnit=null;lob=null;quarters=null">
-        <option value="">Select a value</option>
-       </select><br>
 
-       <br>
-       Facility : 
-       <select id="facility" ng-model="facility" ng-options = "facility.facility_type_id as facility.facility_type for facility in facilities | orderBy:'facility_type'" ng-change="businessUnit=null;lob=null;quarters=null"> 
-       
-       </select>  <br> 
-
-       <br>
-       BusinessUnit : 
-       <select id="businessUnit" ng-model="businessUnit" ng-options = "businessUnit.bu_id +' - ' + businessUnit.bu_name for businessUnit in businessUnits | orderBy:'bu_id'" ng-change="lob=null;quarters=null"> 
-        <option value="">Select a value</option>
-      </select>  <br>
-
-       <br>
-       LOB : 
-       <select id="lob" ng-disabled = "isRead" ng-model="lob" ng-options = "lob.lobms_id + ' - ' + lob.lobms for lob in LOBs | orderBy:'lobms_id'" ng-change="quarters=null"> 
-         <option value="">Select a value</option>
-       </select>
-       <br>
-
-       <br><br>
       
-       <input id="quarters" type="radio" ng-model="quarter.checked"  ng-disabled="!quarters.appliedQuarter.length" ng-value=" !(quarters.appliedQuarter.length)" />Quarters Applied {{quarters.appliedQuarter}} <br>
-       <input id="quarters" type="radio" ng-model="quarter.checked" ng-disabled="(quarters.availableQuarter===quarters.appliedQuarter)" ng-value="!(quarters.appliedQuarter.length===0)"/>Available Quarters {{quarters.availableQuarter}}
-<br>
-<br>
-<!-- <div ng-include="'/finalAdjustmentView.html'"></div> -->
-        <div ng-controller = "financialAdjustmentController">
-        <button ng-click="financialAdjustmentValues()">GO</button>
-        <table>
-          <thead>
-            <tr>
-              <th>Financial Data and Statistics</th>
-              <th>Actual(From Financials)</th>
-              <th>Adjustment</th>
-              <th>Total Adjusted</th>
-              <th>Applied-Unit P & L</th>
-              <th>Saved By/Date & Time</th>
-            </tr>
-            <tr>
-              <th>Cost Buckets</th>
-            </tr>
-          </thead>
-          <tbody ng-repeat="(costBucket,value) in financialValues" ng-if="!(costBucket==='Service Related Statistics')">
-          
-          <tr ng-repeat="(bucketKey, bucketValue) in financialValues[costBucket]">
-            <td>{{bucketKey}}</td>
-            <td>{{bucketValue.actual}}</td>
-            <td>{{bucketValue.adjusted}}</td>
-            <td>{{bucketValue.total_adjusted}}</td>
-            <td>{{bucketValue.per_unit}}</td>
-            <td>{{bucketValue.updated_by}} / {{bucketValue.updated_date}}</td>
-          </tr>
-          <tr >
-            <td><b>{{costBucket}}</b></td>
-          </tr>
-          </tbody>
-          <tbody ng-repeat="(costBucket,value) in financialValues"  ng-if="costBucket==='Service Related Statistics'">
+       
+<div class="bs-example" data-example-id="single-button-dropdown">
 
-          <tr>
-              <td><b>{{costBucket}}</b></td>
-          </tr>
-          <tr ng-repeat="(bucketKey, bucketValue) in financialValues[costBucket]">
-            <td>{{bucketKey}}</td>
-            <td>{{bucketValue.actual}}</td>
-            <td>{{bucketValue.adjusted}}</td>
-            <td>{{bucketValue.total_adjusted}}</td>
-            <td>{{bucketValue.per_unit}}</td>
-            <td>{{bucketValue.updated_by}} / {{bucketValue.updated_date}}</td>
-          </tr>
-
-          </tbody>
-        </table>
-       </div>
+          <div class="btn-group">
+            <select id="group" ng-model="group" ng-options = "group.ID + ' - ' +group.value for group in groups | orderBy:'ID'" ng-change="marketArea=null;facility=null; businessUnit=null;lob=null;quarters=null" class="btn btn-default btn-success">
+            <option value="">Select a Group</option>
+            </select>
+          </div>
+          <div class="btn-group">
+            <select id="marketArea" ng-model="marketArea" ng-options = "marketArea.ma_id +' - ' + marketArea.ma_name for marketArea in marketAreas | orderBy:'ma_id'" ng-change="facility=null; businessUnit=null;lob=null;quarters=null" class="btn btn-default btn-success">
+            <option value="">Select a Market Area</option>
+            </select><br>
+          </div>
+          <div class="btn-group ">
+            <select id="facility" ng-model="facility" ng-options = "facility.facility_type_id as facility.facility_type for facility in facilities | orderBy:'facility_type'" ng-change="businessUnit=null;lob=null;quarters=null" class="btn btn-default btn-success"> 
+            <option value="">Select a Facility</option>
+            </select>  <br> 
+          </div>
+          <div class="btn-group ">
+            <select id="businessUnit" ng-model="businessUnit" ng-options = "businessUnit.bu_id +' - ' + businessUnit.bu_name for businessUnit in businessUnits | orderBy:'bu_id'" ng-change="lob=null;quarters=null" class="btn btn-default btn-success"> 
+            <option value="">Select a Business Unit</option>
+            </select>  <br>
+          </div>
+          <div class="btn-group ">
+            <select id="lob" ng-disabled = "isRead" ng-model="lob" ng-options = "lob.lobms_id + ' - ' + lob.lobms for lob in LOBs | orderBy:'lobms_id'" ng-change="quarters=null" class="btn btn-default btn-success"> 
+            <option value="">Select LOB</option>
+            </select>
+          </div>  
 </div>
+
+      
+      
+ 
+<div ng-controller="financialAdjustmentController" id="financialResp">
+           <div class="finRadio"> 
+             <input id="quarters" type="radio" ng-model="quarter.checked"  ng-disabled="!quarters.appliedQuarter.length" ng-value=" !(quarters.appliedQuarter.length)"  />
+             <label >Quarters Applied {{quarters.appliedQuarter}} </label>
+           </div>
+           <div class="finRadio">
+             <input id="quarters" type="radio" ng-model="quarter.checked" ng-disabled="(quarters.availableQuarter===quarters.appliedQuarter)" ng-value="!(quarters.appliedQuarter.length===0)" />
+             <label >Available Quarters {{quarters.availableQuarter}}</label>
+           </div> 
+           <button class="btn btn-default btn-success btnWidth" ng-click="financialAdjustmentValues()">GO</button>
+           <br>
+            <div class="table-responsive tableClass">
+              <table class="table table-hover">
+                  <thead class="firstThead">
+                    <tr>
+                      <th>Financial Data and Statistics</th>
+                      <th>Actual(From Financials)</th>
+                      <th>Adjustment</th>
+                      <th>Total Adjusted</th>
+                      <th>Applied-Unit P & L</th>
+                      <th>Saved By/Date & Time</th>
+                    </tr>
+                    
+                  </thead>
+
+                  <tbody ng-repeat="(costBucket,value) in financialValues" ng-if="!(costBucket==='Service Related Statistics')">
+                  <tr>
+                      <th>Cost Buckets</th>
+                  </tr>
+                  <tr ng-repeat="(bucketKey, bucketValue) in financialValues[costBucket]">
+                    <td>{{bucketKey}}</td>
+                    <td>{{bucketValue.actual}}</td>
+                    <td>{{bucketValue.adjusted}}</td>
+                    <td>{{bucketValue.total_adjusted}}</td>
+                    <td>{{bucketValue.per_unit}}</td>
+                    <td>{{bucketValue.updated_by}} / {{bucketValue.updated_date}}</td>
+                  </tr>
+                  <tr >
+                    <td><b>{{costBucket}}</b></td>
+                  </tr>
+                  </tbody>
+                  <tbody ng-repeat="(costBucket,value) in financialValues"  ng-if="costBucket==='Service Related Statistics'">
+
+                  <tr>
+                      <td><b>{{costBucket}}</b></td>
+                  </tr>
+                  <tr ng-repeat="(bucketKey, bucketValue) in financialValues[costBucket]">
+                    <td>{{bucketKey}}</td>
+                    <td>{{bucketValue.actual}}</td>
+                    <td>{{bucketValue.adjusted}}</td>
+                    <td>{{bucketValue.total_adjusted}}</td>
+                    <td>{{bucketValue.per_unit}}</td>
+                    <td>{{bucketValue.updated_by}} / {{bucketValue.updated_date}}</td>
+                  </tr>
+
+                  </tbody>
+              </table>
+          </div>
+  </div>
