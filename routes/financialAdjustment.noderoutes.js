@@ -7,4 +7,6 @@ module.exports = function(app){
 	});
 	
 	app.get('/api/financialAdjustmentService/businessUnit/:businessUnitId/lobMaterialStream/:lobMaterialStreamId',financialController.getFinancialValues);
+	app.put('/api/financialAdjustmentService/save/businessUnit/:businessUnitId/lobMaterialStream/:lobMaterialStreamId',financialController.saveFinancialValues);
+	//app.put('/api/financialAdjustmentService/save',financialController.saveFinancialValues);
 }

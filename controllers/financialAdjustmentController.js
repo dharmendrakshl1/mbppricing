@@ -17,3 +17,18 @@ exports.getFinancialValues =  function(req, res){
 		res.send(financialValues);
 	});
 }
+
+exports.saveFinancialValues = function(req, res){
+	console.log("Entered FinancialAdjustmentController->saveFinancialValues");
+
+	var businessUnitId = req.params.businessUnitId;
+	var lobMaterialStreamId = req.params.lobMaterialStreamId;
+	console.log("Printing------> BU ID = "+businessUnitId+"-------> LOB ID = "+lobMaterialStreamId);
+
+	var financialJSONData = req.body;
+	console.log("JSON Data = "+financialJSONData);
+	//res.send(jsonData);
+	financialService.saveFinancialValues(businessUnitId, lobMaterialStreamId, financialJSONData, function(saveFinancialValues){
+		res.send("updated Successfully");
+	});
+}

@@ -71,8 +71,11 @@ exports.getFinancialValues = function(businessUnitID, lobMaterialStreamId, getFi
 					for(var i=0; i<data.length; i++){
 						var fmname = data[i].fmname;
 						var fname = data[i].fname;
+						var fid = data[i].id;
 
 						financialsValues[fmname][fname] = {};
+						financialsValues[fmname][fname]["fin_id"] = fid;
+
 					}
 					for(var i=0; i<data.length; i++){
 						var fmname = data[i].fmname;
@@ -120,7 +123,7 @@ exports.getFinancialValues = function(businessUnitID, lobMaterialStreamId, getFi
 						financialsValues[fmname][fname]["updated_by"] = data[i].updated_by;
 						financialsValues[fmname][fname]["updated_date"] = data[i].updated_date;
 					}
-					
+					console.log("Exiting FinancialValueService->getFinancialValues");
 					getFinancialValuesCallBack(financialsValues);
 				}
 				else{
@@ -130,6 +133,50 @@ exports.getFinancialValues = function(businessUnitID, lobMaterialStreamId, getFi
 		}
 		else{
 			console.log("Error in connection "+err);
+		}
+	});
+}
+
+exports.saveFinancialValues = function(businessUnitID, lobMaterialStreamId, financialJSONData, saveFinancialValuesCallBack){
+	console.log("Entering FinancialValueService->saveFinancialValues");
+	
+	var elementkeyquery="";
+
+	for(var headingkey in financialJSONData){
+		console.log("Heading Key = "+headingkey);
+		for(var subheadingkey in financialJSONData[headingkey]){
+			console.log("\tSub Heading "+subheadingkey);
+			if(elementkeyquery === null || elementkeyquery === "null" || elementkeyquery.length < 1){
+					elementkeyquery = subheadingkey;
+			}
+			else{
+				elementkeyquery = elementkeyquery+",\n"+subheadingkey;
+			}
+			for(var elementkey in financialJSONData[headingkey][subheadingkey]){
+				console.log("\t\t"+elementkey+" = "+financialJSONData[headingkey][subheadingkey][elementkey]);
+			}
+		}
+	}
+	console.log("elementkeyquery = "+elementkeyquery);
+
+	var db = orm.connect(confDB.url);
+	db.on('connect', function(err, result){
+		if(!err){
+			console.log("Connected successfully");
+			db.driver.execQuery("select id from financials where lobms_id = ? "
+				+"and name in(?);",[lobMaterialStreamId, 'Commercial Collection Trucks'],function(err, data){
+				if(!err){
+					console.log("Data = "+data[0].id);
+					console.log("Exiting FinancialValueService->saveFinancialValues");
+					saveFinancialValuesCallBack();
+				}
+				else{
+					console.log("Error in connection");
+				}
+			});
+		}
+		else{
+			console.log("Error in connection");
 		}
 	});
 }
