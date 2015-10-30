@@ -58,38 +58,47 @@
                     </tr>
                     
                   </thead>
-
-                  <tbody ng-repeat="(costBucket,value) in financialValues" ng-if="!(costBucket==='Service Related Statistics')">
-                  <tr>
+ <tr>
                       <th>Cost Buckets</th>
                   </tr>
-                  <tr ng-repeat="(bucketKey, bucketValue) in financialValues[costBucket]">
-                    <td>{{bucketKey}}</td>
-                    <td>{{bucketValue.actual}}</td>
-                    <td>{{bucketValue.adjusted}}</td>
-                    <td>{{bucketValue.total_adjusted}}</td>
-                    <td>{{bucketValue.per_unit}}</td>
-                    <td>{{bucketValue.updated_by}} / {{bucketValue.updated_date}}</td>
-                  </tr>
+
+ <tbody ng-repeat="(costBucket,value) in financialValues" ng-if="!(costBucket==='Service Related Statistics')">
+
+          <tr ng-repeat="(bucketKey, bucketValue) in financialValues[costBucket]" ng-switch="bucketValue.isadjustable">
+            <td>{{bucketKey}}</td>
+            <td ng-model="bucketValue.actual">{{bucketValue.actual}}</td>
+            <td><input type="text" ng-model="bucketValue.adjusted"></td>
+            <td>{{bucketValue.actual -- bucketValue.adjusted}}</td>
+            <td>{{bucketValue.per_unit}}</td>
+            <td>{{bucketValue.updated_by}} / {{bucketValue.updated_date}}</td>
+            
+          </tr>
                   <tr >
-                    <td><b>{{costBucket}}</b></td>
-                  </tr>
-                  </tbody>
-                  <tbody ng-repeat="(costBucket,value) in financialValues"  ng-if="costBucket==='Service Related Statistics'">
+            <td><b>{{costBucket}}</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          </tbody>
 
-                  <tr>
-                      <td><b>{{costBucket}}</b></td>
-                  </tr>
-                  <tr ng-repeat="(bucketKey, bucketValue) in financialValues[costBucket]">
-                    <td>{{bucketKey}}</td>
-                    <td>{{bucketValue.actual}}</td>
-                    <td>{{bucketValue.adjusted}}</td>
-                    <td>{{bucketValue.total_adjusted}}</td>
-                    <td>{{bucketValue.per_unit}}</td>
-                    <td>{{bucketValue.updated_by}} / {{bucketValue.updated_date}}</td>
-                  </tr>
+          <tbody ng-repeat="(costBucket,value) in financialValues"  ng-if="costBucket==='Service Related Statistics'">
+          <tr>
+              <td><b>{{costBucket}}</b></td>
+          </tr>
+          <tr ng-repeat="(bucketKey, bucketValue) in financialValues[costBucket]" ng-switch="(bucketValue.isactualeditable)" >
+            <td>{{bucketKey}}</td>
+            <td ng-switch-when='true'><input type="number" ng-model="bucketValue.actual"/></td>
+            <td ng-switch-when='false'>{{bucketValue.actual}}</td>
+            <td ng-if="(bucketValue.isadjustable)"><input type="number" ng-model="bucketValue.adjusted"/></td>
 
-                  </tbody>
-              </table>
+            <td ng-if="!(bucketValue.isadjustable)" >{{bucketValue.adjusted}}</td>
+
+            <td>{{bucketValue.actual -- bucketValue.adjusted}}</td>
+            <td>{{bucketValue.per_unit}}</td>
+            <td>{{bucketValue.updated_by}} / {{bucketValue.updated_date}}</td>
+          </tr>
+
+          </tbody>
+</table>
           </div>
   </div>
