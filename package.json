@@ -18,6 +18,7 @@
     "path": "*",
     "pg": "*",
     "properties-reader": "*",
-    "orm": "2.1.27"
+    "orm": "2.1.27",
+    "http-proxy": "^1.12.0"
   }
 }
